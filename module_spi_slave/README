@@ -1,0 +1,2 @@
+SPI slave protocol.
+Implements SPI mode 3 (1/1).

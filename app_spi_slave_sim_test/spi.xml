@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPIMaster cpuFreq="400MHz" clockFreq="5MHz" bitrev="yes"> <!--tracing="timeSlicing,pinValues,bytes,stateChanges,commands"-->
+
+  <Delay length="1000"/>
+
+  <!--Write>
+    <Byte value="0x12"/>
+    <Byte value="0x34"/>
+  </Write-->
+
+  <Delay length="200"/>
+
+  <Write>
+    <Byte value="0x37"/>
+  </Write>
+
+  <Delay length="100"/>
+
+  <Write>
+    <Byte value="0x2A"/>
+    <Byte value="0x91"/>
+    <Byte value="0x8D"/>
+    <Byte value="0xF5"/>
+    <Byte value="0x91"/>
+  </Write>
+
+  <Delay length="200"/>
+
+  <Write>
+    <Byte value="0xA6"/>
+    <Byte value="0x8B"/>
+    <Byte value="0xBB"/>
+    <Byte value="0x43"/>
+    <Byte value="0x7D"/>
+    <Byte value="0x5A"/>
+    <Byte value="0x03"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x25"/>
+    <Byte value="0x38"/>
+    <Byte value="0x09"/>
+    <Byte value="0xFC"/>
+    <Byte value="0xCB"/>
+    <Byte value="0xD4"/>
+    <Byte value="0x5D"/>
+    <Byte value="0x3B"/>
+    <Byte value="0x45"/>
+    <Byte value="0xF5"/>
+    <Byte value="0x96"/>
+    <Byte value="0x0A"/>
+    <Byte value="0x89"/>
+    <Byte value="0x0D"/>
+    <Byte value="0x13"/>
+    <Byte value="0x32"/>
+    <Byte value="0xAE"/>
+    <Byte value="0xDB"/>
+    <Byte value="0x1C"/>
+    <Byte value="0xEE"/>
+    <Byte value="0x50"/>
+    <Byte value="0x9A"/>
+    <Byte value="0x20"/>
+    <Byte value="0xFD"/>
+    <Byte value="0x36"/>
+    <Byte value="0x78"/>
+    <Byte value="0x40"/>
+    <Byte value="0xF6"/>
+    <Byte value="0x32"/>
+    <Byte value="0x49"/>
+    <Byte value="0x12"/>
+    <Byte value="0xDC"/>
+    <Byte value="0x49"/>
+    <Byte value="0x7D"/>
+    <Byte value="0x9E"/>
+    <Byte value="0xF2"/>
+    <Byte value="0x14"/>
+    <Byte value="0x4F"/>
+    <Byte value="0xAD"/>
+    <Byte value="0xD0"/>
+    <Byte value="0x66"/>
+    <Byte value="0x40"/>
+    <Byte value="0x44"/>
+    <Byte value="0xB7"/>
+    <Byte value="0x30"/>
+    <Byte value="0xC4"/>
+    <Byte value="0x6B"/>
+    <Byte value="0x22"/>
+    <Byte value="0xA1"/>
+    <Byte value="0x3B"/>
+    <Byte value="0x32"/>
+    <Byte value="0x9D"/>
+    <Byte value="0x91"/>
+    <Byte value="0x22"/>
+    <Byte value="0xF6"/>
+    <Byte value="0xDA"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x8B"/>
+    <Byte value="0xE1"/>
+  </Write>
+
+  <Delay length="1000"/>
+
+  <Read>
+    <Byte value="0x37"/>
+  </Read>
+
+  <Delay length="200"/>
+
+  <Read>
+    <Byte value="0x2A"/>
+    <Byte value="0x91"/>
+    <Byte value="0x8D"/>
+    <Byte value="0xF5"/>
+    <Byte value="0x91"/>
+  </Read>
+
+  <Delay length="1000"/>
+
+  <Read>
+    <Byte value="0xA6"/>
+    <Byte value="0x8B"/>
+    <Byte value="0xBB"/>
+    <Byte value="0x43"/>
+    <Byte value="0x7D"/>
+    <Byte value="0x5A"/>
+    <Byte value="0x03"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x25"/>
+    <Byte value="0x38"/>
+    <Byte value="0x09"/>
+    <Byte value="0xFC"/>
+    <Byte value="0xCB"/>
+    <Byte value="0xD4"/>
+    <Byte value="0x5D"/>
+    <Byte value="0x3B"/>
+    <Byte value="0x45"/>
+    <Byte value="0xF5"/>
+    <Byte value="0x96"/>
+    <Byte value="0x0A"/>
+    <Byte value="0x89"/>
+    <Byte value="0x0D"/>
+    <Byte value="0x13"/>
+    <Byte value="0x32"/>
+    <Byte value="0xAE"/>
+    <Byte value="0xDB"/>
+    <Byte value="0x1C"/>
+    <Byte value="0xEE"/>
+    <Byte value="0x50"/>
+    <Byte value="0x9A"/>
+    <Byte value="0x20"/>
+    <Byte value="0xFD"/>
+    <Byte value="0x36"/>
+    <Byte value="0x78"/>
+    <Byte value="0x40"/>
+    <Byte value="0xF6"/>
+    <Byte value="0x32"/>
+    <Byte value="0x49"/>
+    <Byte value="0x12"/>
+    <Byte value="0xDC"/>
+    <Byte value="0x49"/>
+    <Byte value="0x7D"/>
+    <Byte value="0x9E"/>
+    <Byte value="0xF2"/>
+    <Byte value="0x14"/>
+    <Byte value="0x4F"/>
+    <Byte value="0xAD"/>
+    <Byte value="0xD0"/>
+    <Byte value="0x66"/>
+    <Byte value="0x40"/>
+    <Byte value="0x44"/>
+    <Byte value="0xB7"/>
+    <Byte value="0x30"/>
+    <Byte value="0xC4"/>
+    <Byte value="0x6B"/>
+    <Byte value="0x22"/>
+    <Byte value="0xA1"/>
+    <Byte value="0x3B"/>
+    <Byte value="0x32"/>
+    <Byte value="0x9D"/>
+    <Byte value="0x91"/>
+    <Byte value="0x22"/>
+    <Byte value="0xF6"/>
+    <Byte value="0xDA"/>
+    <Byte value="0x1F"/>
+    <Byte value="0x8B"/>
+    <Byte value="0xE1"/>
+  </Read>
+
+</SPIMaster>
