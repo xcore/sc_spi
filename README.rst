@@ -1,11 +1,13 @@
-XCORE.com UART SOFTWARE COMPONENT
+XCORE.com SPI SOFTWARE COMPONENT
 .................................
 
 :Stable release:   unreleased
 
 :Status:  Feature complete
 
-:Maintainer:  Mike Wrighton (github: mikexmos)
+:Description: SPI master/slave component.
+
+:Maintainer:  https://github.com/mikexmos
 
 
 Key Features
