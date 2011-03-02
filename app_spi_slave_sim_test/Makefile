@@ -8,7 +8,7 @@ TARGET = XS1-L1A-LQ64
 # not include the .xe postfix. If left blank the name will default to 
 # the project name
 
-APP_NAME =
+APP_NAME = app_spi_slave_sim_test
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
