@@ -8,6 +8,7 @@
     <location>ssh://git@github.com/xcore/sc_spi</location>
     <name>sc_spi</name>
     <maintainer>davelxmos</maintainer>
+    <release parenthash = "d828c75cbdcab1fa9eaed45d26aee82a66b5d777" version = "1.1.0beta0"></release>
     <scope>example</scope>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>
