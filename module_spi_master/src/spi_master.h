@@ -5,12 +5,21 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// SPI master (mode 3)
+// SPI master
 //
 // Select lines are intentionally not part of API
 // They are simple port outputs
 // They depend on how many slaves there are and how they're connected
 //
+// SPI modes:
+// +------+------+------+-----------+
+// | Mode | CPOL | CPHA | Supported |
+// +------+------+------+-----------+
+// |   0  |   0  |   0  |    No     |
+// |   1  |   0  |   1  |    Yes    |
+// |   2  |   1  |   0  |    No     |
+// |   3  |   1  |   1  |    Yes    |
+// +------+------+------+-----------+
 
 #ifndef _spi_master_h_
 #define _spi_master_h_
@@ -24,12 +33,12 @@ typedef struct spi_master_interface {
   in buffered port:8 miso; 
 } spi_master_interface;
 
-
+#define DEFAULT_SPI_MODE 3
 #define DEFAULT_SPI_CLOCK_DIV 8
 
 // SPI clock frequency is fref/(2*spi_clock_div)
 // where freq defaults to 100MHz
-void spi_init(spi_master_interface &i, int spi_clock_div);
+void spi_init(spi_master_interface &i, int spi_clock_div, int spi_mode);
 void spi_shutdown(spi_master_interface &i);
 
 // SPI master output

@@ -13,11 +13,39 @@
 #include <xclib.h>
 #include "spi_master.h"
 
-void spi_init(spi_master_interface &i, int spi_clock_div)
+unsigned sclk_val;
+
+void spi_init(spi_master_interface &i, int spi_clock_div, int spi_mode)
 {
-	// configure ports and clock blocks
-	configure_clock_rate(i.blk1, 100, spi_clock_div);
-	configure_out_port(i.sclk, i.blk1, 0);
+    // configure ports and clock blocks
+    configure_clock_rate(i.blk1, 100, spi_clock_div);
+    switch (spi_mode)
+    {
+        case 0: //FIXME need to write fisrt mosi data bit before first sclk tick
+            set_port_no_inv(i.sclk);
+            configure_out_port(i.sclk, i.blk1, 0);
+            sclk_val = 0x55;
+            break;
+        case 1:
+            set_port_inv(i.sclk); // invert port and values used
+            configure_out_port(i.sclk, i.blk1, 1);
+            sclk_val = 0xAA;
+            break;
+        case 2: //FIXME need to write fisrt mosi data bit before first sclk tick
+            set_port_inv(i.sclk); // invert port and values used
+            configure_out_port(i.sclk, i.blk1, 0);
+            sclk_val = 0x55;
+            break;
+        case 3:
+            set_port_no_inv(i.sclk);
+            configure_out_port(i.sclk, i.blk1, 1);
+            sclk_val = 0xAA;
+            break;
+        default:
+            // unrecognised SPI mode
+            while(1){}
+            break;
+    }
 	configure_clock_src(i.blk2, i.sclk);
 	configure_out_port(i.mosi, i.blk2, 0);
 	configure_in_port(i.miso, i.blk2);
@@ -25,14 +53,13 @@ void spi_init(spi_master_interface &i, int spi_clock_div)
 	clearbuf(i.sclk);
 	start_clock(i.blk1);
 	start_clock(i.blk2);
-	i.sclk <: 0xFF;
 }
 
 void spi_shutdown(spi_master_interface &i)
 {
 	// need clock ticks in order to stop clock blocks
-	i.sclk <: 0xAA;
-	i.sclk <: 0xAA;
+	i.sclk <: sclk_val;
+	i.sclk <: sclk_val;
 	stop_clock(i.blk2);
 	stop_clock(i.blk1);
 }
@@ -42,8 +69,8 @@ unsigned char spi_in_byte(spi_master_interface &i)
 	// MSb-first bit order - SPI standard
 	unsigned x;
 	clearbuf(i.miso);
-	i.sclk <: 0xAA;
-	i.sclk <: 0xAA;
+	i.sclk <: sclk_val;
+	i.sclk <: sclk_val;
 	sync(i.sclk);
 	i.miso :> x;
 	return bitrev(x) >> 24;
@@ -84,8 +111,8 @@ void spi_out_byte(spi_master_interface &i, unsigned char data)
 	// MSb-first bit order - SPI standard
 	unsigned x = bitrev(data) >> 24;
 	i.mosi <: x;
-	i.sclk <: 0xAA;
-	i.sclk <: 0xAA;
+	i.sclk <: sclk_val;
+	i.sclk <: sclk_val;
 	sync(i.sclk);
 	i.miso :> void;
 }
