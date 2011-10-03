@@ -59,7 +59,7 @@ void read_id(spi_master_interface &spi_if)
 
 int main()
 {
-  spi_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
+  spi_init(spi_if, DEFAULT_SPI_CLOCK_DIV, DEFAULT_SPI_MODE);
   spi_deselect();
   
   printstrln("will do command 0x9F");

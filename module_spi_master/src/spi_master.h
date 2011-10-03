@@ -15,9 +15,9 @@
 // +------+------+------+-----------+
 // | Mode | CPOL | CPHA | Supported |
 // +------+------+------+-----------+
-// |   0  |   0  |   0  |    No     |
+// |   0  |   0  |   0  |    Yes    |
 // |   1  |   0  |   1  |    Yes    |
-// |   2  |   1  |   0  |    No     |
+// |   2  |   1  |   0  |    Yes    |
 // |   3  |   1  |   1  |    Yes    |
 // +------+------+------+-----------+
 
@@ -30,7 +30,7 @@ typedef struct spi_master_interface {
   clock blk2;
   out buffered port:8 mosi;
   out buffered port:8 sclk;
-  in buffered port:8 miso; 
+  in buffered port:8 miso;
 } spi_master_interface;
 
 #define DEFAULT_SPI_MODE 3
@@ -38,7 +38,7 @@ typedef struct spi_master_interface {
 
 // SPI clock frequency is fref/(2*spi_clock_div)
 // where freq defaults to 100MHz
-void spi_init(spi_master_interface &i, int spi_clock_div, int spi_mode);
+void spi_init(spi_master_interface &i, int spi_clock_div, int mode);
 void spi_shutdown(spi_master_interface &i);
 
 // SPI master output
