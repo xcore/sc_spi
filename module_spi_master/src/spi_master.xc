@@ -13,15 +13,17 @@
 #include <xclib.h>
 #include "spi_master.h"
 
+int spi_mode;
 unsigned sclk_val;
 
-void spi_init(spi_master_interface &i, int spi_clock_div, int spi_mode)
+void spi_init(spi_master_interface &i, int spi_clock_div, int mode)
 {
+    spi_mode = mode;
     // configure ports and clock blocks
     configure_clock_rate(i.blk1, 100, spi_clock_div);
     switch (spi_mode)
     {
-        case 0: //FIXME need to write fisrt mosi data bit before first sclk tick
+        case 0:
             set_port_no_inv(i.sclk);
             configure_out_port(i.sclk, i.blk1, 0);
             sclk_val = 0x55;
@@ -31,7 +33,7 @@ void spi_init(spi_master_interface &i, int spi_clock_div, int spi_mode)
             configure_out_port(i.sclk, i.blk1, 1);
             sclk_val = 0xAA;
             break;
-        case 2: //FIXME need to write fisrt mosi data bit before first sclk tick
+        case 2:
             set_port_inv(i.sclk); // invert port and values used
             configure_out_port(i.sclk, i.blk1, 0);
             sclk_val = 0x55;
@@ -110,7 +112,27 @@ void spi_out_byte(spi_master_interface &i, unsigned char data)
 {
 	// MSb-first bit order - SPI standard
 	unsigned x = bitrev(data) >> 24;
-	i.mosi <: x;
+	
+	if (spi_mode == 0 || spi_mode == 2) // modes where CPHA == 0
+	{
+        // handle first bit
+        asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
+        i.mosi <: x; // output first bit
+        asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
+        asm("setc res[%0], 0x200f" :: "r"(i.mosi)); // set to buffering
+        asm("settw res[%0], %1" :: "r"(i.mosi), "r"(32)); // set transfer width to 32
+        stop_clock(i.blk2);
+        configure_clock_src(i.blk2, i.sclk);
+        configure_out_port(i.mosi, i.blk2, x);
+        start_clock(i.blk2);
+        
+        // output remaining data
+        i.mosi <: (x >> 1);
+	}
+	else
+	{
+	    i.mosi <: x;
+	}
 	i.sclk <: sclk_val;
 	i.sclk <: sclk_val;
 	sync(i.sclk);
