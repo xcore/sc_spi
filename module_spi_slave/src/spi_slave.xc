@@ -5,16 +5,37 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// SPI Slave (mode 3)
+// SPI Slave
 
 #include <xs1.h>
 #include <xclib.h>
 #include <platform.h>
 #include "spi_slave.h"
 
+int spi_mode;
 
-void spi_init(spi_slave_interface &spi_if)
+void spi_init(spi_slave_interface &spi_if, int mode)
 {
+    spi_mode = mode;
+    switch (spi_mode)
+    {
+        case 0:
+            set_port_no_inv(spi_if.sclk);
+            break;
+        case 1:
+            set_port_inv(spi_if.sclk); // invert clk signal
+            break;
+        case 2:
+            set_port_inv(spi_if.sclk); // invert clk signal
+            break;
+        case 3:
+            set_port_no_inv(spi_if.sclk);
+            break;
+        default:
+            // unrecognised SPI mode
+            while(1){}
+            break;
+    }
 	// configure ports and clock blocks
 	// note: SS port is inverted, assertion is port value 1
 	configure_clock_src(spi_if.blk, spi_if.sclk);

@@ -5,10 +5,17 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// SPI Slave (mode 3)
-// Version 1.0
-// 25 Nov 2009
+// SPI Slave
 //
+// SPI modes:
+// +------+------+------+-----------+
+// | Mode | CPOL | CPHA | Supported |
+// +------+------+------+-----------+
+// |   0  |   0  |   0  |    No     |
+// |   1  |   0  |   1  |    No     |
+// |   2  |   1  |   0  |    No     |
+// |   3  |   1  |   1  |    Yes    |
+// +------+------+------+-----------+
 
 #ifndef _spi_slave_h_
 #define _spi_slave_h_
@@ -21,8 +28,9 @@ typedef struct spi_slave_interface {
   in port sclk;
 } spi_slave_interface;
 
+#define DEFAULT_SPI_MODE 3
 
-void spi_init(spi_slave_interface &i);
+void spi_init(spi_slave_interface &i, int mode);
 void spi_shutdown(spi_slave_interface &i);
 
 // SPI slave output
