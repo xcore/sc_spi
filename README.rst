@@ -14,7 +14,7 @@ Key Features
 ============
 
    * Master and slave components
-   * Implements SPI mode 3
+   * Implements SPI modes 0, 1, 2, 3
    * Configurable clock, default value of 12.5 MHz
 
 Firmware Overview
