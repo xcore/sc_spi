@@ -11,11 +11,14 @@
 // +------+------+------+-----------+
 // | Mode | CPOL | CPHA | Supported |
 // +------+------+------+-----------+
-// |   0  |   0  |   0  |    No     |
-// |   1  |   0  |   1  |    No     |
-// |   2  |   1  |   0  |    No     |
+// |   0  |   0  |   0  |    Yes    |
+// |   1  |   0  |   1  |    Yes    |
+// |   2  |   1  |   0  |    Yes    |
 // |   3  |   1  |   1  |    Yes    |
 // +------+------+------+-----------+
+//
+// Slave cannot reliably write data above 625kHz in modes 0 and 2.
+// Slave cannot reliably write data above 2.75MHz in modes 0 and 2.
 
 #ifndef _spi_slave_h_
 #define _spi_slave_h_

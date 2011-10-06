@@ -16,20 +16,31 @@ int spi_mode;
 
 void spi_init(spi_slave_interface &spi_if, int mode)
 {
+    int clk_start;
+    set_clock_on(spi_if.blk);
+    	set_port_use_on(spi_if.ss);
+	set_port_use_on(spi_if.mosi);
+	set_port_use_on(spi_if.miso);
+	set_port_use_on(spi_if.sclk);
+	
     spi_mode = mode;
     switch (spi_mode)
     {
         case 0:
             set_port_no_inv(spi_if.sclk);
+            clk_start = 0;
             break;
         case 1:
             set_port_inv(spi_if.sclk); // invert clk signal
+            clk_start = 1;
             break;
         case 2:
             set_port_inv(spi_if.sclk); // invert clk signal
+            clk_start = 0;
             break;
         case 3:
             set_port_no_inv(spi_if.sclk);
+            clk_start = 1;
             break;
         default:
             // unrecognised SPI mode
@@ -49,7 +60,7 @@ void spi_init(spi_slave_interface &spi_if, int mode)
 	set_port_slave(spi_if.miso);
 	start_clock(spi_if.blk);
 	spi_if.ss when pinseq(0) :> void;
-	spi_if.sclk when pinseq(1) :> void;
+	spi_if.sclk when pinseq(clk_start) :> void;
 	clearbuf(spi_if.miso);	
 	clearbuf(spi_if.mosi);
 }
@@ -57,6 +68,12 @@ void spi_init(spi_slave_interface &spi_if, int mode)
 void spi_shutdown(spi_slave_interface &spi_if)
 {
 	stop_clock(spi_if.blk);
+	
+	set_clock_off(spi_if.blk);
+	set_port_use_off(spi_if.ss);
+	set_port_use_off(spi_if.mosi);
+	set_port_use_off(spi_if.miso);
+	set_port_use_off(spi_if.sclk);
 }
 
 unsigned char spi_in_byte(spi_slave_interface &spi_if)
@@ -105,36 +122,46 @@ void spi_in_buffer(spi_slave_interface &spi_if,
 
 void spi_out_byte(spi_slave_interface &spi_if, unsigned char data)
 {
-	// big endian byte order
 	// MSb-first bit order
-	spi_if.miso <: (bitrev(data) >> 24);
-	spi_if.mosi :> void;	
+	unsigned int data_rev = bitrev(data) >> 24;
+	
+	if (spi_mode == 0 || spi_mode == 2) // modes where CPHA == 0
+	{
+        // handle first bit
+        asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
+        spi_if.miso <: data_rev; // output first bit
+        asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
+        asm("setc res[%0], 0x200f" :: "r"(spi_if.miso)); // set to buffering
+        asm("settw res[%0], %1" :: "r"(spi_if.miso), "r"(32)); // set transfer width to 32
+        stop_clock(spi_if.blk);
+        configure_clock_src(spi_if.blk, spi_if.sclk);
+        configure_out_port(spi_if.miso, spi_if.blk, data_rev);
+        start_clock(spi_if.blk);
+        
+        // output remaining data
+        spi_if.miso <: (data_rev >> 1);
+	}
+	else
+	{
+	    spi_if.miso <: data_rev;
+	}
+	spi_if.mosi :> void;
 }
 
 void spi_out_short(spi_slave_interface &spi_if, unsigned short data)
 {
 	// big endian byte order
-	// MSb-first bit order
-	unsigned int data_rev = bitrev(data);
-	spi_if.miso <: (data_rev >> 16);
-	spi_if.mosi :> void;
-	spi_if.miso <: (data_rev >> 24);
-	spi_if.mosi :> void;
+	spi_out_byte(spi_if,(data >> 8) & 0xFF);
+	spi_out_byte(spi_if, data & 0xFF);
 }
 
 void spi_out_word(spi_slave_interface &spi_if, unsigned int data)
 {
 	// big endian byte order
-	// MSb-first bit order
-	unsigned int data_rev = bitrev(data);
-	spi_if.miso <: data_rev;
-	spi_if.mosi :> void;
-	spi_if.miso <: (data_rev >> 8);
-	spi_if.mosi :> void;
-	spi_if.miso <: (data_rev >> 16);
-	spi_if.mosi :> void;
-	spi_if.miso <: (data_rev >> 24);
-	spi_if.mosi :> void;
+    spi_out_byte(spi_if, (data >> 24) & 0xFF);
+    spi_out_byte(spi_if, (data >> 16) & 0xFF);
+    spi_out_byte(spi_if, (data >> 8) & 0xFF);
+    spi_out_byte(spi_if, data & 0xFF);
 }
 
 #pragma unsafe arrays
@@ -142,12 +169,7 @@ void spi_out_buffer(spi_slave_interface &spi_if,
                     const unsigned char buffer[], 
                     int num_bytes)
 {
-	// MSb-first bit order
-	// unroll first iteration to minimise time between IN and following OUT
-	spi_if.miso <: (bitrev(buffer[0]) >> 24);
-	for (int i = 1; i < num_bytes; i++) {
-		spi_if.mosi :> void;	
-		spi_if.miso <: (bitrev(buffer[i]) >> 24);
+	for (int i = 0; i < num_bytes; i++) {
+		spi_out_byte(spi_if, buffer[i]);
 	}
-	spi_if.mosi :> void;	
 }
