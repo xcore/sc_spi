@@ -18,7 +18,7 @@
 // +------+------+------+-----------+
 //
 // Slave cannot reliably write data above 625kHz in modes 0 and 2.
-// Slave cannot reliably write data above 2.75MHz in modes 0 and 2.
+// Slave cannot reliably write data above 2.75MHz in modes 1 and 3.
 
 #ifndef _spi_slave_h_
 #define _spi_slave_h_
