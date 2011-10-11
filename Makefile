@@ -40,7 +40,7 @@
 # This variable should contain a space separated list of all
 # the directories containing buildable applications (usually
 # prefixed with the app_ prefix)
-BUILD_SUBDIRS = app_spi_slave_sim_test app_xc1a_spi_example
+BUILD_SUBDIRS = app_spi_slave_sim_test app_xc1a_spi_example app_spi_master_demo app_spi_slave_demo
 
 # This variable should contain a space separated list of all
 # the directories containing buildable plugins (usually
@@ -49,7 +49,7 @@ PLUGIN_SUBDIRS =
 
 # This variable should contain a space separated list of all
 # the directories containing applications with a 'test' make target
-TEST_SUBDIRS = app_spi_slave_sim_test app_xc1a_spi_example
+TEST_SUBDIRS = app_spi_slave_sim_test app_xc1a_spi_example app_spi_master_demo app_spi_slave_demo
 
 # Provided that the above variables are set you shouldn't need to modify
 # the targets below here. 
