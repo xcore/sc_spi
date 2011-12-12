@@ -12,9 +12,7 @@
 #include <platform.h>
 #include "spi_slave.h"
 
-int spi_mode;
-
-void spi_init(spi_slave_interface &spi_if, int mode)
+void spi_init(spi_slave_interface &spi_if)
 {
     int clk_start;
     set_clock_on(spi_if.blk);
@@ -22,31 +20,21 @@ void spi_init(spi_slave_interface &spi_if, int mode)
 	set_port_use_on(spi_if.mosi);
 	set_port_use_on(spi_if.miso);
 	set_port_use_on(spi_if.sclk);
-	
-    spi_mode = mode;
-    switch (spi_mode)
-    {
-        case 0:
-            set_port_no_inv(spi_if.sclk);
-            clk_start = 0;
-            break;
-        case 1:
-            set_port_inv(spi_if.sclk); // invert clk signal
-            clk_start = 1;
-            break;
-        case 2:
-            set_port_inv(spi_if.sclk); // invert clk signal
-            clk_start = 0;
-            break;
-        case 3:
-            set_port_no_inv(spi_if.sclk);
-            clk_start = 1;
-            break;
-        default:
-            // unrecognised SPI mode
-            while(1){}
-            break;
-    }
+#if SPI_MODE == 0
+    set_port_no_inv(spi_if.sclk);
+    clk_start = 0;
+#elif SPI_MODE == 1
+    set_port_inv(spi_if.sclk); // invert clk signal
+    clk_start = 1;
+#elif SPI_MODE == 2
+    set_port_inv(spi_if.sclk); // invert clk signal
+    clk_start = 0;
+#elif SPI_MODE == 3
+    set_port_no_inv(spi_if.sclk);
+    clk_start = 1;
+#else
+    #error "Unrecognised SPI mode."
+#endif
 	// configure ports and clock blocks
 	// note: SS port is inverted, assertion is port value 1
 	configure_clock_src(spi_if.blk, spi_if.sclk);
@@ -125,26 +113,23 @@ void spi_out_byte(spi_slave_interface &spi_if, unsigned char data)
 	// MSb-first bit order
 	unsigned int data_rev = bitrev(data) >> 24;
 	
-	if (spi_mode == 0 || spi_mode == 2) // modes where CPHA == 0
-	{
-        // handle first bit
-        asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
-        spi_if.miso <: data_rev; // output first bit
-        asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
-        asm("setc res[%0], 0x200f" :: "r"(spi_if.miso)); // set to buffering
-        asm("settw res[%0], %1" :: "r"(spi_if.miso), "r"(32)); // set transfer width to 32
-        stop_clock(spi_if.blk);
-        configure_clock_src(spi_if.blk, spi_if.sclk);
-        configure_out_port(spi_if.miso, spi_if.blk, data_rev);
-        start_clock(spi_if.blk);
-        
-        // output remaining data
-        spi_if.miso <: (data_rev >> 1);
-	}
-	else
-	{
-	    spi_if.miso <: data_rev;
-	}
+#if (SPI_MODE == 0 || SPI_MODE == 2) // modes where CPHA == 0
+    // handle first bit
+    asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
+    spi_if.miso <: data_rev; // output first bit
+    asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
+    asm("setc res[%0], 0x200f" :: "r"(spi_if.miso)); // set to buffering
+    asm("settw res[%0], %1" :: "r"(spi_if.miso), "r"(32)); // set transfer width to 32
+    stop_clock(spi_if.blk);
+    configure_clock_src(spi_if.blk, spi_if.sclk);
+    configure_out_port(spi_if.miso, spi_if.blk, data_rev);
+    start_clock(spi_if.blk);
+    
+    // output remaining data
+    spi_if.miso <: (data_rev >> 1);
+#else
+    spi_if.miso <: data_rev;
+#endif
 	spi_if.mosi :> void;
 }
 

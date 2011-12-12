@@ -31,9 +31,15 @@ typedef struct spi_slave_interface {
   in port sclk;
 } spi_slave_interface;
 
-#define DEFAULT_SPI_MODE 3
+#ifdef __spi_conf_h_exists__
+#include "spi_conf.h"
+#endif
 
-void spi_init(spi_slave_interface &i, int mode);
+#ifndef SPI_MODE
+#define SPI_MODE 3
+#endif
+
+void spi_init(spi_slave_interface &i);
 void spi_shutdown(spi_slave_interface &i);
 
 // SPI slave output
