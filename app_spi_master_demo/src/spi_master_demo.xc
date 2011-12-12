@@ -77,13 +77,12 @@ void use_spi(spi_master_interface &spi_if)
 }
 
 #define SPI_CLOCK_DIV 18 //DEFAULT_SPI_CLOCK_DIV
-#define SPI_MODE DEFAULT_SPI_MODE
 #define DEMO_RUNS 3
 int main()
 {
   printstr("running in mode ");
   printintln(SPI_MODE);
-  spi_init(spi_if, SPI_CLOCK_DIV, SPI_MODE);
+  spi_init(spi_if, SPI_CLOCK_DIV);
   spi_deselect();
   for (int i = 0; i < DEMO_RUNS; i++)
   {

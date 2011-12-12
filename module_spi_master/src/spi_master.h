@@ -36,9 +36,11 @@ typedef struct spi_master_interface {
 #define DEFAULT_SPI_MODE 3
 #define DEFAULT_SPI_CLOCK_DIV 8
 
+#define SPI_MODE DEFAULT_SPI_MODE
+
 // SPI clock frequency is fref/(2*spi_clock_div)
 // where freq defaults to 100MHz
-void spi_init(spi_master_interface &i, int spi_clock_div, int mode);
+void spi_init(spi_master_interface &i, int spi_clock_div);
 void spi_shutdown(spi_master_interface &i);
 
 // SPI master output

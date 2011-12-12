@@ -13,41 +13,31 @@
 #include <xclib.h>
 #include "spi_master.h"
 
-int spi_mode;
 unsigned sclk_val;
 
-void spi_init(spi_master_interface &i, int spi_clock_div, int mode)
+void spi_init(spi_master_interface &i, int spi_clock_div)
 {
-    spi_mode = mode;
     // configure ports and clock blocks
     configure_clock_rate(i.blk1, 100, spi_clock_div);
-    switch (spi_mode)
-    {
-        case 0:
-            set_port_no_inv(i.sclk);
-            configure_out_port(i.sclk, i.blk1, 0);
-            sclk_val = 0x55;
-            break;
-        case 1:
-            set_port_inv(i.sclk); // invert port and values used
-            configure_out_port(i.sclk, i.blk1, 1);
-            sclk_val = 0xAA;
-            break;
-        case 2:
-            set_port_inv(i.sclk); // invert port and values used
-            configure_out_port(i.sclk, i.blk1, 0);
-            sclk_val = 0x55;
-            break;
-        case 3:
-            set_port_no_inv(i.sclk);
-            configure_out_port(i.sclk, i.blk1, 1);
-            sclk_val = 0xAA;
-            break;
-        default:
-            // unrecognised SPI mode
-            while(1){}
-            break;
-    }
+#if SPI_MODE == 0 
+    set_port_no_inv(i.sclk);
+    configure_out_port(i.sclk, i.blk1, 0);
+    sclk_val = 0x55;
+#elif SPI_MODE == 1
+    set_port_inv(i.sclk); // invert port and values used
+    configure_out_port(i.sclk, i.blk1, 1);
+    sclk_val = 0xAA;
+#elif SPI_MODE == 2
+    set_port_inv(i.sclk); // invert port and values used
+    configure_out_port(i.sclk, i.blk1, 0);
+    sclk_val = 0x55;
+#elif SPI_MODE == 3
+    set_port_no_inv(i.sclk);
+    configure_out_port(i.sclk, i.blk1, 1);
+    sclk_val = 0xAA;
+#else
+    #error "Unrecognised SPI mode."
+#endif
 	configure_clock_src(i.blk2, i.sclk);
 	configure_out_port(i.mosi, i.blk2, 0);
 	configure_in_port(i.miso, i.blk2);
@@ -113,26 +103,23 @@ void spi_out_byte(spi_master_interface &i, unsigned char data)
 	// MSb-first bit order - SPI standard
 	unsigned x = bitrev(data) >> 24;
 	
-	if (spi_mode == 0 || spi_mode == 2) // modes where CPHA == 0
-	{
-        // handle first bit
-        asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
-        i.mosi <: x; // output first bit
-        asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
-        asm("setc res[%0], 0x200f" :: "r"(i.mosi)); // set to buffering
-        asm("settw res[%0], %1" :: "r"(i.mosi), "r"(32)); // set transfer width to 32
-        stop_clock(i.blk2);
-        configure_clock_src(i.blk2, i.sclk);
-        configure_out_port(i.mosi, i.blk2, x);
-        start_clock(i.blk2);
-        
-        // output remaining data
-        i.mosi <: (x >> 1);
-	}
-	else
-	{
-	    i.mosi <: x;
-	}
+#if (SPI_MODE == 0 || SPI_MODE == 2) // modes where CPHA == 0
+    // handle first bit
+    asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
+    i.mosi <: x; // output first bit
+    asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
+    asm("setc res[%0], 0x200f" :: "r"(i.mosi)); // set to buffering
+    asm("settw res[%0], %1" :: "r"(i.mosi), "r"(32)); // set transfer width to 32
+    stop_clock(i.blk2);
+    configure_clock_src(i.blk2, i.sclk);
+    configure_out_port(i.mosi, i.blk2, x);
+    start_clock(i.blk2);
+    
+    // output remaining data
+    i.mosi <: (x >> 1);
+#else
+    i.mosi <: x;
+#endif
 	i.sclk <: sclk_val;
 	i.sclk <: sclk_val;
 	sync(i.sclk);
@@ -141,7 +128,7 @@ void spi_out_byte(spi_master_interface &i, unsigned char data)
 
 void spi_out_short(spi_master_interface &i, unsigned short data)
 {
-	// big endian byte order
+  // big endian byte order
   spi_out_byte(i,(data >> 8) & 0xFF);
   spi_out_byte(i, data & 0xFF);
 }
