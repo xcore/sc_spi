@@ -23,12 +23,13 @@
 #ifndef _spi_slave_h_
 #define _spi_slave_h_
 
-typedef struct spi_slave_interface {
-  clock blk; 
-  in port ss;
-  in buffered port:8 mosi;
-  out buffered port:8 miso;
-  in port sclk;
+typedef struct spi_slave_interface
+{
+    clock blk;
+    in port ss;
+    in buffered port:8 mosi;
+    out buffered port:8 miso;
+    in port sclk;
 } spi_slave_interface;
 
 #ifdef __spi_conf_h_exists__

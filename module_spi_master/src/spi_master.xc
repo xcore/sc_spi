@@ -19,7 +19,7 @@ void spi_init(spi_master_interface &i, int spi_clock_div)
 {
     // configure ports and clock blocks
     configure_clock_rate(i.blk1, 100, spi_clock_div);
-#if SPI_MODE == 0 
+#if SPI_MODE == 0
     set_port_no_inv(i.sclk);
     configure_out_port(i.sclk, i.blk1, 0);
     sclk_val = 0x55;
@@ -89,13 +89,12 @@ unsigned int spi_in_word(spi_master_interface &i)
 }
 
 #pragma unsafe arrays
-void spi_in_buffer(spi_master_interface &spi_inf, 
-                   unsigned char buffer[], 
-                   int num_bytes)
+void spi_in_buffer(spi_master_interface &spi_inf, unsigned char buffer[], int num_bytes)
 {
-  for (int i = 0; i < num_bytes; i++) {
-    buffer[i] = spi_in_byte(spi_inf);
-  }
+    for (int i = 0; i < num_bytes; i++)
+    {
+        buffer[i] = spi_in_byte(spi_inf);
+    }
 }
 
 void spi_out_byte(spi_master_interface &i, unsigned char data)
@@ -143,11 +142,10 @@ void spi_out_word(spi_master_interface &i, unsigned int data)
 }
 
 #pragma unsafe arrays
-void spi_out_buffer(spi_master_interface &spi_if,
-                    const unsigned char buffer[], 
-                    int num_bytes)
+void spi_out_buffer(spi_master_interface &spi_if, const unsigned char buffer[], int num_bytes)
 {
-  for (int i = 0; i < num_bytes; i++) {
-    spi_out_byte(spi_if, buffer[i]);
-  }
+    for (int i = 0; i < num_bytes; i++)
+    {
+        spi_out_byte(spi_if, buffer[i]);
+    }
 }

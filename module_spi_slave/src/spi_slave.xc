@@ -96,13 +96,12 @@ unsigned int spi_in_word(spi_slave_interface &spi_if)
 }
 
 #pragma unsafe arrays
-void spi_in_buffer(spi_slave_interface &spi_if, 
-                   unsigned char buffer[], 
-                   int num_bytes)
+void spi_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_bytes)
 {
 	// MSb-first bit order
 	unsigned int data;
-	for (int i = 0; i < num_bytes; i++) {
+	for (int i = 0; i < num_bytes; i++)
+	{
 		spi_if.mosi :> >> data;
 		buffer[i] = bitrev(data);
 	}
@@ -150,11 +149,10 @@ void spi_out_word(spi_slave_interface &spi_if, unsigned int data)
 }
 
 #pragma unsafe arrays
-void spi_out_buffer(spi_slave_interface &spi_if,
-                    const unsigned char buffer[], 
-                    int num_bytes)
+void spi_out_buffer(spi_slave_interface &spi_if, const unsigned char buffer[], int num_bytes)
 {
-	for (int i = 0; i < num_bytes; i++) {
+	for (int i = 0; i < num_bytes; i++)
+	{
 		spi_out_byte(spi_if, buffer[i]);
 	}
 }
