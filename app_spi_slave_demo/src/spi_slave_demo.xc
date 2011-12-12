@@ -55,13 +55,12 @@ void use_spi(spi_slave_interface &spi_if)
   }
 }
 
-#define SPI_MODE DEFAULT_SPI_MODE
 #define DEMO_RUNS 3
 int main()
 {
   printstr("running in mode ");
   printintln(SPI_MODE);
-  spi_init(spi_if, SPI_MODE);
+  spi_init(spi_if);
   for (int i = 0; i < DEMO_RUNS; i++)
   {
     printstr("demo run ");

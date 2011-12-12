@@ -24,7 +24,7 @@ int main()
   unsigned int w[17];
   unsigned char buffer[5];
 
-  spi_init(spi_if, DEFAULT_SPI_MODE);
+  spi_init(spi_if);
 
   b1 = spi_in_byte(spi_if);
 
