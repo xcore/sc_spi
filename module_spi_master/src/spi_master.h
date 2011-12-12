@@ -33,10 +33,17 @@ typedef struct spi_master_interface {
   in buffered port:8 miso;
 } spi_master_interface;
 
-#define DEFAULT_SPI_MODE 3
-#define DEFAULT_SPI_CLOCK_DIV 8
+#ifdef __spi_conf_h_exists__
+#include "spi_conf.h"
+#endif
 
-#define SPI_MODE DEFAULT_SPI_MODE
+#ifndef DEFAULT_SPI_CLOCK_DIV
+#define DEFAULT_SPI_CLOCK_DIV 8
+#endif
+
+#ifndef SPI_MODE
+#define SPI_MODE 3
+#endif
 
 // SPI clock frequency is fref/(2*spi_clock_div)
 // where freq defaults to 100MHz

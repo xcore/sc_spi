@@ -1,0 +1,4 @@
+#define DEFAULT_SPI_CLOCK_DIV 2
+
+#define SPI_MODE 3
+
