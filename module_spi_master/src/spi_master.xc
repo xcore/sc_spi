@@ -56,7 +56,7 @@ void spi_shutdown(spi_master_interface &i)
 	stop_clock(i.blk1);
 }
 
-unsigned char spi_in_byte(spi_master_interface &i)
+static inline unsigned char spi_in_byte_internal(spi_master_interface &i)
 {
 	// MSb-first bit order - SPI standard
 	unsigned x;
@@ -68,12 +68,17 @@ unsigned char spi_in_byte(spi_master_interface &i)
 	return bitrev(x) >> 24;
 }
 
+unsigned char spi_in_byte(spi_master_interface &i)
+{
+	return spi_in_byte_internal(i);
+}
+
 unsigned short spi_in_short(spi_master_interface &i)
 {
 	// big endian byte order
 	unsigned short data = 0;
-	data |= (spi_in_byte(i) << 8);
-	data |= spi_in_byte(i);
+	data |= (spi_in_byte_internal(i) << 8);
+	data |= spi_in_byte_internal(i);
 	return data;
 }
 
@@ -81,10 +86,10 @@ unsigned int spi_in_word(spi_master_interface &i)
 {
 	// big endian byte order
 	unsigned int data = 0;
-	data |= (spi_in_byte(i) << 24);
-	data |= (spi_in_byte(i) << 16);
-	data |= (spi_in_byte(i) << 8);
-	data |= spi_in_byte(i);
+	data |= (spi_in_byte_internal(i) << 24);
+	data |= (spi_in_byte_internal(i) << 16);
+	data |= (spi_in_byte_internal(i) << 8);
+	data |= spi_in_byte_internal(i);
 	return data;
 }
 
@@ -93,11 +98,11 @@ void spi_in_buffer(spi_master_interface &spi_inf, unsigned char buffer[], int nu
 {
     for (int i = 0; i < num_bytes; i++)
     {
-        buffer[i] = spi_in_byte(spi_inf);
+        buffer[i] = spi_in_byte_internal(spi_inf);
     }
 }
 
-void spi_out_byte(spi_master_interface &i, unsigned char data)
+static inline void spi_out_byte_internal(spi_master_interface &i, unsigned char data)
 {
 	// MSb-first bit order - SPI standard
 	unsigned x = bitrev(data) >> 24;
@@ -125,20 +130,25 @@ void spi_out_byte(spi_master_interface &i, unsigned char data)
 	i.miso :> void;
 }
 
+void spi_out_byte(spi_master_interface &i, unsigned char data)
+{
+	spi_out_byte_internal(i, data);
+}
+
 void spi_out_short(spi_master_interface &i, unsigned short data)
 {
-  // big endian byte order
-  spi_out_byte(i,(data >> 8) & 0xFF);
-  spi_out_byte(i, data & 0xFF);
+    // big endian byte order
+    spi_out_byte_internal(i,(data >> 8) & 0xFF);
+    spi_out_byte_internal(i, data & 0xFF);
 }
 
 void spi_out_word(spi_master_interface &i, unsigned int data)
 {
-  // big endian byte order
-  spi_out_byte(i, (data >> 24) & 0xFF);
-  spi_out_byte(i, (data >> 16) & 0xFF);
-  spi_out_byte(i, (data >> 8) & 0xFF);
-  spi_out_byte(i, data & 0xFF);
+    // big endian byte order
+    spi_out_byte_internal(i, (data >> 24) & 0xFF);
+    spi_out_byte_internal(i, (data >> 16) & 0xFF);
+    spi_out_byte_internal(i, (data >> 8) & 0xFF);
+    spi_out_byte_internal(i, data & 0xFF);
 }
 
 #pragma unsafe arrays
@@ -146,6 +156,6 @@ void spi_out_buffer(spi_master_interface &spi_if, const unsigned char buffer[], 
 {
     for (int i = 0; i < num_bytes; i++)
     {
-        spi_out_byte(spi_if, buffer[i]);
+        spi_out_byte_internal(spi_if, buffer[i]);
     }
 }
