@@ -19,15 +19,12 @@ which depend on how many slaves there are and how they're connected::
         out buffered port:8 sclk;
         in buffered port:8 miso;
     } spi_master_interface;
-
 ::
     void spi_init(spi_master_interface &i, int spi_clock_div);
 Must be called before any SPI data input or output functions are used.
-
 ::
     void spi_shutdown(spi_master_interface &i);
 Should be called when all SPI input and output is completed.
-
 ::
     void spi_out_word(spi_master_interface &i, unsigned int data);
     void spi_out_short(spi_master_interface &i, unsigned short data);
@@ -55,15 +52,12 @@ and one 8bit buffered output port required::
         out buffered port:8 miso;
         in port sclk;
     } spi_slave_interface;
-
 ::
     void spi_init(spi_master_interface &i, int spi_clock_div);
 Must be called before any SPI data input or output functions are used.
-
 ::
     void spi_shutdown(spi_master_interface &i);
 Should be called when all SPI input and output is completed.
-
 ::
     void spi_out_word(spi_master_interface &i, unsigned int data);
     void spi_out_short(spi_master_interface &i, unsigned short data);
