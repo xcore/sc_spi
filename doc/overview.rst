@@ -8,6 +8,7 @@ This component API is function-based and does not require a dedicated thread.
 Includes data transfer test code. 
 
 SPI modes:
+
 +------+------+------+-----------+
 | Mode | CPOL | CPHA | Supported |
 +======+======+======+===========+
