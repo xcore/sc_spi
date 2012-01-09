@@ -38,59 +38,59 @@ void spi_init(spi_master_interface &i, int spi_clock_div)
 #else
     #error "Unrecognised SPI mode."
 #endif
-	configure_clock_src(i.blk2, i.sclk);
-	configure_out_port(i.mosi, i.blk2, 0);
-	configure_in_port(i.miso, i.blk2);
-	clearbuf(i.mosi);
-	clearbuf(i.sclk);
-	start_clock(i.blk1);
-	start_clock(i.blk2);
+    configure_clock_src(i.blk2, i.sclk);
+    configure_out_port(i.mosi, i.blk2, 0);
+    configure_in_port(i.miso, i.blk2);
+    clearbuf(i.mosi);
+    clearbuf(i.sclk);
+    start_clock(i.blk1);
+    start_clock(i.blk2);
 }
 
 void spi_shutdown(spi_master_interface &i)
 {
-	// need clock ticks in order to stop clock blocks
-	i.sclk <: sclk_val;
-	i.sclk <: sclk_val;
-	stop_clock(i.blk2);
-	stop_clock(i.blk1);
+    // need clock ticks in order to stop clock blocks
+    i.sclk <: sclk_val;
+    i.sclk <: sclk_val;
+    stop_clock(i.blk2);
+    stop_clock(i.blk1);
 }
 
 static inline unsigned char spi_in_byte_internal(spi_master_interface &i)
 {
-	// MSb-first bit order - SPI standard
-	unsigned x;
-	clearbuf(i.miso);
-	i.sclk <: sclk_val;
-	i.sclk <: sclk_val;
-	sync(i.sclk);
-	i.miso :> x;
-	return bitrev(x) >> 24;
+    // MSb-first bit order - SPI standard
+    unsigned x;
+    clearbuf(i.miso);
+    i.sclk <: sclk_val;
+    i.sclk <: sclk_val;
+    sync(i.sclk);
+    i.miso :> x;
+    return bitrev(x) >> 24;
 }
 
 unsigned char spi_in_byte(spi_master_interface &i)
 {
-	return spi_in_byte_internal(i);
+    return spi_in_byte_internal(i);
 }
 
 unsigned short spi_in_short(spi_master_interface &i)
 {
-	// big endian byte order
-	unsigned short data = 0;
-	data |= (spi_in_byte_internal(i) << 8);
-	data |= spi_in_byte_internal(i);
-	return data;
+    // big endian byte order
+    unsigned short data = 0;
+    data |= (spi_in_byte_internal(i) << 8);
+    data |= spi_in_byte_internal(i);
+    return data;
 }
 
 unsigned int spi_in_word(spi_master_interface &i)
 {
-	// big endian byte order
-	unsigned int data = 0;
-	data |= (spi_in_byte_internal(i) << 24);
-	data |= (spi_in_byte_internal(i) << 16);
-	data |= (spi_in_byte_internal(i) << 8);
-	data |= spi_in_byte_internal(i);
-	return data;
+    // big endian byte order
+    unsigned int data = 0;
+    data |= (spi_in_byte_internal(i) << 24);
+    data |= (spi_in_byte_internal(i) << 16);
+    data |= (spi_in_byte_internal(i) << 8);
+    data |= spi_in_byte_internal(i);
+    return data;
 }
 
 #pragma unsafe arrays
@@ -104,9 +104,9 @@ void spi_in_buffer(spi_master_interface &spi_inf, unsigned char buffer[], int nu
 
 static inline void spi_out_byte_internal(spi_master_interface &i, unsigned char data)
 {
-	// MSb-first bit order - SPI standard
-	unsigned x = bitrev(data) >> 24;
-	
+    // MSb-first bit order - SPI standard
+    unsigned x = bitrev(data) >> 24;
+    
 #if (SPI_MODE == 0 || SPI_MODE == 2) // modes where CPHA == 0
     // handle first bit
     asm("setc res[%0], 8" :: "r"(i.mosi)); // reset port
@@ -124,15 +124,15 @@ static inline void spi_out_byte_internal(spi_master_interface &i, unsigned char 
 #else
     i.mosi <: x;
 #endif
-	i.sclk <: sclk_val;
-	i.sclk <: sclk_val;
-	sync(i.sclk);
-	i.miso :> void;
+    i.sclk <: sclk_val;
+    i.sclk <: sclk_val;
+    sync(i.sclk);
+    i.miso :> void;
 }
 
 void spi_out_byte(spi_master_interface &i, unsigned char data)
 {
-	spi_out_byte_internal(i, data);
+    spi_out_byte_internal(i, data);
 }
 
 void spi_out_short(spi_master_interface &i, unsigned short data)

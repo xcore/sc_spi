@@ -16,10 +16,10 @@ void spi_init(spi_slave_interface &spi_if)
 {
     int clk_start;
     set_clock_on(spi_if.blk);
-    	set_port_use_on(spi_if.ss);
-	set_port_use_on(spi_if.mosi);
-	set_port_use_on(spi_if.miso);
-	set_port_use_on(spi_if.sclk);
+        set_port_use_on(spi_if.ss);
+    set_port_use_on(spi_if.mosi);
+    set_port_use_on(spi_if.miso);
+    set_port_use_on(spi_if.sclk);
 #if SPI_MODE == 0
     set_port_no_inv(spi_if.sclk);
     clk_start = 0;
@@ -35,83 +35,83 @@ void spi_init(spi_slave_interface &spi_if)
 #else
     #error "Unrecognised SPI mode."
 #endif
-	// configure ports and clock blocks
-	// note: SS port is inverted, assertion is port value 1
-	configure_clock_src(spi_if.blk, spi_if.sclk);
-	configure_in_port(spi_if.mosi, spi_if.blk);
-	configure_out_port(spi_if.miso, spi_if.blk, 0);
-	set_clock_ready_src(spi_if.blk, spi_if.ss);
-	set_port_inv(spi_if.ss);
-	set_port_strobed(spi_if.mosi);
-	set_port_strobed(spi_if.miso);
-	set_port_slave(spi_if.mosi);
-	set_port_slave(spi_if.miso);
-	start_clock(spi_if.blk);
-	spi_if.ss when pinseq(0) :> void;
-	spi_if.sclk when pinseq(clk_start) :> void;
-	clearbuf(spi_if.miso);	
-	clearbuf(spi_if.mosi);
+    // configure ports and clock blocks
+    // note: SS port is inverted, assertion is port value 1
+    configure_clock_src(spi_if.blk, spi_if.sclk);
+    configure_in_port(spi_if.mosi, spi_if.blk);
+    configure_out_port(spi_if.miso, spi_if.blk, 0);
+    set_clock_ready_src(spi_if.blk, spi_if.ss);
+    set_port_inv(spi_if.ss);
+    set_port_strobed(spi_if.mosi);
+    set_port_strobed(spi_if.miso);
+    set_port_slave(spi_if.mosi);
+    set_port_slave(spi_if.miso);
+    start_clock(spi_if.blk);
+    spi_if.ss when pinseq(0) :> void;
+    spi_if.sclk when pinseq(clk_start) :> void;
+    clearbuf(spi_if.miso);  
+    clearbuf(spi_if.mosi);
 }
 
 void spi_shutdown(spi_slave_interface &spi_if)
 {
-	stop_clock(spi_if.blk);
-	
-	set_clock_off(spi_if.blk);
-	set_port_use_off(spi_if.ss);
-	set_port_use_off(spi_if.mosi);
-	set_port_use_off(spi_if.miso);
-	set_port_use_off(spi_if.sclk);
+    stop_clock(spi_if.blk);
+    
+    set_clock_off(spi_if.blk);
+    set_port_use_off(spi_if.ss);
+    set_port_use_off(spi_if.mosi);
+    set_port_use_off(spi_if.miso);
+    set_port_use_off(spi_if.sclk);
 }
 
 unsigned char spi_in_byte(spi_slave_interface &spi_if)
 {
-	// big endian byte order
-	// MSb-first bit order
-	unsigned int data;
-	spi_if.mosi :> >> data;
-	return bitrev(data);
+    // big endian byte order
+    // MSb-first bit order
+    unsigned int data;
+    spi_if.mosi :> >> data;
+    return bitrev(data);
 }
 
 unsigned short spi_in_short(spi_slave_interface &spi_if)
 {
-	// big endian byte order
-	// MSb-first bit order
-	unsigned int data;
-	spi_if.mosi :> >> data;
-	spi_if.mosi :> >> data;
-	return bitrev(data);
+    // big endian byte order
+    // MSb-first bit order
+    unsigned int data;
+    spi_if.mosi :> >> data;
+    spi_if.mosi :> >> data;
+    return bitrev(data);
 }
 
 unsigned int spi_in_word(spi_slave_interface &spi_if)
 {
-	// big endian byte order
-	// MSb-first bit order
-	unsigned int data;
-	spi_if.mosi :> >> data;
-	spi_if.mosi :> >> data;
-	spi_if.mosi :> >> data;
-	spi_if.mosi :> >> data;
-	return bitrev(data);
+    // big endian byte order
+    // MSb-first bit order
+    unsigned int data;
+    spi_if.mosi :> >> data;
+    spi_if.mosi :> >> data;
+    spi_if.mosi :> >> data;
+    spi_if.mosi :> >> data;
+    return bitrev(data);
 }
 
 #pragma unsafe arrays
 void spi_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_bytes)
 {
-	// MSb-first bit order
-	unsigned int data;
-	for (int i = 0; i < num_bytes; i++)
-	{
-		spi_if.mosi :> >> data;
-		buffer[i] = bitrev(data);
-	}
+    // MSb-first bit order
+    unsigned int data;
+    for (int i = 0; i < num_bytes; i++)
+    {
+        spi_if.mosi :> >> data;
+        buffer[i] = bitrev(data);
+    }
 }
 
 void spi_out_byte(spi_slave_interface &spi_if, unsigned char data)
 {
-	// MSb-first bit order
-	unsigned int data_rev = bitrev(data) >> 24;
-	
+    // MSb-first bit order
+    unsigned int data_rev = bitrev(data) >> 24;
+    
 #if (SPI_MODE == 0 || SPI_MODE == 2) // modes where CPHA == 0
     // handle first bit
     asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
@@ -129,19 +129,19 @@ void spi_out_byte(spi_slave_interface &spi_if, unsigned char data)
 #else
     spi_if.miso <: data_rev;
 #endif
-	spi_if.mosi :> void;
+    spi_if.mosi :> void;
 }
 
 void spi_out_short(spi_slave_interface &spi_if, unsigned short data)
 {
-	// big endian byte order
-	spi_out_byte(spi_if,(data >> 8) & 0xFF);
-	spi_out_byte(spi_if, data & 0xFF);
+    // big endian byte order
+    spi_out_byte(spi_if,(data >> 8) & 0xFF);
+    spi_out_byte(spi_if, data & 0xFF);
 }
 
 void spi_out_word(spi_slave_interface &spi_if, unsigned int data)
 {
-	// big endian byte order
+    // big endian byte order
     spi_out_byte(spi_if, (data >> 24) & 0xFF);
     spi_out_byte(spi_if, (data >> 16) & 0xFF);
     spi_out_byte(spi_if, (data >> 8) & 0xFF);
@@ -151,8 +151,8 @@ void spi_out_word(spi_slave_interface &spi_if, unsigned int data)
 #pragma unsafe arrays
 void spi_out_buffer(spi_slave_interface &spi_if, const unsigned char buffer[], int num_bytes)
 {
-	for (int i = 0; i < num_bytes; i++)
-	{
-		spi_out_byte(spi_if, buffer[i]);
-	}
+    for (int i = 0; i < num_bytes; i++)
+    {
+        spi_out_byte(spi_if, buffer[i]);
+    }
 }
