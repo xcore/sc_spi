@@ -56,6 +56,7 @@ spi_conf.h
 The spi_conf.h file is found in the src/ directory of the
 application. This file contains a series of #defines that configure
 the SPI component. The possible #defines that can be set are::
+    
     DEFAULT_SPI_CLOCK_DIV
     SPI_MODE
 

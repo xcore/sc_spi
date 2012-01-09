@@ -13,6 +13,7 @@ boards, such as the
 `XK-1A Development Kit <http://www.xmos.com/products/development-kits/xk-1a>`_ 
 are required.
 The following ports on both boards must be wired together::
+    
     XS1_PORT_1A
     XS1_PORT_1B
     XS1_PORT_1C
