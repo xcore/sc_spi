@@ -12,7 +12,7 @@
 #include <platform.h>
 #include "spi_slave.h"
 
-void spi_init(spi_slave_interface &spi_if)
+void spi_slave_init(spi_slave_interface &spi_if)
 {
     int clk_start;
     set_clock_on(spi_if.blk);
@@ -20,16 +20,16 @@ void spi_init(spi_slave_interface &spi_if)
     set_port_use_on(spi_if.mosi);
     set_port_use_on(spi_if.miso);
     set_port_use_on(spi_if.sclk);
-#if SPI_MODE == 0
+#if SPI_SLAVE_MODE == 0
     set_port_no_inv(spi_if.sclk);
     clk_start = 0;
-#elif SPI_MODE == 1
+#elif SPI_SLAVE_MODE == 1
     set_port_inv(spi_if.sclk); // invert clk signal
     clk_start = 1;
-#elif SPI_MODE == 2
+#elif SPI_SLAVE_MODE == 2
     set_port_inv(spi_if.sclk); // invert clk signal
     clk_start = 0;
-#elif SPI_MODE == 3
+#elif SPI_SLAVE_MODE == 3
     set_port_no_inv(spi_if.sclk);
     clk_start = 1;
 #else
@@ -53,7 +53,7 @@ void spi_init(spi_slave_interface &spi_if)
     clearbuf(spi_if.mosi);
 }
 
-void spi_shutdown(spi_slave_interface &spi_if)
+void spi_slave_shutdown(spi_slave_interface &spi_if)
 {
     stop_clock(spi_if.blk);
     
@@ -64,7 +64,7 @@ void spi_shutdown(spi_slave_interface &spi_if)
     set_port_use_off(spi_if.sclk);
 }
 
-unsigned char spi_in_byte(spi_slave_interface &spi_if)
+unsigned char spi_slave_in_byte(spi_slave_interface &spi_if)
 {
     // big endian byte order
     // MSb-first bit order
@@ -73,7 +73,7 @@ unsigned char spi_in_byte(spi_slave_interface &spi_if)
     return bitrev(data);
 }
 
-unsigned short spi_in_short(spi_slave_interface &spi_if)
+unsigned short spi_slave_in_short(spi_slave_interface &spi_if)
 {
     // big endian byte order
     // MSb-first bit order
@@ -83,7 +83,7 @@ unsigned short spi_in_short(spi_slave_interface &spi_if)
     return bitrev(data);
 }
 
-unsigned int spi_in_word(spi_slave_interface &spi_if)
+unsigned int spi_slave_in_word(spi_slave_interface &spi_if)
 {
     // big endian byte order
     // MSb-first bit order
@@ -96,7 +96,7 @@ unsigned int spi_in_word(spi_slave_interface &spi_if)
 }
 
 #pragma unsafe arrays
-void spi_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_bytes)
+void spi_slave_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_bytes)
 {
     // MSb-first bit order
     unsigned int data;
@@ -107,12 +107,12 @@ void spi_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_
     }
 }
 
-static inline void spi_out_byte_internal(spi_slave_interface &spi_if, unsigned char data)
+static inline void spi_slave_out_byte_internal(spi_slave_interface &spi_if, unsigned char data)
 {
     // MSb-first bit order
     unsigned int data_rev = bitrev(data) >> 24;
     
-#if (SPI_MODE == 0 || SPI_MODE == 2) // modes where CPHA == 0
+#if (SPI_SLAVE_MODE == 0 || SPI_SLAVE_MODE == 2) // modes where CPHA == 0
     // handle first bit
     asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
     spi_if.miso <: data_rev; // output first bit
@@ -132,32 +132,32 @@ static inline void spi_out_byte_internal(spi_slave_interface &spi_if, unsigned c
     spi_if.mosi :> void;
 }
 
-void spi_out_byte(spi_slave_interface &spi_if, unsigned char data)
+void spi_slave_out_byte(spi_slave_interface &spi_if, unsigned char data)
 {
-    spi_out_byte_internal(spi_if, data);
+    spi_slave_out_byte_internal(spi_if, data);
 }
 
-void spi_out_short(spi_slave_interface &spi_if, unsigned short data)
+void spi_slave_out_short(spi_slave_interface &spi_if, unsigned short data)
 {
     // big endian byte order
-    spi_out_byte_internal(spi_if,(data >> 8) & 0xFF);
-    spi_out_byte_internal(spi_if, data & 0xFF);
+    spi_slave_out_byte_internal(spi_if,(data >> 8) & 0xFF);
+    spi_slave_out_byte_internal(spi_if, data & 0xFF);
 }
 
-void spi_out_word(spi_slave_interface &spi_if, unsigned int data)
+void spi_slave_out_word(spi_slave_interface &spi_if, unsigned int data)
 {
     // big endian byte order
-    spi_out_byte_internal(spi_if, (data >> 24) & 0xFF);
-    spi_out_byte_internal(spi_if, (data >> 16) & 0xFF);
-    spi_out_byte_internal(spi_if, (data >> 8) & 0xFF);
-    spi_out_byte_internal(spi_if, data & 0xFF);
+    spi_slave_out_byte_internal(spi_if, (data >> 24) & 0xFF);
+    spi_slave_out_byte_internal(spi_if, (data >> 16) & 0xFF);
+    spi_slave_out_byte_internal(spi_if, (data >> 8) & 0xFF);
+    spi_slave_out_byte_internal(spi_if, data & 0xFF);
 }
 
 #pragma unsafe arrays
-void spi_out_buffer(spi_slave_interface &spi_if, const unsigned char buffer[], int num_bytes)
+void spi_slave_out_buffer(spi_slave_interface &spi_if, const unsigned char buffer[], int num_bytes)
 {
     for (int i = 0; i < num_bytes; i++)
     {
-        spi_out_byte_internal(spi_if, buffer[i]);
+        spi_slave_out_byte_internal(spi_if, buffer[i]);
     }
 }

@@ -45,21 +45,21 @@ void read_id(spi_master_interface &spi_if)
 
   // read 1 byte and 1 short
   spi_select();
-  spi_out_byte(spi_if, read_id);
-  manufacturer = spi_in_byte(spi_if);
-  product = spi_in_short(spi_if);
+  spi_master_out_byte(spi_if, read_id);
+  manufacturer = spi_master_in_byte(spi_if);
+  product = spi_master_in_short(spi_if);
   spi_deselect();
 
   // read 1 word
   spi_select();
-  spi_out_byte(spi_if, read_id);
-  word = spi_in_word(spi_if);
+  spi_master_out_byte(spi_if, read_id);
+  word = spi_master_in_word(spi_if);
   spi_deselect();
 }
 
 int main()
 {
-  spi_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
+  spi_master_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
   spi_deselect();
   
   printstrln("will do command 0x9F");
@@ -76,7 +76,7 @@ int main()
   printhex(product);
   printstrln(")");
   
-  spi_shutdown(spi_if);
+  spi_master_shutdown(spi_if);
 
   return 0;
 }

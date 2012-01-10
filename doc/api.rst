@@ -8,22 +8,22 @@ SPI master API
 Configuration Functions
 +++++++++++++++++++++++
 .. doxygenstruct:: spi_master_interface
-.. doxygenfunction:: spi_init
-.. doxygenfunction:: spi_shutdown
+.. doxygenfunction:: spi_master_init
+.. doxygenfunction:: spi_master_shutdown
 
 Receive Functions
 +++++++++++++++++
-.. doxygenfunction:: spi_in_byte
-.. doxygenfunction:: spi_in_short
-.. doxygenfunction:: spi_in_word
-.. doxygenfunction:: spi_in_buffer
+.. doxygenfunction:: spi_master_in_byte
+.. doxygenfunction:: spi_master_in_short
+.. doxygenfunction:: spi_master_in_word
+.. doxygenfunction:: spi_master_in_buffer
 
 Transmit Functions
 ++++++++++++++++++
-.. doxygenfunction:: spi_out_byte
-.. doxygenfunction:: spi_out_short
-.. doxygenfunction:: spi_out_word
-.. doxygenfunction:: spi_out_buffer
+.. doxygenfunction:: spi_master_out_byte
+.. doxygenfunction:: spi_master_out_short
+.. doxygenfunction:: spi_master_out_word
+.. doxygenfunction:: spi_master_out_buffer
 
 SPI slave API
 -------------

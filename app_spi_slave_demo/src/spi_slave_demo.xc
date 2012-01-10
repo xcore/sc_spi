@@ -27,16 +27,16 @@ void use_spi(spi_slave_interface &spi_if)
   unsigned char buff[8];
   
   // read
-  c =spi_in_byte(spi_if);
-  s= spi_in_short(spi_if);
-  i = spi_in_word(spi_if);
-  spi_in_buffer(spi_if, buff, 8);
+  c =spi_slave_in_byte(spi_if);
+  s= spi_slave_in_short(spi_if);
+  i = spi_slave_in_word(spi_if);
+  spi_slave_in_buffer(spi_if, buff, 8);
   
   // write
-  spi_out_byte(spi_if, c);
-  spi_out_short(spi_if, s);
-  spi_out_word(spi_if, i);
-  spi_out_buffer(spi_if, buff, 8);
+  spi_slave_out_byte(spi_if, c);
+  spi_slave_out_short(spi_if, s);
+  spi_slave_out_word(spi_if, i);
+  spi_slave_out_buffer(spi_if, buff, 8);
   
   if (!(c == 0xA1 && s == 0xB1B2 && i == 0xC1C2C3C4))
   {
@@ -59,15 +59,15 @@ void use_spi(spi_slave_interface &spi_if)
 int main()
 {
   printstr("running in mode ");
-  printintln(SPI_MODE);
-  spi_init(spi_if);
+  printintln(SPI_SLAVE_MODE);
+  spi_slave_init(spi_if);
   for (int i = 0; i < DEMO_RUNS; i++)
   {
     printstr("demo run ");
     printintln(i);
     use_spi(spi_if);
   }
-  spi_shutdown(spi_if);
+  spi_slave_shutdown(spi_if);
   
   return 0;
 }

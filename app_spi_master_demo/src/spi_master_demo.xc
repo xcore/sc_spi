@@ -44,19 +44,19 @@ void use_spi(spi_master_interface &spi_if)
   //printstrln("writing to slave...");
   // write
   spi_select();
-  spi_out_byte(spi_if, c);
-  spi_out_short(spi_if, s);
-  spi_out_word(spi_if, i);
-  spi_out_buffer(spi_if, buff, 8);
+  spi_master_out_byte(spi_if, c);
+  spi_master_out_short(spi_if, s);
+  spi_master_out_word(spi_if, i);
+  spi_master_out_buffer(spi_if, buff, 8);
   spi_deselect();
   
   //printstrln("reading from slave...");
   // read
   spi_select();
-  c = spi_in_byte(spi_if);
-  s= spi_in_short(spi_if);
-  i = spi_in_word(spi_if);
-  spi_in_buffer(spi_if, buff, 8);
+  c = spi_master_in_byte(spi_if);
+  s= spi_master_in_short(spi_if);
+  i = spi_master_in_word(spi_if);
+  spi_master_in_buffer(spi_if, buff, 8);
   spi_deselect();
   
     if (!(c == 0xA1 && s == 0xB1B2 && i == 0xC1C2C3C4))
@@ -81,8 +81,8 @@ void use_spi(spi_master_interface &spi_if)
 int main()
 {
   printstr("running in mode ");
-  printintln(SPI_MODE);
-  spi_init(spi_if, SPI_CLOCK_DIV);
+  printintln(SPI_MASTER_MODE);
+  spi_master_init(spi_if, SPI_CLOCK_DIV);
   spi_deselect();
   for (int i = 0; i < DEMO_RUNS; i++)
   {
@@ -90,7 +90,7 @@ int main()
     printintln(i);
     use_spi(spi_if);
   }
-  spi_shutdown(spi_if);
+  spi_master_shutdown(spi_if);
   
   return 0;
 }

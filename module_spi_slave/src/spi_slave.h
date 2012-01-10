@@ -36,25 +36,25 @@ typedef struct spi_slave_interface
 #include "spi_conf.h"
 #endif
 
-#ifndef SPI_MODE
-#define SPI_MODE 3
+#ifndef SPI_SLAVE_MODE
+#define SPI_SLAVE_MODE 3
 #endif
 
-void spi_init(spi_slave_interface &i);
-void spi_shutdown(spi_slave_interface &i);
-
-// SPI slave output
-// big endian byte order
-void spi_out_word(spi_slave_interface &i, unsigned int data);
-void spi_out_short(spi_slave_interface &i, unsigned short data);
-void spi_out_byte(spi_slave_interface &i, unsigned char data);
-void spi_out_buffer(spi_slave_interface &i, const unsigned char buffer[], int num_bytes);
+void spi_slave_init(spi_slave_interface &spi_if);
+void spi_slave_shutdown(spi_slave_interface &spi_if);
 
 // SPI slave input
 // big endian byte order
-unsigned int spi_in_word(spi_slave_interface &i);
-unsigned short spi_in_short(spi_slave_interface &i);
-unsigned char spi_in_byte(spi_slave_interface &i);
-void spi_in_buffer(spi_slave_interface &i, unsigned char buffer[], int num_bytes);
+unsigned int spi_slave_in_word(spi_slave_interface &spi_if);
+unsigned short spi_slave_in_short(spi_slave_interface &spi_if);
+unsigned char spi_slave_in_byte(spi_slave_interface &spi_if);
+void spi_slave_in_buffer(spi_slave_interface &spi_if, unsigned char buffer[], int num_bytes);
+
+// SPI slave output
+// big endian byte order
+void spi_slave_out_word(spi_slave_interface &spi_if, unsigned int data);
+void spi_slave_out_short(spi_slave_interface &spi_if, unsigned short data);
+void spi_slave_out_byte(spi_slave_interface &spi_if, unsigned char data);
+void spi_slave_out_buffer(spi_slave_interface &spi_if, const unsigned char buffer[], int num_bytes);
 
 #endif

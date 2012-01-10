@@ -46,30 +46,30 @@ typedef struct spi_master_interface
 #define DEFAULT_SPI_CLOCK_DIV 8
 #endif
 
-#ifndef SPI_MODE
-#define SPI_MODE 3
+#ifndef SPI_MASTER_MODE
+#define SPI_MASTER_MODE 3
 #endif
 
 /** Configure ports and clocks, clearing port buffers.
  *
  * Must be called before any SPI data input or output functions are used.
  *
- * \param i              Resources for the SPI interface being initialised
+ * \param spi_if         Resources for the SPI interface being initialised
  *
  * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div), 
  *                       where freq defaults to 100MHz
  *
  */
-void spi_init(spi_master_interface &i, int spi_clock_div);
+void spi_master_init(spi_master_interface &spi_if, int spi_clock_div);
 
 /** Stops the clocks running.
  *
  * Should be called when all SPI input and output is completed.
  *
- * \param i  Resources for the SPI interface being shutdown
+ * \param spi_if  Resources for the SPI interface being shutdown
  *
  */
-void spi_shutdown(spi_master_interface &i);
+void spi_master_shutdown(spi_master_interface &spi_if);
 
 /** Receive one byte.
  *
@@ -79,7 +79,7 @@ void spi_shutdown(spi_master_interface &i);
  * \return the received byte
  *
  */
-unsigned char spi_in_byte(spi_master_interface &i);
+unsigned char spi_master_in_byte(spi_master_interface &spi_if);
 
 /** Receive one short.
  *
@@ -89,7 +89,7 @@ unsigned char spi_in_byte(spi_master_interface &i);
  * \return the received short
  *
  */
-unsigned short spi_in_short(spi_master_interface &i);
+unsigned short spi_master_in_short(spi_master_interface &spi_if);
 
 /** Receive one word.
  *
@@ -99,7 +99,7 @@ unsigned short spi_in_short(spi_master_interface &i);
  * \return the received word
  *
  */
-unsigned int spi_in_word(spi_master_interface &i);
+unsigned int spi_master_in_word(spi_master_interface &spi_if);
 
 /** Receive specified number of bytes.
  *
@@ -112,7 +112,7 @@ unsigned int spi_in_word(spi_master_interface &i);
  *                   this must not be greater than the size of buffer
  *
  */
-void spi_in_buffer(spi_master_interface &i, unsigned char buffer[], int num_bytes);
+void spi_master_in_buffer(spi_master_interface &spi_if, unsigned char buffer[], int num_bytes);
 
 /** Transmit one byte.
  *
@@ -122,7 +122,7 @@ void spi_in_buffer(spi_master_interface &i, unsigned char buffer[], int num_byte
  * \param data  The byte to transmit
  *
  */
-void spi_out_byte(spi_master_interface &i, unsigned char data);
+void spi_master_out_byte(spi_master_interface &spi_if, unsigned char data);
 
 /** Transmit one short.
  *
@@ -132,7 +132,7 @@ void spi_out_byte(spi_master_interface &i, unsigned char data);
  * \param data  The short to transmit
  *
  */
-void spi_out_short(spi_master_interface &i, unsigned short data);
+void spi_master_out_short(spi_master_interface &spi_if, unsigned short data);
 
 /** Transmit one word.
  *
@@ -142,7 +142,7 @@ void spi_out_short(spi_master_interface &i, unsigned short data);
  * \param data  The word to transmit
  *
  */
-void spi_out_word(spi_master_interface &i, unsigned int data);
+void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
 
 /** Transmit specified number of bytes.
  *
@@ -155,6 +155,6 @@ void spi_out_word(spi_master_interface &i, unsigned int data);
  *                   this must not be greater than the size of buffer
  *
  */
-void spi_out_buffer(spi_master_interface &i, const unsigned char buffer[], int num_bytes);
+void spi_master_out_buffer(spi_master_interface &spi_if, const unsigned char buffer[], int num_bytes);
 
 #endif

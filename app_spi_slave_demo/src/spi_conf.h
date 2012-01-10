@@ -3,5 +3,5 @@
 // University of Illinois/NCSA Open Source License posted in
 // LICENSE.txt and at <http://github.xcore.com/>
 
-#define SPI_MODE 3
+#define SPI_SLAVE_MODE 3
 
