@@ -4,10 +4,6 @@
 // LICENSE.txt and at <http://github.xcore.com/>
 
 ///////////////////////////////////////////////////////////////////////////////
-// Select lines are intentionally not part of API
-// They are simple port outputs
-// They depend on how many slaves there are and how they're connected
-//
 
 #include <xs1.h>
 #include <xclib.h>
