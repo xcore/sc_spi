@@ -59,7 +59,7 @@ void use_spi(spi_master_interface &spi_if)
   spi_master_in_buffer(spi_if, buff, 8);
   spi_deselect();
   
-    if (!(c == 0xA1 && s == 0xB1B2 && i == 0xC1C2C3C4))
+  if (!(c == 0xA1 && s == 0xB1B2 && i == 0xC1C2C3C4))
   {
     printstrln("*** master received unexpected values ***");
   }

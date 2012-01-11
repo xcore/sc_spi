@@ -1,3 +1,5 @@
+.. _sec_hardware_platforms:
+
 SPI H/W Development Platforms
 =============================
 

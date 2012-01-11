@@ -4,7 +4,7 @@ Getting started
 Installation
 ------------
 
-The latest stable release of ethernet repository can be found for download at:
+The latest stable release of SPI repository can be found for download at:
 
   https://www.xmos.com/applications
 
