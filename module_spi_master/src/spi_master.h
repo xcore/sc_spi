@@ -55,7 +55,6 @@ typedef struct spi_master_interface
  * Must be called before any SPI data input or output functions are used.
  *
  * \param spi_if         Resources for the SPI interface being initialised
- *
  * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div), 
  *                       where freq defaults to 100MHz
  *
@@ -76,7 +75,8 @@ void spi_master_shutdown(spi_master_interface &spi_if);
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \return the received byte
+ * \param spi_if  Resources for the SPI interface
+ * \return        The received byte
  *
  */
 unsigned char spi_master_in_byte(spi_master_interface &spi_if);
@@ -86,7 +86,8 @@ unsigned char spi_master_in_byte(spi_master_interface &spi_if);
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \return the received short
+ * \param spi_if  Resources for the SPI interface
+ * \return        The received short
  *
  */
 unsigned short spi_master_in_short(spi_master_interface &spi_if);
@@ -96,7 +97,8 @@ unsigned short spi_master_in_short(spi_master_interface &spi_if);
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \return the received word
+ * \param spi_if  Resources for the SPI interface
+ * \return        The received word
  *
  */
 unsigned int spi_master_in_word(spi_master_interface &spi_if);
@@ -106,8 +108,8 @@ unsigned int spi_master_in_word(spi_master_interface &spi_if);
  * Most significant bit first order.
  * Big endian byte order.
  *
+ * \param spi_if     Resources for the SPI interface
  * \param buffer     The array the received data will be written to
- *
  * \param num_bytes  The number of bytes to read from the SPI interface, 
  *                   this must not be greater than the size of buffer
  *
@@ -119,7 +121,8 @@ void spi_master_in_buffer(spi_master_interface &spi_if, unsigned char buffer[], 
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \param data  The byte to transmit
+ * \param spi_if  Resources for the SPI interface
+ * \param data    The byte to transmit
  *
  */
 void spi_master_out_byte(spi_master_interface &spi_if, unsigned char data);
@@ -129,7 +132,8 @@ void spi_master_out_byte(spi_master_interface &spi_if, unsigned char data);
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \param data  The short to transmit
+ * \param spi_if  Resources for the SPI interface
+ * \param data    The short to transmit
  *
  */
 void spi_master_out_short(spi_master_interface &spi_if, unsigned short data);
@@ -139,7 +143,8 @@ void spi_master_out_short(spi_master_interface &spi_if, unsigned short data);
  * Most significant bit first order.
  * Big endian byte order.
  *
- * \param data  The word to transmit
+ * \param spi_if  Resources for the SPI interface
+ * \param data    The word to transmit
  *
  */
 void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
@@ -149,8 +154,8 @@ void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
  * Most significant bit first order.
  * Big endian byte order.
  *
+ * \param spi_if     Resources for the SPI interface
  * \param buffer     The array of data to transmit
- *
  * \param num_bytes  The number of bytes to write to the SPI interface, 
  *                   this must not be greater than the size of buffer
  *
