@@ -7,8 +7,7 @@ XCORE.com SPI SOFTWARE COMPONENT
 
 :Description: SPI master/slave component.
 
-:Maintainer:  https://github.com/mikexmos
-
+:Maintainer:  https://github.com/xsamc
 
 Key Features
 ============
