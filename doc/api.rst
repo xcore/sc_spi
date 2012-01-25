@@ -8,7 +8,7 @@ SPI API
 Configuration Defines
 ---------------------
 The file spi_conf.h can be provided in the application source code, without it 
-the defualt values specified in spi_master.h and spi_slave.h will be used.
+the default values specified in spi_master.h and spi_slave.h will be used.
 This file can set the following defines:
 
 SPI master Defines

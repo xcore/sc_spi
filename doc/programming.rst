@@ -9,4 +9,3 @@ the SPI master and slave components.
    getting_started
    structure
    app_tutorial
-
