@@ -185,7 +185,7 @@ void slave_demo(spi_slave_interface &spi_sif)
 
 void run_master(spi_master_interface &spi_mif)
 {
-    spi_master_init(spi_mif, DEFAULT_SPI_CLOCK_DIV);
+    spi_master_init(spi_mif, SPI_CLOCK_DIV);
     slave_deselect(); // Ensure slave select is in correct start state
     
     for (int i = 0; i < DEMO_RUNS; i++)
@@ -217,7 +217,7 @@ int main(void)
     printintln(SPI_MODE);
     
     printstr("with SPI frequency ");
-    printint((100/(2*DEFAULT_SPI_CLOCK_DIV)));
+    printint((100/(2*SPI_CLOCK_DIV)));
     printstrln("MHz");
     
     printstr("for ");
