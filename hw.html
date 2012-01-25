@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SPI H/W Development Platforms &mdash; SPI Component v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/xdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <script type="text/javascript" src="_static/xcomment.js"></script>
+    <link rel="top" title="SPI Component v2.0 documentation" href="index.html" />
+    <link rel="next" title="SPI Programming Guide" href="programming.html" />
+    <link rel="prev" title="SPI Overview" href="overview.html" /> 
+
+<script>
+function setheight() {
+h1 = document.getElementById('d1').style.height;
+h2 = document.getElementById('d2').style.height;
+
+if (parseInt(h1) > parseInt(h2)) {
+document.getElementById('d2').style.height=h1 + "px";
+}
+else {
+document.getElementById('d1').style.height=h2 + "px";
+}
+
+}
+</script>
+</head>
+
+<body onload="setheight();">
+
+  
+
+    <div class="document" id='d1'>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+<div style="float: right">
+<a href="overview.html"
+                        title="previous chapter"> &lt&lt </a>
+<a href="programming.html"
+                        title="next chapter"> &gt&gt </a></p>
+</div>
+
+            
+  <div class="section" id="spi-h-w-development-platforms">
+<span id="sec-hardware-platforms"></span><h1>SPI H/W Development Platforms<a class="headerlink" href="#spi-h-w-development-platforms" title="Permalink to this headline">¶</a></h1>
+<p>Example applications are provided to test and demonstrate both the SPI master
+and slave modules. All provided demo applications are designed to run on the
+<a class="reference external" href="http://www.xmos.com/products/development-kits/xk-1a"><span>XK-1A Development Kit</span></a>.</p>
+<div class="section" id="app-spi-loopback-demo">
+<h2>app_spi_loopback_demo<a class="headerlink" href="#app-spi-loopback-demo" title="Permalink to this headline">¶</a></h2>
+<p>To run this application jumpers must first be placed across the following pins to connect the master and slave:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="31%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Master pin</th>
+<th class="head">Slave pin</th>
+<th class="head">SPI signal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>XD0</td>
+<td>XD1</td>
+<td>MOSI</td>
+</tr>
+<tr><td>XD10</td>
+<td>XD11</td>
+<td>MISO</td>
+</tr>
+<tr><td>XD12</td>
+<td>XD13</td>
+<td>SCLK</td>
+</tr>
+<tr><td>XD22</td>
+<td>XD23</td>
+<td>SS</td>
+</tr>
+</tbody>
+</table>
+<p>For information on the pin layout of the XK-1A please refer to the <a class="reference external" href="http://www.xmos.com/published/xk1ahw"><span>XK-1A Hardware Manual</span></a>.</p>
+</div>
+<div class="section" id="app-spi-master-demo">
+<h2>app_spi_master_demo<a class="headerlink" href="#app-spi-master-demo" title="Permalink to this headline">¶</a></h2>
+<p>The application app_spi_master_demo can be run on the board without any modification.</p>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" id='d2'>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">SPI Component (2.0)</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Hardware Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#app-spi-loopback-demo">app_spi_loopback_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-spi-master-demo">app_spi_master_demo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div id="searchbox" style="display: none;margin-bottom: 10px;">
+  <h3>Search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+
+

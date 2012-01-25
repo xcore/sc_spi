@@ -1,0 +1,163 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>XMOS SPI Component &mdash; SPI Component v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/xdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <script type="text/javascript" src="_static/xcomment.js"></script>
+    <link rel="top" title="SPI Component v2.0 documentation" href="#" />
+    <link rel="next" title="SPI Overview" href="overview.html" /> 
+
+<script>
+function setheight() {
+h1 = document.getElementById('d1').style.height;
+h2 = document.getElementById('d2').style.height;
+
+if (parseInt(h1) > parseInt(h2)) {
+document.getElementById('d2').style.height=h1 + "px";
+}
+else {
+document.getElementById('d1').style.height=h2 + "px";
+}
+
+}
+</script>
+</head>
+
+<body onload="setheight();">
+
+  
+
+    <div class="document" id='d1'>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+<div style="float: right">
+<a href="overview.html"
+                        title="next chapter"> &gt&gt </a></p>
+</div>
+
+            
+  <div class="section" id="xmos-spi-component">
+<h1>XMOS SPI Component<a class="headerlink" href="#xmos-spi-component" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#spi-modes">SPI modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#performance">Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw.html#app-spi-loopback-demo">app_spi_loopback_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw.html#app-spi-master-demo">app_spi_master_demo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Source code structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="structure.html#directory-structure">Directory Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="structure.html#key-files">Key Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app_tutorial.html">Demo Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app_spi_master_demo.html">app_spi_master_demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_master_demo.html#makefile">Makefile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_master_demo.html#spi-conf-h">spi_conf.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_master_demo.html#top-level-program-structure">Top level program structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_master_demo.html#running-the-application">Running the application</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app_spi_loopback_demo.html">app_spi_loopback_demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_loopback_demo.html#makefile">Makefile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_loopback_demo.html#spi-conf-h">spi_conf.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_loopback_demo.html#top-level-program-structure">Top level program structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="app_spi_loopback_demo.html#running-the-application">Running the application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#configuration-defines">Configuration Defines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#spi-master-defines">SPI master Defines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#spi-slave-defines">SPI slave Defines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#spi-master-api">SPI master API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#data-structures">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#configuration-functions">Configuration Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#receive-functions">Receive Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#transmit-functions">Transmit Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#spi-slave-api">SPI slave API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id1">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id2">Configuration Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id3">Receive Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id4">Transmit Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" id='d2'>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="#">SPI Component (2.0)</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div id="searchbox" style="display: none;margin-bottom: 10px;">
+  <h3>Search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+
+

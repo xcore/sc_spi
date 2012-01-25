@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SPI Overview &mdash; SPI Component v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/xdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <script type="text/javascript" src="_static/xcomment.js"></script>
+    <link rel="top" title="SPI Component v2.0 documentation" href="index.html" />
+    <link rel="next" title="SPI H/W Development Platforms" href="hw.html" />
+    <link rel="prev" title="XMOS SPI Component" href="index.html" /> 
+
+<script>
+function setheight() {
+h1 = document.getElementById('d1').style.height;
+h2 = document.getElementById('d2').style.height;
+
+if (parseInt(h1) > parseInt(h2)) {
+document.getElementById('d2').style.height=h1 + "px";
+}
+else {
+document.getElementById('d1').style.height=h2 + "px";
+}
+
+}
+</script>
+</head>
+
+<body onload="setheight();">
+
+  
+
+    <div class="document" id='d1'>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+<div style="float: right">
+<a href="index.html"
+                        title="previous chapter"> &lt&lt </a>
+<a href="hw.html"
+                        title="next chapter"> &gt&gt </a></p>
+</div>
+
+            
+  <div class="section" id="spi-overview">
+<h1>SPI Overview<a class="headerlink" href="#spi-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>SPI master and slave components.</li>
+<li>Simple API with functions to initialize, read and write values of 1, 2 or 4
+bytes, or arbitrary length arrays, and shutdown.</li>
+<li>This component API is function-based and does not require a dedicated thread.</li>
+<li>Includes data transfer test code.</li>
+</ul>
+</div>
+<div class="section" id="spi-modes">
+<h2>SPI modes<a class="headerlink" href="#spi-modes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">CPOL</th>
+<th class="head">CPHA</th>
+<th class="head">Supported</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+<tr><td>2</td>
+<td>1</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="27%" />
+<col width="26%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">Master SCLK freq <a class="footnote-reference" href="#first" id="id1">[1]</a></th>
+<th class="head">Slave SCLK freq <a class="footnote-reference" href="#first" id="id2">[1]</a></th>
+<th class="head">Master bandwidth (Read/Write) <a class="footnote-reference" href="#second" id="id3">[2]</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>25MHz</td>
+<td>862kHz</td>
+<td>15.3Mbps / 4.2Mbps</td>
+</tr>
+<tr><td>1</td>
+<td>25MHz</td>
+<td>25MHz <a class="footnote-reference" href="#third" id="id4">[3]</a></td>
+<td>TBD</td>
+</tr>
+<tr><td>2</td>
+<td>25MHz</td>
+<td>862kHz</td>
+<td>15.3Mbps / 4.2Mbps</td>
+</tr>
+<tr><td>3</td>
+<td>25MHz</td>
+<td>25Mhz <a class="footnote-reference" href="#third" id="id5">[3]</a></td>
+<td>15.3Mbps / 15.6Mbps</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="first" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Maximum frequency with which tests could be completed correctly</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="second" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The bandwidth was measured by running app_spi_master_demo on an XK-1A -
+writing a single 256byte page to the flash, and reading 50kB from it.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="third" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Test limited by Master SCLK freq</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" id='d2'>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">SPI Component (2.0)</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spi-modes">SPI modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div id="searchbox" style="display: none;margin-bottom: 10px;">
+  <h3>Search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+
+

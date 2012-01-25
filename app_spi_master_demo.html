@@ -1,0 +1,197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app_spi_master_demo &mdash; SPI Component v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/xdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <script type="text/javascript" src="_static/xcomment.js"></script>
+    <link rel="top" title="SPI Component v2.0 documentation" href="index.html" />
+    <link rel="up" title="Demo Applications" href="app_tutorial.html" />
+    <link rel="next" title="app_spi_loopback_demo" href="app_spi_loopback_demo.html" />
+    <link rel="prev" title="Demo Applications" href="app_tutorial.html" /> 
+
+<script>
+function setheight() {
+h1 = document.getElementById('d1').style.height;
+h2 = document.getElementById('d2').style.height;
+
+if (parseInt(h1) > parseInt(h2)) {
+document.getElementById('d2').style.height=h1 + "px";
+}
+else {
+document.getElementById('d1').style.height=h2 + "px";
+}
+
+}
+</script>
+</head>
+
+<body onload="setheight();">
+
+  
+
+    <div class="document" id='d1'>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+<div style="float: right">
+<a href="app_tutorial.html"
+                        title="previous chapter"> &lt&lt </a>
+<a href="app_spi_loopback_demo.html"
+                        title="next chapter"> &gt&gt </a></p>
+</div>
+
+            
+  <div class="section" id="app-spi-master-demo">
+<h1>app_spi_master_demo<a class="headerlink" href="#app-spi-master-demo" title="Permalink to this headline">¶</a></h1>
+<p>This application uses module_spi_master to read and write data to the SPI slave flash device
+on the board.</p>
+<p>Note: Running this program will overwrite any existing data in the flash.</p>
+<div class="section" id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
+<p>The Makefile is found in the top level directory of the
+application. It uses the general XMOS makefile in module_xcommon
+which compiles all the source files in the application and the modules
+that the application uses. We only have to add a couple of
+configuration options.</p>
+<p>Firstly, this application is for an XK-1 development board so the
+TARGET variable needs to be set in the Makefile:</p>
+<div class="highlight-none"><div class="highlight"><pre># The TARGET variable determines what target system the application is
+# compiled for. It either refers to an XN file in the source directories
+# or a valid argument for the --target option when compiling.
+TARGET = XK-1
+</pre></div>
+</div>
+<p>Secondly, the application name must be set:</p>
+<div class="highlight-none"><div class="highlight"><pre># The APP_NAME variable determines the name of the final .xe file. It should
+# not include the .xe postfix. If left blank the name will default to
+# the project name
+APP_NAME = app_spi_master_demo
+</pre></div>
+</div>
+<p>Finally, the application will use the SPI master module. We state that the
+application uses this as follows:</p>
+<div class="highlight-none"><div class="highlight"><pre># The USED_MODULES variable lists other module used by the application.
+USED_MODULES = module_spi_master
+</pre></div>
+</div>
+</div>
+<div class="section" id="spi-conf-h">
+<h2>spi_conf.h<a class="headerlink" href="#spi-conf-h" title="Permalink to this headline">¶</a></h2>
+<p>The spi_conf.h file is found in the src/ directory of the
+application. This file contains a series of <tt class="docutils literal"><span class="pre">#defines</span></tt> that configure
+the SPI component.
+The possible <tt class="docutils literal"><span class="pre">#defines</span></tt> that can be set are described in <a class="reference internal" href="api.html#sec-conf-defines"><span>Configuration Defines</span></a>.</p>
+<p>If not set, default values in the spi_master header file will be used.</p>
+<p>Within this application we set the SPI mode to 3, and the default SPI clock divider
+to 2 (giving a SPI clock frequency of 25MHz).</p>
+<div class="highlight-none"><div class="highlight"><pre>// Copyright (c) 2011, XMOS Ltd., All rights reserved
+// This software is freely distributable under a derivative of the
+// University of Illinois/NCSA Open Source License posted in
+// LICENSE.txt and at &lt;http://github.xcore.com/&gt;
+
+#define DEFAULT_SPI_CLOCK_DIV 2
+
+#define SPI_MASTER_MODE 3
+</pre></div>
+</div>
+<p>The flash chip on the XK-1 board supports SPI modes 0 and 3, and clock frequencies up to 104MHz.
+The demo can be recompiled and run in either SPI mode, and larger clock dividers.</p>
+</div>
+<div class="section" id="top-level-program-structure">
+<h2>Top level program structure<a class="headerlink" href="#top-level-program-structure" title="Permalink to this headline">¶</a></h2>
+<p>To make use of the SPI master module app_spi_master_demo must contain the following line:</p>
+<div class="highlight-none"><div class="highlight"><pre>#include &quot;spi_master.h&quot;
+</pre></div>
+</div>
+<p>This application is contained in spi_master_demo.xc. Within this file is the <tt class="docutils literal"><span class="pre">main()</span></tt> function
+which sets up the SPI interface, and then calls the <tt class="docutils literal"><span class="pre">read_jedec_id()</span></tt>, <tt class="docutils literal"><span class="pre">write_speed_test()</span></tt>,
+and <tt class="docutils literal"><span class="pre">read_speed_test()</span></tt> functions to test the interface.</p>
+<p>The <tt class="docutils literal"><span class="pre">read_jedec_id()</span></tt> function reads the device ID register and checks the returned value is
+as correct, outputting both the expected and actual values.</p>
+<p>The <tt class="docutils literal"><span class="pre">write_speed_test()</span></tt> function writes a page of data to the flash, and then reads it back to
+ensure it was written correctly. The time taken to write the data is output.</p>
+<p>The <tt class="docutils literal"><span class="pre">read_speed_test()</span></tt> function reads 50kB of data from the flash into a buffer. The time taken
+to complete the read is output.</p>
+</div>
+<div class="section" id="running-the-application">
+<h2>Running the application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Run <tt class="docutils literal"><span class="pre">xmake</span></tt> within the app_spi_master_demo/ directory, to compile the program</li>
+<li>Connect the XK-1 to your PC using an XTAG-2</li>
+<li>Run <tt class="docutils literal"><span class="pre">xrun</span> <span class="pre">--io</span> <span class="pre">bin/app_spi_master_demo.xe</span></tt> to start the demo</li>
+</ol>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" id='d2'>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">SPI Component (2.0)</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="programming.html">Programming Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Source code structure</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="app_tutorial.html">Demo Applications</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">app_spi_master_demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#makefile">Makefile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spi-conf-h">spi_conf.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#top-level-program-structure">Top level program structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-application">Running the application</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="app_spi_loopback_demo.html">app_spi_loopback_demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+<div id="searchbox" style="display: none;margin-bottom: 10px;">
+  <h3>Search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+
+

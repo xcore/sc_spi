@@ -1,0 +1,698 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SPI API &mdash; SPI Component v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/xdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://mathjax.connectmv.com/MathJax.js"></script>
+    <script type="text/javascript" src="_static/xcomment.js"></script>
+    <link rel="top" title="SPI Component v2.0 documentation" href="index.html" />
+    <link rel="prev" title="app_spi_loopback_demo" href="app_spi_loopback_demo.html" /> 
+
+<script>
+function setheight() {
+h1 = document.getElementById('d1').style.height;
+h2 = document.getElementById('d2').style.height;
+
+if (parseInt(h1) > parseInt(h2)) {
+document.getElementById('d2').style.height=h1 + "px";
+}
+else {
+document.getElementById('d1').style.height=h2 + "px";
+}
+
+}
+</script>
+</head>
+
+<body onload="setheight();">
+
+  
+
+    <div class="document" id='d1'>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+<div style="float: right">
+<a href="app_spi_loopback_demo.html"
+                        title="previous chapter"> &lt&lt </a>
+</div>
+
+            
+  <div class="section" id="spi-api">
+<span id="sec-api"></span><h1>SPI API<a class="headerlink" href="#spi-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configuration-defines">
+<span id="sec-conf-defines"></span><h2>Configuration Defines<a class="headerlink" href="#configuration-defines" title="Permalink to this headline">¶</a></h2>
+<p>The file spi_conf.h can be provided in the application source code, without it
+the default values specified in spi_master.h and spi_slave.h will be used.
+This file can set the following defines:</p>
+<div class="section" id="spi-master-defines">
+<h3>SPI master Defines<a class="headerlink" href="#spi-master-defines" title="Permalink to this headline">¶</a></h3>
+<p><strong>DEFAULT_SPI_CLOCK_DIV</strong></p>
+<blockquote>
+<div>This define sets the default clock divider, which the application can use
+when initialising the SPI master.</div></blockquote>
+<p><strong>SPI_MASTER_MODE</strong></p>
+<blockquote>
+<div><p>The SPI mode the master operates in.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">CPOL</th>
+<th class="head">CPHA</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="spi-slave-defines">
+<h3>SPI slave Defines<a class="headerlink" href="#spi-slave-defines" title="Permalink to this headline">¶</a></h3>
+<p><strong>SPI_SLAVE_MODE</strong></p>
+<blockquote>
+<div><p>The SPI mode the slave operates in.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">CPOL</th>
+<th class="head">CPHA</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr><td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="spi-master-api">
+<h2>SPI master API<a class="headerlink" href="#spi-master-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-structures">
+<h3>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h3>
+<dl class="type">
+<dt id="spi_master_interface">
+<tt class="descname">spi_master_interface</tt><a class="headerlink" href="#spi_master_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure containing the resources required for the SPI master interface.</p>
+<p>It consists of two 8bit buffered output ports, and one 8bit input port.</p>
+<p>Select lines are intentionally not part of API, they are simple port outputs, which depend on how many slaves there are and how they&#8217;re connected.</p>
+<p><strong>Structure Members:</strong></p>
+<dl class="member">
+<dt id="spi_master_interface.blk1">
+clock <tt class="descname">blk1</tt><a class="headerlink" href="#spi_master_interface.blk1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_master_interface.blk2">
+clock <tt class="descname">blk2</tt><a class="headerlink" href="#spi_master_interface.blk2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_master_interface.mosi">
+out buffered port:8 <tt class="descname">mosi</tt><a class="headerlink" href="#spi_master_interface.mosi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_master_interface.sclk">
+out buffered port:8 <tt class="descname">sclk</tt><a class="headerlink" href="#spi_master_interface.sclk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_master_interface.miso">
+in buffered port:8 <tt class="descname">miso</tt><a class="headerlink" href="#spi_master_interface.miso" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="configuration-functions">
+<h3>Configuration Functions<a class="headerlink" href="#configuration-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_master_init">
+void <tt class="descname">spi_master_init</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, int<em>&nbsp;spi_clock_div</em><big>)</big><a class="headerlink" href="#spi_master_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure ports and clocks, clearing port buffers.</p>
+<p>Must be called before any SPI data input or output functions are used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface being initialised</li>
+<li><strong>spi_clock_div</strong> &#8211; SPI clock frequency is fref/(2*spi_clock_div), where freq defaults to 100MHz</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_shutdown">
+void <tt class="descname">spi_master_shutdown</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_master_shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the clocks running.</p>
+<p>Should be called when all SPI input and output is completed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface being shutdown</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="receive-functions">
+<h3>Receive Functions<a class="headerlink" href="#receive-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_master_in_byte">
+unsigned char <tt class="descname">spi_master_in_byte</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_master_in_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one byte.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received byte</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_in_short">
+unsigned short <tt class="descname">spi_master_in_short</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_master_in_short" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one short.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received short</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_in_word">
+unsigned int <tt class="descname">spi_master_in_word</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_master_in_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one word.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received word</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_in_buffer">
+void <tt class="descname">spi_master_in_buffer</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned char<em>&nbsp;buffer[]</em>, int<em>&nbsp;num_bytes</em><big>)</big><a class="headerlink" href="#spi_master_in_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive specified number of bytes.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>buffer</strong> &#8211; The array the received data will be written to</li>
+<li><strong>num_bytes</strong> &#8211; The number of bytes to read from the SPI interface, this must not be greater than the size of buffer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="transmit-functions">
+<h3>Transmit Functions<a class="headerlink" href="#transmit-functions" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_master_out_byte">
+void <tt class="descname">spi_master_out_byte</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned char<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_master_out_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one byte.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The byte to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_out_short">
+void <tt class="descname">spi_master_out_short</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned short<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_master_out_short" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one short.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The short to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_out_word">
+void <tt class="descname">spi_master_out_word</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned int<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_master_out_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one word.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The word to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_master_out_buffer">
+void <tt class="descname">spi_master_out_buffer</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, const unsigned char<em>&nbsp;buffer[]</em>, int<em>&nbsp;num_bytes</em><big>)</big><a class="headerlink" href="#spi_master_out_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit specified number of bytes.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>buffer</strong> &#8211; The array of data to transmit</li>
+<li><strong>num_bytes</strong> &#8211; The number of bytes to write to the SPI interface, this must not be greater than the size of buffer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="spi-slave-api">
+<h2>SPI slave API<a class="headerlink" href="#spi-slave-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Data Structures<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="type">
+<dt id="spi_slave_interface">
+<tt class="descname">spi_slave_interface</tt><a class="headerlink" href="#spi_slave_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure containing the resources required for the SPI slave interface.</p>
+<p>It consists of two 1bit input ports, one 8bit buffered input port, and one 8bit buffered output port.</p>
+<p><strong>Structure Members:</strong></p>
+<dl class="member">
+<dt id="spi_slave_interface.blk">
+clock <tt class="descname">blk</tt><a class="headerlink" href="#spi_slave_interface.blk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_slave_interface.ss">
+in port <tt class="descname">ss</tt><a class="headerlink" href="#spi_slave_interface.ss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_slave_interface.mosi">
+in buffered port:8 <tt class="descname">mosi</tt><a class="headerlink" href="#spi_slave_interface.mosi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_slave_interface.miso">
+out buffered port:8 <tt class="descname">miso</tt><a class="headerlink" href="#spi_slave_interface.miso" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="spi_slave_interface.sclk">
+in port <tt class="descname">sclk</tt><a class="headerlink" href="#spi_slave_interface.sclk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>Configuration Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_slave_init">
+void <tt class="descname">spi_slave_init</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_slave_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure ports and clocks, clearing port buffers.</p>
+<p>Must be called before any SPI data input or output functions are used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface being initialised</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_shutdown">
+void <tt class="descname">spi_slave_shutdown</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_slave_shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the clocks running, and disables the ports.</p>
+<p>Should be called when all SPI input and output is completed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface being shutdown</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h3>Receive Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_slave_in_byte">
+unsigned char <tt class="descname">spi_slave_in_byte</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_slave_in_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one byte.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received byte</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_in_short">
+unsigned short <tt class="descname">spi_slave_in_short</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_slave_in_short" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one short.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received short</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_in_word">
+unsigned int <tt class="descname">spi_slave_in_word</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em><big>)</big><a class="headerlink" href="#spi_slave_in_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive one word.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The received word</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_in_buffer">
+void <tt class="descname">spi_slave_in_buffer</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned char<em>&nbsp;buffer[]</em>, int<em>&nbsp;num_bytes</em><big>)</big><a class="headerlink" href="#spi_slave_in_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive specified number of bytes.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>buffer</strong> &#8211; The array the received data will be written to</li>
+<li><strong>num_bytes</strong> &#8211; The number of bytes to read from the SPI interface, this must not be greater than the size of buffer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h3>Transmit Functions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="spi_slave_out_byte">
+void <tt class="descname">spi_slave_out_byte</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned char<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_slave_out_byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one byte.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The byte to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_out_short">
+void <tt class="descname">spi_slave_out_short</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned short<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_slave_out_short" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one short.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The short to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_out_word">
+void <tt class="descname">spi_slave_out_word</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em>, unsigned int<em>&nbsp;data</em><big>)</big><a class="headerlink" href="#spi_slave_out_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit one word.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>data</strong> &#8211; The word to transmit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="spi_slave_out_buffer">
+void <tt class="descname">spi_slave_out_buffer</tt><big>(</big><a class="reference internal" href="#spi_slave_interface" title="spi_slave_interface"><span>spi_slave_interface</span></a><em>&nbsp;&amp;spi_if</em>, const unsigned char<em>&nbsp;buffer[]</em>, int<em>&nbsp;num_bytes</em><big>)</big><a class="headerlink" href="#spi_slave_out_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transmit specified number of bytes.</p>
+<p>Most significant bit first order. Big endian byte order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spi_if</strong> &#8211; Resources for the SPI interface</li>
+<li><strong>buffer</strong> &#8211; The array of data to transmit</li>
+<li><strong>num_bytes</strong> &#8211; The number of bytes to write to the SPI interface, this must not be greater than the size of buffer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" id='d2'>
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">SPI Component (2.0)</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">Programming Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-defines">Configuration Defines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spi-master-defines">SPI master Defines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spi-slave-defines">SPI slave Defines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#spi-master-api">SPI master API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-structures">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-functions">Configuration Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receive-functions">Receive Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transmit-functions">Transmit Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#spi-slave-api">SPI slave API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Configuration Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Receive Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Transmit Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none;margin-bottom: 10px;">
+  <h3>Search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+
+    <div class="footer">
+    </div>
+  </body>
+</html>
+
+
+
