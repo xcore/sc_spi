@@ -68,7 +68,8 @@ This file can set the following defines:</p>
 <p><strong>DEFAULT_SPI_CLOCK_DIV</strong></p>
 <blockquote>
 <div>This define sets the default clock divider, which the application can use
-when initialising the SPI master.</div></blockquote>
+when initialising the SPI master. See <strong>spi_clock_div</strong> parameter of
+<tt class="docutils literal"><span class="pre">spi_master_init()</span></tt> in <a class="reference internal" href="#sec-conf-functions"><span>Configuration Functions</span></a> for clock divider format.</div></blockquote>
 <p><strong>SPI_MASTER_MODE</strong></p>
 <blockquote>
 <div><p>The SPI mode the master operates in.</p>
@@ -184,7 +185,7 @@ in buffered port:8 <tt class="descname">miso</tt><a class="headerlink" href="#sp
 
 </div>
 <div class="section" id="configuration-functions">
-<h3>Configuration Functions<a class="headerlink" href="#configuration-functions" title="Permalink to this headline">¶</a></h3>
+<span id="sec-conf-functions"></span><h3>Configuration Functions<a class="headerlink" href="#configuration-functions" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="spi_master_init">
 void <tt class="descname">spi_master_init</tt><big>(</big><a class="reference internal" href="#spi_master_interface" title="spi_master_interface"><span>spi_master_interface</span></a><em>&nbsp;&amp;spi_if</em>, int<em>&nbsp;spi_clock_div</em><big>)</big><a class="headerlink" href="#spi_master_init" title="Permalink to this definition">¶</a></dt>
