@@ -16,7 +16,8 @@ SPI master Defines
 **DEFAULT_SPI_CLOCK_DIV**
 
     This define sets the default clock divider, which the application can use 
-    when initialising the SPI master.
+    when initialising the SPI master. See **spi_clock_div** parameter of 
+    ``spi_master_init()`` in :ref:`sec_conf_functions` for clock divider format.
 
 **SPI_MASTER_MODE**
 
@@ -57,6 +58,8 @@ SPI master API
 Data Structures
 +++++++++++++++
 .. doxygenstruct:: spi_master_interface
+
+.. _sec_conf_functions:
 
 Configuration Functions
 +++++++++++++++++++++++
