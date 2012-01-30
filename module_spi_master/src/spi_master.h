@@ -58,6 +58,11 @@ typedef struct spi_master_interface
  * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div), 
  *                       where freq defaults to 100MHz
  *
+ * \note  Example: To achieve an sclk frequency of 25MHz, a divider of 
+ *        2 must be specified, as 100(MHz)/(2*2) = 25(MHz).
+ * \note  Example: To achieve an sclk frequency of 625kHz, a divider of 
+ *        80 must be specified, as 100(MHz)/(2*80) = 0.625(MHz).
+ *
  */
 void spi_master_init(spi_master_interface &spi_if, int spi_clock_div);
 
