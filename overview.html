@@ -111,64 +111,148 @@ bytes, or arbitrary length arrays, and shutdown.</li>
 </tbody>
 </table>
 </div>
-<div class="section" id="performance">
-<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-requirements">
+<h2>Memory requirements<a class="headerlink" href="#memory-requirements" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="6%" />
-<col width="27%" />
-<col width="26%" />
+<col width="31%" />
+<col width="37%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Module</th>
+<th class="head">Minimal usage (Bytes)</th>
+<th class="head">Full usage (Bytes)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>module_spi_master</td>
+<td>2012</td>
+<td>2640</td>
+</tr>
+<tr><td>module_spi_slave</td>
+<td>1700</td>
+<td>2028</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="maximum-sclk-frequencies">
+<span id="sec-max-freq"></span><h3>Maximum SCLK frequencies<a class="headerlink" href="#maximum-sclk-frequencies" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="44%" />
 <col width="41%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Mode</th>
-<th class="head">Master SCLK freq <a class="footnote-reference" href="#first" id="id1">[1]</a></th>
-<th class="head">Slave SCLK freq <a class="footnote-reference" href="#first" id="id2">[1]</a></th>
-<th class="head">Master bandwidth (Read/Write) <a class="footnote-reference" href="#second" id="id3">[2]</a></th>
+<th class="head">Master SCLK freq</th>
+<th class="head">Slave SCLK freq</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr><td>0</td>
 <td>25MHz</td>
 <td>862kHz</td>
-<td>15.3Mbps / 4.2Mbps</td>
 </tr>
 <tr><td>1</td>
 <td>25MHz</td>
-<td>25MHz <a class="footnote-reference" href="#third" id="id4">[3]</a></td>
-<td>TBD</td>
+<td>25MHz <a class="footnote-reference" href="#first" id="id1">[1]</a></td>
 </tr>
 <tr><td>2</td>
 <td>25MHz</td>
 <td>862kHz</td>
-<td>15.3Mbps / 4.2Mbps</td>
 </tr>
 <tr><td>3</td>
 <td>25MHz</td>
-<td>25Mhz <a class="footnote-reference" href="#third" id="id5">[3]</a></td>
-<td>15.3Mbps / 15.6Mbps</td>
+<td>25Mhz <a class="footnote-reference" href="#first" id="id2">[1]</a></td>
 </tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="first" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Maximum frequency with which tests could be completed correctly</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Test limited by Master SCLK freq</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="second" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
+</div>
+<div class="section" id="bandwidth">
+<h3>Bandwidth<a class="headerlink" href="#bandwidth" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="spi-master">
+<h4>SPI master<a class="headerlink" href="#spi-master" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="46%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">Master - 100MIPS thread (R/W)</th>
+<th class="head">Master - 50MIPS thread (R/W)</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The bandwidth was measured by running app_spi_master_demo on an XK-1A -
-writing a single 256byte page to the flash, and reading 50kB from it.</td></tr>
+<tr><td>0</td>
+<td>15.3Mbps / 4.2Mbps</td>
+<td>11.3Mbps / 2.6Mbps</td>
+</tr>
+<tr><td>1</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr><td>2</td>
+<td>15.3Mbps / 4.2Mbps</td>
+<td>11.3Mbps / 2.6Mbps</td>
+</tr>
+<tr><td>3</td>
+<td>15.3Mbps / 15.6Mbps</td>
+<td>11.4Mbps / 11.8Mbps</td>
+</tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="third" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
+</div>
+<div class="section" id="spi-slave">
+<h4>SPI slave<a class="headerlink" href="#spi-slave" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="43%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Mode</th>
+<th class="head">Slave - 100MIPS thread (R/W)</th>
+<th class="head">Slave - 50MIPS thread (R/W)</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Test limited by Master SCLK freq</td></tr>
+<tr><td>0</td>
+<td>0.7Mbps / TBD</td>
+<td>0.7Mbps / TBD</td>
+</tr>
+<tr><td>1</td>
+<td>15.9Mbps / 15.2Mbps</td>
+<td>4.8Mbps / 4.8Mbps with 6.25MHz SCLK</td>
+</tr>
+<tr><td>2</td>
+<td>0.7Mbps / TBD</td>
+<td>0.7Mbps / TBD</td>
+</tr>
+<tr><td>3</td>
+<td>15.9Mbps / 15.2Mbps</td>
+<td>4.8Mbps / 4.8Mbps with 6.25MHz SCLK</td>
+</tr>
 </tbody>
 </table>
+<p>All bandwidth tests were conducted with the maximum supported SCLK frequency
+(see <a class="reference internal" href="#sec-max-freq"><span>Maximum SCLK frequencies</span></a>), unless otherwise stated. Where SCLK frequencies are
+given, these were found to be the maximum with which the tests could be completed correctly.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -184,7 +268,16 @@ writing a single 256byte page to the flash, and reading 50kB from it.</td></tr>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#spi-modes">SPI modes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-requirements">Memory requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#maximum-sclk-frequencies">Maximum SCLK frequencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bandwidth">Bandwidth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spi-master">SPI master</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spi-slave">SPI slave</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hw.html">Hardware Platforms</a></li>
