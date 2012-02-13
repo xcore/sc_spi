@@ -3,7 +3,7 @@
 # prefixed with the app_ prefix)
 #
 # If the variable is set to "all" then all directories that start with app_
-# are built.
+# are built
 BUILD_SUBDIRS = all
 
 XMOS_MAKE_PATH ?= ..
