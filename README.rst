@@ -1,13 +1,13 @@
 XCORE.com SPI SOFTWARE COMPONENT
 .................................
 
-:Stable release:   unreleased
+:Latest release: 1.2.0rc0
+:Maintainer: davelxmos
+:Description: SPI protocol component
 
-:Status:  Feature complete
 
-:Description: SPI master and slave components.
 
-:Maintainer:  https://github.com/xsamc
+
 
 Key Features
 ============
@@ -31,13 +31,13 @@ Known Issues
 
 None
 
-Required Modules
-=================
-
-   * xcommon git\@github.com:xmos/xcommon.git
-
-
 Support
 =======
 
 Issues may be submitted via the Issues tab in this github repo. Response to any issues submitted as at the discretion of the manitainer for this line.
+
+Required software (dependencies)
+================================
+
+  * xcommon (if using development tools earlier than 11.11.0)
+
