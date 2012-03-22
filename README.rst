@@ -2,7 +2,7 @@ XCORE.com SPI SOFTWARE COMPONENT
 .................................
 
 :Latest release: 1.2.0rc0
-:Maintainer: davelxmos
+:Maintainer: djpwilk
 :Description: SPI protocol component
 
 
