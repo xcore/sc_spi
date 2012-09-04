@@ -10,17 +10,12 @@
 #include <platform.h>
 #include "spi_master.h"
 
-// Winbond instructions
-#define PAGE_PROGRAM_CMD 0x02
-#define READ_DATA_CMD 0x03
-#define READ_STATUS_REG_CMD 0x05
-#define WRITE_ENABLE_CMD 0x06
-#define SECTOR_ERASE_CMD 0x20
-#define JEDEC_ID_CMD 0x9F
 
-// Winbond status reg masks
-#define STATUS_BUSY_MASK 0b00000001
-#define STATUS_WRITE_EN_MASK 0b00000010
+//Include this define for XK-1A
+//#include "atmel_AT25DF041A.h"
+
+//Include this define for Slicekit L2
+#include "numonyx_M25P16.h"
 
 spi_master_interface spi_if =
 {
@@ -82,10 +77,6 @@ void wait_on_flash_status(spi_master_interface &spi_if, unsigned char required_s
     slave_deselect();
 }
 
-// Expected values for Winbond W25x10BV flash used on XK-1A
-#define MANUFACTURER_ID 0xEF
-#define DEVICE_ID 0x3011
-#define COMPLETE_ID 0xEF301100
 void check_jedec_data(unsigned char manufacturer_id_byte, unsigned short device_id_short, unsigned int complete_id_word)
 {
     int errorCount = 0;
@@ -302,6 +293,7 @@ int main(void)
     slave_deselect(); // Ensure slave select is in correct start state
     
     read_jedec_id(spi_if);
+    slave_inter_select_delay();
     write_speed_test(spi_if);
     read_speed_test(spi_if);   
 

@@ -6,6 +6,5 @@ the SPI master and slave components.
 
 .. toctree::
 
-   getting_started
    structure
    app_tutorial

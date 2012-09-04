@@ -1,7 +1,11 @@
+
+Evaluation Platforms
+====================
+
 .. _sec_hardware_platforms:
 
-SPI H/W Development Platforms
-=============================
+Recommended Hardware
+--------------------
 
 Example applications are provided to test and demonstrate both the SPI master 
 and slave modules. All provided demo applications are designed to run on the 

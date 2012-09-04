@@ -1,12 +1,8 @@
-SPI Overview
-============
-Features
---------
-- SPI master and slave components. 
-- Simple API with functions to initialize, read and write values of 1, 2 or 4 
-  bytes, or arbitrary length arrays, and shutdown. 
-- This component API is function-based and does not require a dedicated thread. 
-- Includes data transfer test code. 
+Overview
+========
+
+All fgour Spi Modes (1 through 4 are supported) as shown below
+
 
 SPI modes
 ---------
@@ -25,12 +21,15 @@ SPI modes
 
 Performance
 ----------- 
+
+The achievable clock speed and effective bandwidth varies according to which of the SPI modes is used, as shown below. This information has been obtained by testing on real hardware.
+
 +------+----------------------------+---------------------------+------------------------------------------+
 | Mode | Master SCLK freq [#first]_ | Slave SCLK freq [#first]_ | Master bandwidth (Read/Write) [#second]_ |
 +======+============================+===========================+==========================================+
 |   0  | 25MHz                      | 862kHz                    | 15.3Mbps / 4.2Mbps                       |
 +------+----------------------------+---------------------------+------------------------------------------+
-|   1  | 25MHz                      | 25MHz [#third]_           | TBD                                      |
+|   1  | 25MHz                      | 25MHz [#third]_           | Not tested                               |
 +------+----------------------------+---------------------------+------------------------------------------+
 |   2  | 25MHz                      | 862kHz                    | 15.3Mbps / 4.2Mbps                       |
 +------+----------------------------+---------------------------+------------------------------------------+
