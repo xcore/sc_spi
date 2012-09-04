@@ -18,6 +18,15 @@ SPI modes
 |   3  |   1  |   1  |    Yes    |
 +------+------+------+-----------+
 
+Memory requirements
+-------------------
++-------------------+-----------------------+--------------------+
+| Module            | Minimal usage (Bytes) | Full usage (Bytes) |
++===================+=======================+====================+
+| module_spi_master | 2012                  | 2640               |
++-------------------+-----------------------+--------------------+
+| module_spi_slave  | 1700                  | 2028               |
++-------------------+-----------------------+--------------------+
 
 Performance
 ----------- 
@@ -40,3 +49,8 @@ The achievable clock speed and effective bandwidth varies according to which of 
 .. [#second] The bandwidth was measured by running app_spi_master_demo on an XK-1A -  
              writing a single 256byte page to the flash, and reading 50kB from it.
 .. [#third] Test limited by Master SCLK freq
+
+All bandwidth tests were conducted with the maximum supported SCLK frequency 
+(see :ref:`sec_max_freq`), unless otherwise stated. Where SCLK frequencies are 
+given, these were found to be the maximum with which the tests could be completed correctly.
+

@@ -1,16 +1,22 @@
 <?xml version="1.0" ?>
 <xpd>
     <dependency repo = "xcommon">
-        <githash>2d310cc19558a756d2477625338491f66ff0e57d</githash>
+        <githash>b7b5be59795a0a4b3fee4aeaff3c8e398bf76d27</githash>
         <uri>ssh://git@github.com/xcore/xcommon</uri>
+        <version>1.0.0rc2</version>
     </dependency>
     <description>SPI protocol component</description>
+    <docdir>doc</docdir>
     <location>ssh://git@github.com/xcore/sc_spi</location>
     <name>sc_spi</name>
     <maintainer>davelxmos</maintainer>
+    <partnumber>XM-001614-DH</partnumber>
     <release parenthash = "d828c75cbdcab1fa9eaed45d26aee82a66b5d777" version = "1.1.0beta0" githash = "e35d37e19daeeb2cca41d131148151e5acd70509"></release>
-    <release parenthash = "8e70cdd0c835346e0222bf03d5b85fcc4d4f9440" version = "1.1.0rc0"></release>
+    <release parenthash = "8e70cdd0c835346e0222bf03d5b85fcc4d4f9440" version = "1.1.0rc0" githash = "21812a27b40acca109e315ba8cfe1f57fc59d9d0"></release>
+    <release parenthash = "5ba2575af342565e01b0d1416e771db874abaf87" version = "1.2.0beta0" githash = "c0e15961a56f1eaafd2b4aae52907883ff3b6693"></release>
+    <release parenthash = "d128ade4bb0359da32843f2841786524a88ae2f8" version = "1.2.0rc0"></release>
     <scope>example</scope>
+    <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>
 </xpd>
