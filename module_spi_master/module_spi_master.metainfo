@@ -1,0 +1,94 @@
+-------------------------------------------------------------------------------
+-- Descriptive metadata
+-------------------------------------------------------------------------------
+
+componentName = "xSOFTip SPI Master Function Library"
+componentFullName = ""
+alternativeNames = { }
+componentDescription = "A function library for implementing an SPI Master running at clock frequencies up to 25 MHz "
+componentVersion = "1v0"
+
+-------------------------------------------------------------------------------
+-- Parameter descriptions.
+-------------------------------------------------------------------------------
+
+configPoints =
+{
+  SpiMode =
+  {
+    short   = "SPI Mode",
+    long    = "CPOL/CPHA (Mode 0 = 0/0, Mode 1 = 0/1, Mode 2 = 1/0, Mode 3 = 1/1)
+    help    = "CPOl is Clock Polarity and CPHA is clock phase with respect to data. CPOL defines the base value of the clock. CPHA defines when data is captured (falling edge for CPHA=0). Modes 0 and 3 are the modes most commonly supported by typical SPI peripherals."
+    units   = "",
+    define  = "SPI_MASTER_MODE",
+    type    = "int",
+    options = {0,1,2,3}, 
+    resourceUsageFlags = {"noeffect"},
+    default = 3
+  },
+  SpiClockFrequency =
+  {
+    short   = "SPIClockDivder",
+    long    = "Derives Speed of the Master SPI clock from 100 MHz Reference Clock"
+    help    = "SPI clock frequency = fref/(2*SPIClockDivder). Must be an even value of 10 or greater."
+    units   = "MHz",
+    define  = "DEFAULT_SPI_CLOCK_DIV",
+    type    = "int",
+    options = {2,4,6,8,10}, 
+    resourceUsageFlags = {"noeffect"},
+    default = 2
+  },
+}
+
+derivedValues = {}
+
+ports = {
+  p_spi_master_clk = {
+    short   = "SCLK",
+    long    = "SPI Clock from master",
+    help    = "",
+    width   = 1
+  },
+  p_spi_master_mosi = {
+    short   = "MOSI",
+    long    = "Master Out Slave In",
+    help    = "",
+    width   = 1
+  },
+  p_spi_master_miso = {
+    short   = "MISO"
+    long    = "Master In Slave Out",
+    help    = "",
+    width   = 1
+  },
+}
+
+channels = {
+}        
+
+function getConfigStatus()
+  local status = "Trusted Configuration"
+  local issues = {}
+  if swblock.params.SpiMode == 1 or swblock.params.SpiMode == 2 then
+    status = "Valid Configuration"  
+  end
+  return status, issues
+end
+            
+-------------------------------------------------------------------------------
+-- Source generation functions
+-------------------------------------------------------------------------------
+
+generatedCode = {
+  includes = { 
+    "spi_master.h"
+  },
+  globals = [[
+    spi_master_interface spi${swblock.id}_sif = { ${swblock.clocks[0]},  ${swblock.clocks[1]},  ${swblock.p_spi_master_mosi}, ${swblock.p_spi_master_clk}, ${swblock.p_spi_master_miso}}
+  ]],
+  body = [[
+  ]]
+}
+
+
+
