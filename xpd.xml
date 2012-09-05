@@ -1,26 +1,6 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component description = "Usage Example for xSOFTip SPI Slave and SPI Master Module" scope = "Example" path = "app_spi_loopback_demo" type = "demoCode" id = "app_spi_loopback_demo" name = "SPI Slave and SPI Master loopback Demo Application">
-            <board>XK-1A/board>
-            <keyword>SPI</keyword>
-            <keyword>demo</keyword>
-        </component>
-        <component description = "Usage Example for xSOFTip SPI Master Module with External Flash" scope = "Example" path = "app_spi_master_demo" type = "demoCode" id = "app_spi_master_demo" name = "SPI Master Demo Application">
-            <board>XK-SKC-L2</board>
-            <keyword>SPI</keyword>
-            <keyword>Flash</keyword>
-            <keyword>demo</keyword>
-        </component>
-        <component name = "XSoftIP SPI Slave Function Library" buildresults_path = "module_spi_slave/.module_spi_slave.buildresults.xml" scope = "Early\ Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" type = "component" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
-            <board>XK-1A</board>
-            <keyword>SPI</keyword>
-        </component>
-        <component name = "XSoftIP SPI Master Function Library" buildresults_path = "module_spi_master/.module_spi_master.buildresults.xml" scope = "General\ Use" path = "module_spi_master" metainfo_path = "module_spi_master/module_spi_master.metainfo" type = "component" id = "module_spi_master" description = "SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
-            <board>XK-SKC-L2</board>
-            <keyword>SPI</keyword>
-            <keyword>Flash</keyword>
-        </component>
     </components>
     <dependency repo = "xcommon">
         <githash>cdcfc87c8c6047bf8d21f13222cbe9e84c6c5e01</githash>
