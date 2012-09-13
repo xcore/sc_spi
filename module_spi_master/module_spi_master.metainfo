@@ -17,8 +17,8 @@ configPoints =
   SpiMode =
   {
     short   = "SPI Mode",
-    long    = "CPOL/CPHA (Mode 0 = 0/0, Mode 1 = 0/1, Mode 2 = 1/0, Mode 3 = 1/1)
-    help    = "CPOl is Clock Polarity and CPHA is clock phase with respect to data. CPOL defines the base value of the clock. CPHA defines when data is captured (falling edge for CPHA=0). Modes 0 and 3 are the modes most commonly supported by typical SPI peripherals."
+    long    = "CPOL/CPHA (Mode 0 = 0/0, Mode 1 = 0/1, Mode 2 = 1/0, Mode 3 = 1/1)",
+    help    = "CPOl is Clock Polarity and CPHA is clock phase with respect to data. CPOL defines the base value of the clock. CPHA defines when data is captured (falling edge for CPHA=0). Modes 0 and 3 are the modes most commonly supported by typical SPI peripherals.",
     units   = "",
     define  = "SPI_MASTER_MODE",
     type    = "int",
@@ -29,8 +29,8 @@ configPoints =
   SpiClockFrequency =
   {
     short   = "SPIClockDivder",
-    long    = "Derives Speed of the Master SPI clock from 100 MHz Reference Clock"
-    help    = "SPI clock frequency = fref/(2*SPIClockDivder). Must be an even value of 10 or greater."
+    long    = "Derives Speed of the Master SPI clock from 100 MHz Reference Clock",
+    help    = "SPI clock frequency = fref/(2*SPIClockDivder). Must be an even value of 10 or greater.",
     units   = "MHz",
     define  = "DEFAULT_SPI_CLOCK_DIV",
     type    = "int",
@@ -56,7 +56,7 @@ ports = {
     width   = 1
   },
   p_spi_master_miso = {
-    short   = "MISO"
+    short   = "MISO",
     long    = "Master In Slave Out",
     help    = "",
     width   = 1
@@ -84,11 +84,27 @@ generatedCode = {
     "spi_master.h"
   },
   globals = [[
-    spi_master_interface spi${swblock.id}_sif = { ${swblock.clocks[0]},  ${swblock.clocks[1]},  ${swblock.p_spi_master_mosi}, ${swblock.p_spi_master_clk}, ${swblock.p_spi_master_miso}}
+    spi_master_interface spi${swblock.id}_sif = { 
+      ${swblock.clocks[0]},  
+      ${swblock.clocks[1]},  
+      ${swblock.ports.p_spi_master_mosi}, 
+      ${swblock.ports.p_spi_master_clk}, 
+      ${swblock.ports.p_spi_master_miso}
+    };
   ]],
   body = [[
   ]]
 }
 
-
-
+api = {
+       'spi_master_init',
+       'spi_master_shutdown',
+       'spi_master_in_byte',
+       'spi_master_in_short',
+       'spi_master_in_word',
+       'spi_master_in_buffer',
+       'spi_master_out_byte',
+       'spi_master_out_short',
+       'spi_master_out_word',
+       'spi_master_out_buffer'
+      }

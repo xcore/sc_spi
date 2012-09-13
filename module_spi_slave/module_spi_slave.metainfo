@@ -17,8 +17,8 @@ configPoints =
   SpiMode =
   {
     short   = "SPI Mode",
-    long    = "CPOL/CPHA (Mode 0 = 0/0, Mode 1 = 0/1, Mode 2 = 1/0, Mode 3 = 1/1)
-    help    = "CPOl is Clock Polarity and CPHA is clock phase with respect to data. CPOL defines the base value of the clock. CPHA defines when data is captured (falling edge for CPHA=0). Modes 0 and 3 are the modes most commonly supported by typical SPI peripherals."
+    long    = "CPOL/CPHA (Mode 0 = 0/0, Mode 1 = 0/1, Mode 2 = 1/0, Mode 3 = 1/1)",
+    help    = "CPOl is Clock Polarity and CPHA is clock phase with respect to data. CPOL defines the base value of the clock. CPHA defines when data is captured (falling edge for CPHA=0). Modes 0 and 3 are the modes most commonly supported by typical SPI peripherals.",
     units   = "",
     define  = "SPI_SLAVE_MODE",
     type    = "int",
@@ -50,7 +50,7 @@ ports = {
     width   = 1
   },
   p_spi_slave_miso = {
-    short   = "MISO"
+    short   = "MISO",
     long    = "master In Slave Out",
     help    = "",
     width   = 1
@@ -78,8 +78,18 @@ generatedCode = {
     "spi_slave.h"
   },
   globals = [[
-    spi_slave_interface spi${swblock.id}_sif = { ${swblock.clocks[0], ${swblock.p_spi_slave_clk}, ${swblock.p_spi_slave_ss}, ${swblock.p_spi_slave_mosi}, ${swblock.p_spi_slave_miso}};
+
+    spi_slave_interface spi${swblock.id}_sif = { ${swblock.clocks[0]}, ${swblock.ports.p_spi_slave_clk}, ${swblock.ports.p_spi_slave_ss}, ${swblock.ports.p_spi_slave_mosi}, ${swblock.ports.p_spi_slave_miso}};
   ]],
   body = [[
   ]]
+}
+api = {
+      'spi_slave_init',
+      'spi_slave_shutdown',
+      'spi_slave_in_buffer',
+      'spi_slave_out_byte',
+      'spi_slave_out_short',
+      'spi_slave_out_word',
+      'spi_slave_out_buffer',
 }

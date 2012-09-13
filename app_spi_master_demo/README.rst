@@ -1,7 +1,7 @@
 xSOFTip SPI Master Demo
 =======================
 
-:scope: General Use
+:scope: Example
 :description: Usage Example for xSOFTip SPI Master Module with External Flash
 :keywords: SPI, Flash
 :boards: XK-1A, XK-SKC-L2
