@@ -1,5 +1,5 @@
-XSoftIP SPI Slave Function Library
-==================================
+SPI Slave Function Library
+==========================
 
 :scope: Early Development
 :description: SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes

@@ -1,5 +1,5 @@
-xSOFTip SPI Master Demo
-=======================
+SPI Master Example Application
+==============================
 
 :scope: Example
 :description: Usage Example for xSOFTip SPI Master Module with External Flash

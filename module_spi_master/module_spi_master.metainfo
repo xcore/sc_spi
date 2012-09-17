@@ -2,7 +2,7 @@
 -- Descriptive metadata
 -------------------------------------------------------------------------------
 
-componentName = "xSOFTip SPI Master Function Library"
+componentName = "SPI Master Function Library"
 componentFullName = ""
 alternativeNames = { }
 componentDescription = "A function library for implementing an SPI Master running at clock frequencies up to 25 MHz "

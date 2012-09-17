@@ -1,5 +1,5 @@
-XSoftIP SPI Master Function Library
-===================================
+SPI Master Function Library
+===========================
 
 :scope: General Use
 :description: SPI Master Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes
