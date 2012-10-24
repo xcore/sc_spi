@@ -1,7 +1,7 @@
 # The TARGET variable determines what target system the application is
 # compiled for. It either refers to an XN file in the source directories
 # or a valid argument for the --target option when compiling
-TARGET = XK-1A
+TARGET = SLICEKIT-L2
 
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to
@@ -9,7 +9,7 @@ TARGET = XK-1A
 APP_NAME = app_spi_master_demo
 
 # The USED_MODULES variable lists other module used by the application.
-USED_MODULES = module_spi_master
+USED_MODULES = module_spi_master sc_util/module_slicekit_support
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
