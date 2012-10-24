@@ -15,7 +15,7 @@
 #define STATUS_BUSY_MASK 0b00000001
 #define STATUS_WRITE_EN_MASK 0b00000010
 
-// Expected values for Winbond W25x10BV flash used on XK-1
+// Expected values for Atmel AT25FS010 flash used on XK-1
 #define MANUFACTURER_ID 0x1F
 #define DEVICE_ID 0x6601
 #define COMPLETE_ID 0x1F66011F

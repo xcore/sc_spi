@@ -10,9 +10,8 @@
 #include <platform.h>
 #include "spi_master.h"
 
-
 //Include this define for XK-1A
-//#include "atmel_AT25DF041A.h"
+//#include "winbond_W25X10BV.h"
 
 //Include this define for Slicekit L2
 #include "numonyx_M25P16.h"
