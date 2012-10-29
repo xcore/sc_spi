@@ -5,4 +5,4 @@
 
 #define DEFAULT_SPI_CLOCK_DIV 2
 
-#define SPI_MASTER_MODE 0
+#define SPI_MASTER_MODE 3
