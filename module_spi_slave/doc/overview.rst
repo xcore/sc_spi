@@ -26,18 +26,13 @@ The achievable clock speed and effective bandwidth varies according to which of 
 +------+---------------------------+
 | Mode | Slave SCLK freq [#first]_ |
 +======+===========================+
-|   0  | 862kHz                    |
+|   0  | 893kHz                    |
 +------+---------------------------+
-|   1  | 25MHz [#second]_          |
+|   1  | 25MHz                     |
 +------+---------------------------+
-|   2  | 862kHz                    |
+|   2  | 893kHz                    |
 +------+---------------------------+
-|   3  | 25Mhz [#second]_          |
+|   3  | 25Mhz                     |
 +------+---------------------------+
 
 .. [#first] Maximum frequency with which tests could be completed correctly
-.. [#second] Test limited by Master SCLK freq
-
-All bandwidth tests were conducted with the maximum supported SCLK frequency , unless otherwise stated. Where SCLK frequencies are 
-given, these were found to be the maximum with which the tests could be completed correctly.
-

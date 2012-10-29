@@ -14,7 +14,7 @@ This module may be evaluated using the Slicekit Modular Development Platform, av
 
    * XP-SKC-L2 (Slicekit L2 Core Board) plus XA-SK-UART8 plus XA-SK-XTAG2 (Slicekit XTAG adaptor) 
 
-No slices will be required since teh example application uses the flash memory on the core board.
+No slices will be required since the example application uses the flash memory on the core board.
 
 XK-1A
 +++++

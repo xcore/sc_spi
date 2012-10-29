@@ -3,7 +3,7 @@
 // University of Illinois/NCSA Open Source License posted in
 // LICENSE.txt and at <http://github.xcore.com/>
 
-#define DEFAULT_SPI_CLOCK_DIV 58 // Maximum frequency suitable for SPI slave in any SPI mode
+#define DEFAULT_SPI_CLOCK_DIV 56 // Maximum frequency suitable for SPI slave in any SPI mode
 
 #define SPI_CLOCK_DIV 2 //DEFAULT_SPI_CLOCK_DIV
 
