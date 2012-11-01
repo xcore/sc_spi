@@ -39,6 +39,8 @@
     <description>SPI protocol components</description>
     <docdir>module_spi_master/doc</docdir>
     <docdir>module_spi_slave/doc</docdir>
+    <docdir>app_spi_master_demo/doc_quickstart</docdir>
+    <docdir>app_spi_loopback_demo/doc_quickstart</docdir>
     <exclude_dir>app_spi_slave_sim_test</exclude_dir>
     <exclude_dir>app_xc1a_spi_example</exclude_dir>
     <location>ssh://git@github.com/xcore/sc_spi</location>

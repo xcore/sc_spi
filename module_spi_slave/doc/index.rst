@@ -1,4 +1,4 @@
-XMOS xSOFTip SPI Master Component
+XMOS xSOFTip SPI Slave Component
 =================================
 
 .. toctree::
