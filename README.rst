@@ -1,7 +1,7 @@
 XCORE.com SPI SOFTWARE COMPONENT
 .................................
 
-:Latest release: 1.3.0alpha0
+:Latest release: 1.3.0alpha1
 :Maintainer: djpwilk
 :Description: SPI protocol components
 
@@ -37,4 +37,5 @@ Required software (dependencies)
 ================================
 
   * xcommon (if using development tools earlier than 11.11.0)
+  * sc_util (git://github.com/xcore/sc_util.git)
 
