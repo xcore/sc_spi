@@ -21,27 +21,27 @@ The structure that holds the port declarations for the interface should initiali
       XS1_PORT_1F  //sclk
   };
 
-The clockblock may be any free clock block. The ports associated with the slave SPI signals are not defined in the XN file for either the XK-1A or XK-SKC-L2 board so they must be assigned explicitly, as in the example above. Unlike the Master code, the Slave code does use the slave select directly - the application usnig the SPI Slave need not do anything additional with the slave select.
-::
+The clockblock may be any free clock block. The ports associated with the slave SPI signals are not defined in the XN file for either the XK-1A or XK-SKC-L2 board so they must be assigned explicitly, as in the example above. Unlike the Master code, the Slave code does use the slave select directly - the application using the SPI Slave need not do anything additional with the slave select.
 
 Then the interface should be initialised as follows. 
 ::
+
   spi_slave_init(spi_sif);
-  
+
 Following the above, the SPI master access functions detailed in the API can be called.
 
 Demo Applications
 =================
 
 app_spi_loopback_demo
-+++++++++++++++++++++
+---------------------
 
 This application uses both module_spi_master and module_spi_slave to create a loopback between 2 threads. 
 
 Note: Jumpers are required on the board to run this demo, as described in :ref:`sec_hardware_platforms`.
 
 spi_conf.h
-~~~~~~~~~~
+++++++++++
 The spi_conf.h file is found in the src/ directory of the
 application. This file contains a series of ``#defines`` that configure
 the SPI component. 
@@ -65,7 +65,7 @@ The application comes configured to run in SPI mode 3, with an SPI clock divider
 other SPI modes, with different clock dividers.
 
 Top level program structure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++
 To make use of the SPI master and slave modules app_spi_loopback_demo must contain the 
 following lines::
     
@@ -79,7 +79,7 @@ the demo a set number of times. The ``master_demo()`` function checks that the d
 from the slave is correct. The interfaces are shut down after the final run of the demo.
 
 Running the application
-~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++
 #. Run ``xmake`` within the app_spi_loopback_demo/ directory, to compile the program
 #. Connect the XK-1 to your PC using an XTAG-2
 #. Run ``xrun --io bin/app_spi_loopback_demo.xe`` to start the demo
