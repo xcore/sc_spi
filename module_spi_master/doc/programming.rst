@@ -4,19 +4,8 @@ SPI Programming Guide
 Key Files
 ---------
 
-The following header files contain prototypes of all functions
-required to use use the SPI components. The API is described in 
+The ``spi_master.h`` header file contains prototypes of all functions required to use use the SPI Master library. No other header files need to be included in the application.. The API is described in 
 :ref:`sec_api`.
-
-.. list-table:: Key Files
-  :header-rows: 1
-
-  * - File
-    - Description
-  * - ``spi_master.h``
-    - SPI master API header file
-  * - ``spi_slave.h``
-    - SPI slave API header file
 
 Initialising the Interface
 --------------------------
@@ -119,15 +108,3 @@ ensure it was written correctly. The time taken to write the data is output.
 
 The ``read_speed_test()`` function reads 50kB of data from the flash into a buffer. The time taken 
 to complete the read is output.
-
-Running the application with the Command Line Tools
-+++++++++++++++++++++++++++++++++++++++++++++++++++
-
-   #. Run ``xmake`` within the app_spi_master_demo/ directory, to compile the program
-   #. Connect the XK-1 to your PC using an XTAG-2
-   #. Run ``xrun --io bin/app_spi_master_demo.xe`` to start the demo
-
-Running the application from the XDE
-++++++++++++++++++++++++++++++++++++
-
-FIXME

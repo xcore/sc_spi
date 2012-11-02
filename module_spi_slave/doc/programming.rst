@@ -77,9 +77,3 @@ which starts the SPI master and slave running in parallel threads by calling the
 ``run_master()`` and ``run_slave()``. These run functions initialise the interface modules and run 
 the demo a set number of times. The ``master_demo()`` function checks that the data returned 
 from the slave is correct. The interfaces are shut down after the final run of the demo.
-
-Running the application
-+++++++++++++++++++++++
-#. Run ``xmake`` within the app_spi_loopback_demo/ directory, to compile the program
-#. Connect the XK-1 to your PC using an XTAG-2
-#. Run ``xrun --io bin/app_spi_loopback_demo.xe`` to start the demo
