@@ -52,8 +52,6 @@ The Makefile is found in the top level directory of the
 application. 
 
 The application is for either the XK-1A development board or the Slicekit Core Board so the TARGET variable needs to be set in the Makefile::
- 
-::
 
   TARGET = XK-1
   TARGET = XK-SKC-L2
