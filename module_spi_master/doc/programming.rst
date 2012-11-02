@@ -4,7 +4,7 @@ SPI Programming Guide
 Key Files
 ---------
 
-The ``spi_master.h`` header file contains prototypes of all functions required to use use the SPI Master library. No other header files need to be included in the application.. The API is described in 
+The ``spi_master.h`` header file contains prototypes of all functions required to use use the SPI Master library. No other header files need to be included in the application. The API is described in 
 :ref:`sec_api`.
 
 Initialising the Interface
