@@ -6,7 +6,9 @@
 	</common>
 	<example_name>SPI Master Demo Application</example_name>
 	<app_name>app_spi_master_demo</app_name>
-	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 Slicekit L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device.</blurb>
+	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 Slicekit L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
+
+Note: Running this program will overwrite any existing data in the flash.</blurb>
 	<hardware_setup>
 		<board name="XP-SKC-L2" long_name="Slicekit L2 Core Board"/>
 		<board name="XA-SK-XTAG2" long_name="Slicekit XTAG Adaptor"/>

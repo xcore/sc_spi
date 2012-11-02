@@ -1,7 +1,7 @@
 SPI Loopback Demo Application: Quick Start Guide
 ================================================
 
-This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->XDE Simulator Tutorial.
+This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demonstrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->xTIMEcomposer Studio Tutorial.
 
 Hardware Setup
 --------------
@@ -13,7 +13,7 @@ The simulator can be run either from within xTIMEcomposer, or using the XSIM com
 Import and Build the Application
 --------------------------------
 
-#. Open xTIMEcomposer and check that it is operating in online mode.
+#. Open xTIMEcomposer.
 #. Open the edit perspective (Window->Open Perspective->XMOS Edit).
 #. Locate the ``SPI Loopback Demo Application`` item in the xSOFTip pane on the bottom left of the window, and drag it into the Project Explorer window in the xTIMEcomposer.
 #. This will also cause the modules on which this application depends to be imported as well.
@@ -41,18 +41,26 @@ Now that the application has been compiled, the next step is to run it on the xC
       |   to: Tile=tile[0], Port=XS1_PORT_1D, Offset=0, Width=1
       | from: Tile=tile[0], Port=XS1_PORT_1E, Offset=0, Width=1
       |   to: Tile=tile[0], Port=XS1_PORT_1F, Offset=0, Width=1
-      | from: Tile=tile[0], Port=XS1_PORT_1H, Offset=0, Width=1
-      |   to: Tile=tile[0], Port=XS1_PORT_1G, Offset=0, Width=1
+      | from: Tile=tile[0], Port=XS1_PORT_1G, Offset=0, Width=1
+      |   to: Tile=tile[0], Port=XS1_PORT_1H, Offset=0, Width=1
+#. Enable signal tracing on the loopback pins, using these `instructions <https://www.xmos.com/node/14798#trace-a-signal>`_ to trace the ports on Tile[0].
 #. Click ``Run`` to start the simulation.
 
 The output to the console should show the SPI mode and frequency, the number of tests the demo will perform, and then the result of each test.
+
+To view the trace of the SPI signals, open ``app_spi_loopback_demo.vcd`` and select the signal for each of the ports setup in the loopback. Displaying these signals should result in the waves being in the Waves view.
+
+.. figure:: images/waves.jpg
+   :width: 800px
+   :align: center
+
+   Waves view showing SPI loopback traces
 
 Next Steps
 ----------
 
 #. Examine the application code. In xTIMEcomposer navigate to the ``src`` directory under app_spi_loopback_demo and double click on the ``spi_loopback_demo.xc`` file within it. The file will open in the central editor window.
-#. Enable signal tracing and inspect the waves on the loopback pins, using these `instructions <https://www.xmos.com/node/14798#trace-a-signal>`_.
-#. Trying changing the SPI mode or frequency in ``spi_conf.h``, and inspect the changes to the loopback pin signal traces after rerunning the simulation.
+#. Trying changing the SPI mode or frequency in ``spi_conf.h``, and inspect the changes to the loopback signal traces after rerunning the simulation.
 
 Try Related Applications
 ------------------------
