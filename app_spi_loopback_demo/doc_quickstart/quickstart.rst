@@ -1,5 +1,5 @@
-SPI Loopback Demo Application: Quick Start Guide
-================================================
+SPI Master/Slave Loopback Example Application: Quick Start Guide
+================================================================
 
 This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demonstrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->xTIMEcomposer Studio Tutorial.
 
@@ -15,7 +15,7 @@ Import and Build the Application
 
 #. Open xTIMEcomposer.
 #. Open the edit perspective (Window->Open Perspective->XMOS Edit).
-#. Locate the ``SPI Loopback Demo Application`` item in the xSOFTip pane on the bottom left of the window, and drag it into the Project Explorer window in the xTIMEcomposer.
+#. Locate the ``SPI Master/Slave Loopback Example Application`` item in the xSOFTip pane on the bottom left of the window, and drag it into the Project Explorer window in the xTIMEcomposer.
 #. This will also cause the modules on which this application depends to be imported as well.
 #. This application depends on:
     * module_spi_master

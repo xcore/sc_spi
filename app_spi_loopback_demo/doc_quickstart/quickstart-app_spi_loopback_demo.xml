@@ -4,7 +4,7 @@
 		<title>SPI Master and Slave Components</title>
 		<folder>sc_spi</folder>
 	</common>
-	<example_name>SPI Loopback Demo Application</example_name>
+	<example_name>SPI Master/Slave Loopback Example Application</example_name>
 	<app_name>app_spi_loopback_demo</app_name>
 	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demonstrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->xTIMEcomposer Studio Tutorial.</blurb>
 	<hardware_setup>

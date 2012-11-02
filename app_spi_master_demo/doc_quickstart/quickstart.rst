@@ -1,5 +1,5 @@
-SPI Master Demo Application: Quick Start Guide
-==============================================
+SPI Master Example Application: Quick Start Guide
+=================================================
 
 This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 Slicekit L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
 
@@ -29,7 +29,7 @@ Import and Build the Application
 
 #. Open xTIMEcomposer.
 #. Open the edit perspective (Window->Open Perspective->XMOS Edit).
-#. Locate the ``SPI Master Demo Application`` item in the xSOFTip pane on the bottom left of the window, and drag it into the Project Explorer window in the xTIMEcomposer.
+#. Locate the ``SPI Master Example Application`` item in the xSOFTip pane on the bottom left of the window, and drag it into the Project Explorer window in the xTIMEcomposer.
 #. This will also cause the modules on which this application depends to be imported as well.
 #. This application depends on ``module_spi_master`` only.
 #. Click on the app_spi_master_demo item in the Explorer pane then click on the build icon (hammer) in xTIMEcomposer.
