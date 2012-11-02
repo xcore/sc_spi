@@ -1,23 +1,27 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component name = "XSoftIP SPI Slave Function Library" buildresults_path = "module_spi_slave/.module_spi_slave.buildresults.xml" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" type = "component" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
+        <component name = "SPI Slave Function Library" type = "component" buildresults_path = "module_spi_slave/.module_spi_slave.buildinfo" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" local = "false" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
             <board>XK-1A</board>
             <keyword>SPI</keyword>
         </component>
-        <component description = "Usage Example for xSOFTip SPI Master Module looped back to xSOFTip Slave Module" scope = "Early Development" path = "app_spi_loopback_demo" type = "demoCode" id = "app_spi_loopback_demo" name = "xSOFTip SPI Loopback Demo">
+        <component description = "Usage Example for xSOFTip SPI Master Module looped back to xSOFTip Slave Module" type = "demoCode" scope = "Example" path = "app_spi_loopback_demo" local = "false" id = "app_spi_loopback_demo" name = "SPI Master/Slave Loopback Example Application">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
+            <componentDependency>module_spi_master</componentDependency>
+            <componentDependency>module_spi_slave</componentDependency>
             <keyword>SPI</keyword>
             <keyword>demo</keyword>
         </component>
-        <component description = "Usage Example for xSOFTip SPI Master Module with External Flash" scope = "General Use" path = "app_spi_master_demo" type = "demoCode" id = "app_spi_master_demo" name = "xSOFTip SPI Master Demo">
+        <component description = "Usage Example for xSOFTip SPI Master Module with External Flash" type = "demoCode" scope = "Example" path = "app_spi_master_demo" local = "false" id = "app_spi_master_demo" name = "SPI Master Example Application">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
+            <componentDependency>module_spi_master</componentDependency>
+            <componentDependency>module_slicekit_support</componentDependency>
             <keyword>SPI</keyword>
             <keyword>Flash</keyword>
         </component>
-        <component name = "XSoftIP SPI Master Function Library" buildresults_path = "module_spi_master/.module_spi_master.buildresults.xml" scope = "General Use" path = "module_spi_master" metainfo_path = "module_spi_master/module_spi_master.metainfo" type = "component" id = "module_spi_master" description = "SPI Master Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
+        <component name = "SPI Master Function Library" type = "component" buildresults_path = "module_spi_master/.module_spi_master.buildinfo" scope = "General Use" path = "module_spi_master" metainfo_path = "module_spi_master/module_spi_master.metainfo" local = "false" id = "module_spi_master" description = "SPI Master Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
             <keyword>SPI</keyword>
@@ -28,9 +32,15 @@
         <githash>cdcfc87c8c6047bf8d21f13222cbe9e84c6c5e01</githash>
         <uri>ssh://git@github.com/xcore/xcommon</uri>
     </dependency>
+    <dependency repo = "sc_util">
+        <githash>3f82b846395c07e8dd32ad9951afc209b6ed7efc</githash>
+        <uri>git://github.com/xcore/sc_util.git</uri>
+    </dependency>
     <description>SPI protocol components</description>
     <docdir>module_spi_master/doc</docdir>
     <docdir>module_spi_slave/doc</docdir>
+    <docdir>app_spi_master_demo/doc_quickstart</docdir>
+    <docdir>app_spi_loopback_demo/doc_quickstart</docdir>
     <exclude_dir>app_spi_slave_sim_test</exclude_dir>
     <exclude_dir>app_xc1a_spi_example</exclude_dir>
     <location>ssh://git@github.com/xcore/sc_spi</location>
@@ -41,7 +51,9 @@
     <release parenthash = "8e70cdd0c835346e0222bf03d5b85fcc4d4f9440" version = "1.1.0rc0" githash = "21812a27b40acca109e315ba8cfe1f57fc59d9d0"></release>
     <release parenthash = "5ba2575af342565e01b0d1416e771db874abaf87" version = "1.2.0beta0" githash = "c0e15961a56f1eaafd2b4aae52907883ff3b6693"></release>
     <release parenthash = "d128ade4bb0359da32843f2841786524a88ae2f8" version = "1.2.0rc0" githash = "1e6b44711605e8aa25a36238fd79e2489115513a"></release>
-    <release parenthash = "05a1b7ba3f0b9a29c135a098d65a2ca8bbe2eafe" version = "1.3.0alpha0"></release>
+    <release parenthash = "05a1b7ba3f0b9a29c135a098d65a2ca8bbe2eafe" version = "1.3.0alpha0" githash = "ab8a6df985e2e123384b5aadecb6c9c4b0fa9a11"></release>
+    <release parenthash = "a9f5fbc8f1355ab75054bfadfbd6863ea3097ba4" version = "1.3.0alpha1" githash = "602a3216b1465dba7ff0d6499817e054d4031c6c"></release>
+    <release parenthash = "3db282425b17df2d67672d2950290d628863fa31" version = "1.3.0alpha2"></release>
     <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
     <xcore_repo>sc_spi</xcore_repo>

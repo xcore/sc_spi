@@ -9,7 +9,7 @@ TARGET = SLICEKIT-L2
 APP_NAME = app_spi_master_demo
 
 # The USED_MODULES variable lists other module used by the application.
-USED_MODULES = module_spi_master sc_util/module_slicekit_support
+USED_MODULES = module_spi_master module_slicekit_support
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
