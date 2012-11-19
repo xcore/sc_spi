@@ -24,6 +24,12 @@ To setup up the system:
 #. Connect the XTAG-2 to host PC. Note that the USB cable is not provided with the Slicekit starter kit.
 #. Switch on the power supply to the Slicekit Core board.
 
+.. figure:: images/hardware_setup.jpg
+   :width: 500px
+   :align: center
+
+   Hardware Setup for SPI Master Example Application
+
 Import and Build the Application
 --------------------------------
 
@@ -44,7 +50,7 @@ Run the Application
 
 Now that the application has been compiled, the next step is to run it on the Slicekit Core Board using the tools to load the application over JTAG (via the XTAG2 and Xtag Adaptor card) into the xCORE multicore microcontroller.
 
-#. Select the file ``spi_master_demo.xc`` in the ``app_spi_master_demo`` project from the Project Explorer.
+#. Select the file ``app_spi_master_demo.xc`` in the ``app_spi_master_demo`` project from the Project Explorer.
 #. Click on the ``Run`` icon (the white arrow in the green circle).
 #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
 
@@ -55,8 +61,7 @@ Next Steps
 ----------
 
 #. Examine the application code. In xTIMEcomposer navigate to the ``src`` directory under app_spi_master_demo and double click on the ``spi_master_demo.xc`` file within it. The file will open in the central editor window.
-#. Trying changing the ``DEFAULT_SPI_CLOCK_DIV`` define on line 6 of ``spi_conf.h`` to 
-		run a different SPI frequency, a value of ``50`` will result in a 1MHz SPI clock.
+#. Trying changing the ``DEFAULT_SPI_CLOCK_DIV`` define on line 6 of ``spi_conf.h`` to run a different SPI frequency, a value of ``50`` will result in a 1MHz SPI clock.
 
 Try Related Applications
 ------------------------

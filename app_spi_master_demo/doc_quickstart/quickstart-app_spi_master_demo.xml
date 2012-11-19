@@ -23,7 +23,7 @@ Note: Running this program will overwrite any existing data in the flash.</blurb
 			<port>CROSS</port>	
 		</connection>
 		<after_plug>Set the ``XMOS LINK`` to ``OFF`` on the XA-SK-XTAG2.</after_plug>
-		<!--<hw_setup_file_name>hardware_setup.jpg</hw_setup_file_name>-->
+		<hw_setup_file_name>hardware_setup.jpg</hw_setup_file_name>
 	</hardware_setup>
 	<import_and_build>
 		<imported_module>module_spi_master</imported_module>
@@ -35,8 +35,7 @@ Note: Running this program will overwrite any existing data in the flash.</blurb
 	</run_application>
 	<next_steps>
 		<option>Examine the application code. In xTIMEcomposer navigate to the ``src`` directory under app_spi_master_demo and double click on the ``spi_master_demo.xc`` file within it. The file will open in the central editor window.</option>
-		<option>Trying changing the ``DEFAULT_SPI_CLOCK_DIV`` define on line 6 of ``spi_conf.h`` to 
-		run a different SPI frequency, a value of ``50`` will result in a 1MHz SPI clock.</option>
+		<option>Trying changing the ``DEFAULT_SPI_CLOCK_DIV`` define on line 6 of ``spi_conf.h`` to run a different SPI frequency, a value of ``50`` will result in a 1MHz SPI clock.</option>
 	</next_steps>
 	<related_apps>
 		<related_intro></related_intro>
