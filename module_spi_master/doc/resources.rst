@@ -19,8 +19,3 @@ Resources
       - 1 bit port
       - 1
       - MISO
-
-Memory
-------
-
-The whole library uses between 2K and 2.7K bytes.

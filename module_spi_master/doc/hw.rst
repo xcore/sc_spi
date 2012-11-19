@@ -16,6 +16,8 @@ This module may be evaluated using the Slicekit Modular Development Platform, av
 
 No slices will be required since the example application uses the flash memory on the core board.
 
+The demo application can also be run on the xCORE Simulator, without requiring a hardware development kit.
+
 XK-1A
 +++++
 

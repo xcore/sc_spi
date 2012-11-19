@@ -10,7 +10,9 @@ Recommended Hardware
 XK-1A
 +++++
 
-The reccomended method for evaluating the slave can be evaluated using the XK-1A. This uses port loopbacks. The same could be achieved using the Slicekit, however it would be necessary to solder headers onto the Core Board and then use these to replicate the loopbacks use in the XK-1A demo.
+The recommended method for evaluating the slave is on the XK-1A, using port loopbacks. The same could be achieved using the Slicekit, however it would be necessary to solder headers onto the Core Board and then use these to replicate the loopbacks used in the XK-1A demo. 
+
+The demo application can also be run on the xCORE Simulator, without requiring a hardware development kit.
 
 Demonstration Applications
 --------------------------
@@ -18,7 +20,7 @@ Demonstration Applications
 app_spi_loopback_demo
 +++++++++++++++++++++
 
-Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demosntrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back on the XK-1A to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core.
+Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demonstrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back on the XK-1A to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core.
 
 Example usage of this module can be found within the XSoftIP suite as follows:
 
