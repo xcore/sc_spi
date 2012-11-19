@@ -224,7 +224,7 @@ int main(void)
     printint(DEMO_RUNS);
     printstrln(" demo runs");
     
-    // Run SPI master and slave in seperate threads
+    // Run SPI master and slave on seperate logical cores
     par
     {
         run_master(spi_mif);

@@ -1,7 +1,7 @@
 SPI Master/Slave Loopback Example Application: Quick Start Guide
 ================================================================
 
-This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. Because SPI master devices are not particularly common XMOS does not have a development board with a suitable device. Accordingly the method used to develop and demonstrate the SPI slave is to use our SPI Master running in one logical core, with its ports looped back to ports used by the SPI slave module, also running on the same XCore Tile, in a second logical core. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->xTIMEcomposer Studio Tutorial.
+This simple demonstration of xTIMEcomposer Studio functionality uses the xCORE Simulator together with the xSOFTip ``module_spi_slave`` and ``module_spi_master`` to demonstrate the SPI slave. This demo application demonstrates the SPI Slave xSOFTip by connecting it to our SPI Master xSOFTip. The SPI Master runs in one logical core, with its ports looped back to ports used by the SPI Slave xSOFTip, running on the same XCore Tile, in a second logical core. Before running this demo application, it is recommended that you familiarise yourself with the simulator, see Help->Tutorials->xTIMEcomposer Studio Tutorial.
 
 Hardware Setup
 --------------
@@ -32,9 +32,9 @@ Run the Application
 
 Now that the application has been compiled, the next step is to run it on the xCORE Simulator.
 
-#. Select the file ``spi_loopback_demo.xc`` in the ``app_spi_loopback_demo`` project from the Project Explorer.
+#. Select the file ``app_spi_loopback_demo.xc`` in the ``app_spi_loopback_demo`` project from the Project Explorer.
 #. Create a basic Run Configuration for the simulation using these `instructions <https://www.xmos.com/node/14798#xde-simulate-program-run-conf/>`_, but do not click ``Run`` yet.
-#. Set up a loopback, using these `instructions <https://www.xmos.com/node/14798#set-up-a-loopback>`_, between the following pins:
+#. Set up a loopback, using these `instructions <https://www.xmos.com/node/14798#set-up-a-loopback>`__, between the following pins:
       | from: Tile=tile[0], Port=XS1_PORT_1A, Offset=0, Width=1
       |   to: Tile=tile[0], Port=XS1_PORT_1B, Offset=0, Width=1
       | from: Tile=tile[0], Port=XS1_PORT_1C, Offset=0, Width=1
@@ -43,15 +43,34 @@ Now that the application has been compiled, the next step is to run it on the xC
       |   to: Tile=tile[0], Port=XS1_PORT_1F, Offset=0, Width=1
       | from: Tile=tile[0], Port=XS1_PORT_1G, Offset=0, Width=1
       |   to: Tile=tile[0], Port=XS1_PORT_1H, Offset=0, Width=1
-#. Enable signal tracing on the loopback pins, using these `instructions <https://www.xmos.com/node/14798#trace-a-signal>`_ to trace the ports on Tile[0].
+#. Enable signal tracing on the loopback pins, using these `instructions <https://www.xmos.com/node/14798#trace-a-signal>`__ to trace the ports on Tile[0].
 #. Click ``Run`` to start the simulation.
 
 The output to the console should show the SPI mode and frequency, the number of tests the demo will perform, and then the result of each test.
 
-To view the trace of the SPI signals, open ``app_spi_loopback_demo.vcd`` and select the signal for each of the ports setup in the loopback. Displaying these signals should result in the waves being in the Waves view.
+To view the trace of the SPI signals, open ``app_spi_loopback_demo.vcd`` and select the signal for each of the ports setup in the loopback. Displaying these signals should result in the waves being in the Waves view. The ports map to the SPI signals as follows, as can be seen in ``spi_master_interface`` and ``spi_slave_interface`` structs declared in ``spi_loopback_demo.xc``:
+
+.. list-table::
+    :header-rows: 1
+
+    * - SPI Signal
+      - MOSI
+      - MISO
+      - SCLK
+      - SS
+    * - SPI Master
+      - PORT_1A
+      - PORT_1C
+      - PORT_1E
+      - PORT_1G
+    * - SPI Slave
+      - PORT_1B
+      - PORT_1D
+      - PORT_1F
+      - PORT_1H
 
 .. figure:: images/waves.jpg
-   :width: 800px
+   :width: 300px
    :align: center
 
    Waves view showing SPI loopback traces
