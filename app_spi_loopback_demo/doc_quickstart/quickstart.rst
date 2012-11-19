@@ -32,7 +32,7 @@ Run the Application
 
 Now that the application has been compiled, the next step is to run it on the xCORE Simulator.
 
-#. Select the file ``app_spi_loopback_demo.xc`` in the ``app_spi_loopback_demo`` project from the Project Explorer.
+#. Select the file ``spi_loopback_demo.xc`` in the ``app_spi_loopback_demo`` project from the Project Explorer.
 #. Create a basic Run Configuration for the simulation using these `instructions <https://www.xmos.com/node/14798#xde-simulate-program-run-conf/>`_, but do not click ``Run`` yet.
 #. Set up a loopback, using these `instructions <https://www.xmos.com/node/14798#set-up-a-loopback>`__, between the following pins:
       | from: Tile=tile[0], Port=XS1_PORT_1A, Offset=0, Width=1

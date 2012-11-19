@@ -50,7 +50,7 @@ Run the Application
 
 Now that the application has been compiled, the next step is to run it on the Slicekit Core Board using the tools to load the application over JTAG (via the XTAG2 and Xtag Adaptor card) into the xCORE multicore microcontroller.
 
-#. Select the file ``app_spi_master_demo.xc`` in the ``app_spi_master_demo`` project from the Project Explorer.
+#. Select the file ``spi_master_demo.xc`` in the ``app_spi_master_demo`` project from the Project Explorer.
 #. Click on the ``Run`` icon (the white arrow in the green circle).
 #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
 
