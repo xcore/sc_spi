@@ -141,9 +141,15 @@ void read_jedec_id(spi_master_interface &spi_if)
 }
 
 #define NANOSECONDS 10
+#define SECONDS 100000000
+#define MEGABYTE 1048576
+#define UPSCALE 100
+#include <stdio.h>
 void print_speed_results(unsigned int start_time, unsigned int end_time, int num_bytes)
 {
     unsigned int time_taken;
+    unsigned long long kBps;
+    unsigned int MBps;
 
     if (timeafter(end_time, start_time))
     {
@@ -158,7 +164,13 @@ void print_speed_results(unsigned int start_time, unsigned int end_time, int num
     printint(time_taken * NANOSECONDS);
     printstr("ns, for ");
     printint(num_bytes);
-    printstrln(" bytes");
+    printstr(" bytes: ");
+
+    kBps = (num_bytes * ((SECONDS / MEGABYTE) * UPSCALE)) / time_taken;
+    MBps = kBps / UPSCALE;
+    kBps = kBps % UPSCALE;
+
+    iprintf("%d.%02dMB/s\n",MBps, kBps);
 }
 
 #define WRITE_TEST_NUM_BYTES 256
