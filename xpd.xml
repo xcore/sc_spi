@@ -52,6 +52,7 @@
     <release parenthash = "3db282425b17df2d67672d2950290d628863fa31" version = "1.3.0alpha2" githash = "357bf6d0b8ae8154d335132bbfde9ce341ac1f36"></release>
     <release parenthash = "4ab8627bd18868c3f48b9a93d41d1f308ab260d9" version = "1.3.0alpha3" githash = "4aee789f0590a95da1263e7e7bd2d9278af6006e"></release>
     <release parenthash = "46e4e5fa6d51a79048f805e742c5df6d20b6501b" version = "1.3.0alpha4" githash = "c24563e5c7446b8de47e71553fbab4ee2e67168d"></release>
+    <release parenthash = "965b3fe6f725566827593779551f81dc8a3a9b38" version = "1.3.0alpha5"></release>
     <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
     <xcore_repo>sc_spi</xcore_repo>
