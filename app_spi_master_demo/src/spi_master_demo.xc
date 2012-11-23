@@ -10,11 +10,14 @@
 #include <platform.h>
 #include "spi_master.h"
 
-//Include this define for XK-1A
-//#include "winbond_W25X10BV.h"
-
-//Include this define for Slicekit L2
-#include "numonyx_M25P16.h"
+// Use SPI flash spec from toolchain
+#include <flash.h>
+#include <SpecMacros.h>
+/*
+ * Set flash to FL_DEVICE_NUMONYX_M25P16 for sliceKIT
+ * Set flash to FL_DEVICE_WINBOND_W25X10 for XK-1A
+ */
+fl_DeviceSpec flash = FL_DEVICE_NUMONYX_M25P16;
 
 spi_master_interface spi_if =
 {
@@ -53,12 +56,12 @@ void wait_on_busy_flash(spi_master_interface &spi_if)
     int status;
 
     slave_select();
-    spi_master_out_byte(spi_if, READ_STATUS_REG_CMD);
+    spi_master_out_byte(spi_if, flash.readSRCommand);
     do
     {
         status = spi_master_in_byte(spi_if);
     }
-    while(status & STATUS_BUSY_MASK);
+    while(status & flash.wipBitMask);
     slave_deselect();
 }
 
@@ -67,7 +70,7 @@ void wait_on_flash_status(spi_master_interface &spi_if, unsigned char required_s
     int status;
 
     slave_select();
-    spi_master_out_byte(spi_if, READ_STATUS_REG_CMD);
+    spi_master_out_byte(spi_if, flash.readSRCommand);
     do
     {
         status = spi_master_in_byte(spi_if);
@@ -76,68 +79,40 @@ void wait_on_flash_status(spi_master_interface &spi_if, unsigned char required_s
     slave_deselect();
 }
 
-void check_jedec_data(unsigned char manufacturer_id_byte, unsigned short device_id_short, unsigned int complete_id_word)
+void check_device_id(unsigned int id_word)
 {
-    int errorCount = 0;
-    
-    printstr("expected ID: ");
-    printhex(COMPLETE_ID);
-    printstr(" (manufacturer ID: ");
-    printhex(MANUFACTURER_ID);
-    printstr(", device ID: ");
-    printhex(DEVICE_ID);
-    printstrln(")");
-    
-    printstr("returned ID: ");
-    printhex(complete_id_word);
-    printstr(" (manufacturer ID: ");
-    printhex(manufacturer_id_byte);
-    printstr(", device ID: ");
-    printhex(device_id_short);
-    printstrln(")");
-    
-    if (manufacturer_id_byte != MANUFACTURER_ID)
-        errorCount++;
-    
-    if (device_id_short != DEVICE_ID)
-        errorCount++;
-    
-    if (complete_id_word != COMPLETE_ID)
-        errorCount++;
-    
-    if (errorCount)
+    printstr("expected flash ID: ");
+    printhexln(flash.idValue);
+
+    printstr("returned flash ID: ");
+    printhexln(id_word);
+
+    if (id_word != flash.idValue)
     {
-        printint(errorCount);
-        printstrln(" errors detected");
+    	printstrln("Flash ID error detected");
     }
     else
     {
-        printstrln("All data returned from slave received correctly");
+    	printstrln("Flash ID data returned from slave received correctly");
     }
 }
 
-void read_jedec_id(spi_master_interface &spi_if)
+#define WORD 4
+#define BYTE 8
+void read_device_id(spi_master_interface &spi_if)
 {
-    unsigned char manufacturer_id_byte;
-    unsigned short device_id_short;
     unsigned int complete_id_word;
-
-    // Write 1 byte, read 1 byte and 1 short
-    slave_select();
-    spi_master_out_byte(spi_if, JEDEC_ID_CMD);
-    manufacturer_id_byte = spi_master_in_byte(spi_if);
-    device_id_short = spi_master_in_short(spi_if);
-    slave_deselect();
-    
-    slave_inter_select_delay();
 
     // Write 1 byte, read 1 word
     slave_select();
-    spi_master_out_byte(spi_if, JEDEC_ID_CMD);
+    spi_master_out_byte(spi_if, flash.idCommand);
     complete_id_word = spi_master_in_word(spi_if);
     slave_deselect();
 
-    check_jedec_data(manufacturer_id_byte, device_id_short, complete_id_word);
+    // Remove any extra bytes read over the length of the ID
+    complete_id_word = complete_id_word >> ((WORD - flash.idBytes) * BYTE);
+
+    check_device_id(complete_id_word);
 }
 
 #define NANOSECONDS 10
@@ -194,17 +169,12 @@ void write_speed_test(spi_master_interface &spi_if)
     /* Clear a page on flash */
     // Enable writing to the flash
     slave_select();
-    spi_master_out_byte(spi_if, WRITE_ENABLE_CMD);
+    spi_master_out_byte(spi_if, flash.writeEnableCommand);
     slave_deselect();
-    slave_inter_select_delay();
-    // Check the flash is now writeable
-    wait_on_busy_flash(spi_if);
-    slave_inter_select_delay();
-    wait_on_flash_status(spi_if, STATUS_WRITE_EN_MASK);
     slave_inter_select_delay();
     // Clear a big enough block on the flash
     slave_select();
-    command = SECTOR_ERASE_CMD << 24; // Output instruction and 24bit start address of 0
+    command = flash.sectorEraseCommand << 24; // Output instruction and 24bit start address of 0
     spi_master_out_word(spi_if, command);
     slave_deselect();
     slave_inter_select_delay();
@@ -215,16 +185,11 @@ void write_speed_test(spi_master_interface &spi_if)
     /* Write a page to flash */
     // Enable writing to the flash
     slave_select();
-    spi_master_out_byte(spi_if, WRITE_ENABLE_CMD);
+    spi_master_out_byte(spi_if, flash.writeEnableCommand);
     slave_deselect();
     slave_inter_select_delay();
-    // Check the flash is now writeable
-    wait_on_busy_flash(spi_if);
-    slave_inter_select_delay();
-    wait_on_flash_status(spi_if, STATUS_WRITE_EN_MASK);
-    slave_inter_select_delay();
     // Write to flash using Winbond Page Program instruction
-    command = PAGE_PROGRAM_CMD << 24; // Output instruction and 24bit start address of 0
+    command = flash.programPageCommand << 24; // Output instruction and 24bit start address of 0
     t :> start_time;
     slave_select();
     spi_master_out_word(spi_if, command);
@@ -238,13 +203,13 @@ void write_speed_test(spi_master_interface &spi_if)
     wait_on_busy_flash(spi_if);
     slave_inter_select_delay();
     // Read page from flash
-    command = READ_DATA_CMD << 24; // Output instruction and 24bit start address of 0
+    command = flash.readCommand << 24; // Output instruction and 24bit start address of 0
     slave_select();
     spi_master_out_word(spi_if, command);
     spi_master_in_buffer(spi_if, data, WRITE_TEST_NUM_BYTES); // Read page from memory
     slave_deselect();
-    // Check data is correct
-    for (int i = 0; i < WRITE_TEST_NUM_BYTES; i+=4)
+    // Check data is correct, ignoring any dummy bytes returned by the device after a read command before the first byte of data
+    for (int i = flash.readDummyBytes; i < (WRITE_TEST_NUM_BYTES - 4); i+=4)
     {
         if ((data[i] != 0xDE) || (data[i+1] != 0xAD) || (data[i+2] != 0xBE) || (data[i+3] != 0xEF))
         {
@@ -256,7 +221,7 @@ void write_speed_test(spi_master_interface &spi_if)
     {
         printstrln("Error detected during write speed test");
         printstrln("Data read back as follows (each line should read 'DEADBEEF':");
-        for (int j = 0; j < WRITE_TEST_NUM_BYTES; j+=4)
+        for (int j = flash.readDummyBytes; j < (WRITE_TEST_NUM_BYTES - 4); j+=4)
         {
             printhex(data[j]);
             printhex(data[j+1]);
@@ -281,7 +246,7 @@ void read_speed_test(spi_master_interface &spi_if)
     printstr("Read speed test... ");
     wait_on_busy_flash(spi_if);
     slave_inter_select_delay();
-    command = READ_DATA_CMD << 24; // Output instruction and 24bit start address of 0
+    command = flash.readCommand << 24; // Output instruction and 24bit start address of 0
     t :> start_time;
     slave_select();
     spi_master_out_word(spi_if, command);
@@ -303,7 +268,7 @@ int main(void)
     spi_master_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
     slave_deselect(); // Ensure slave select is in correct start state
     
-    read_jedec_id(spi_if);
+    read_device_id(spi_if);
     slave_inter_select_delay();
     write_speed_test(spi_if);
     read_speed_test(spi_if);   
@@ -312,4 +277,3 @@ int main(void)
     
     return 0;
 }
-
