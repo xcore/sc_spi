@@ -10,8 +10,7 @@ The ``spi_master.h`` header file contains prototypes of all functions required t
 Initialising the Interface
 --------------------------
 
-The structure that holds the port declarations for the interface should initialised as follows:
-::
+The structure that holds the port declarations for the interface should initialised as follows::
 
   spi_master_interface spi_if =
   {
@@ -22,13 +21,11 @@ The structure that holds the port declarations for the interface should initiali
       PORT_SPI_MISO
   };
 
-The two clockblocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L2 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal
-::
+The two clockblocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L2 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal::
 
   out port spi_ss = PORT_SPI_SS; // Single select line, not part of SPI master API
 
-Then the interface should be initialised as follows. 
-::
+Then the interface should be initialised as follows::
 
   spi_master_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
 
@@ -51,9 +48,12 @@ Makefile
 The Makefile is found in the top level directory of the
 application. 
 
-The application is for either the XK-1A development board or the Slicekit Core Board so the TARGET variable needs to be set in the Makefile::
+The application is for either the XK-1A development board or the Slicekit Core Board so the TARGET variable needs to be set in the Makefile as either::
 
   TARGET = XK-1
+
+or::
+
   TARGET = XK-SKC-L2
 
 
@@ -75,16 +75,16 @@ to 2 (giving a SPI clock frequency of 25MHz).
 The flash chip on the XK-1 board supports SPI modes 0 and 3, and clock frequencies up to 104MHz. 
 The demo can be recompiled and run in either SPI mode, and larger clock dividers.
 
-Target Specific Header File
-+++++++++++++++++++++++++++
+Target Specific Flash Struct
+++++++++++++++++++++++++++++
 
-Depending on which board is being used, a header file with #defines for the specific flash device on the board must be included as follows:
+Depending on which board is being used, a ``fl_DeviceSpec`` struct must be declared for the specific flash device on the board as follows:
 
 XK-1A::
-  #include "atmel_AT25FS010.h"
+  fl_DeviceSpec flash = FL_DEVICE_WINBOND_W25X10;
 
 Slicekit L2::
-  #include "numonyx_M25P16.h"
+  fl_DeviceSpec flash = FL_DEVICE_NUMONYX_M25P16;
 
 
 Top level program structure
