@@ -5,7 +5,6 @@ SPI Components Change Log
 -----
   * Updated documents for xSOFTip requirements
   * Added metainfo and XPD items
-  * TO DO: Finish porting loopback demo to Slicekit
 
 1.2.0
 -----
