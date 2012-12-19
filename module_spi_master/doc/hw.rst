@@ -10,9 +10,9 @@ Recommended Hardware
 Slicekit
 ++++++++
 
-This module may be evaluated using the Slicekit Modular Development Platform, available from digikey. Required board SKUs are:
+This module may be evaluated using the Slicekit Modular Development Platform. Required board SKUs are:
 
-   * XP-SKC-L2 (Slicekit L2 Core Board) plus XA-SK-UART8 plus XA-SK-XTAG2 (Slicekit XTAG adaptor) 
+   * XP-SKC-L2 (Slicekit L2 Core Board) plus XA-SK-XTAG2 (Slicekit XTAG adaptor) 
 
 No slices will be required since the example application uses the flash memory on the core board.
 
@@ -21,7 +21,7 @@ The demo application can also be run on the xCORE Simulator, without requiring a
 XK-1A
 +++++
 
-The same application can also run on the XK-1A development board, available from Digikey.
+The same application can also run on the XK-1A development board.
 
 Demonstration Applications
 --------------------------

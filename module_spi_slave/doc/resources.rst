@@ -11,11 +11,15 @@ Resources
       - Resource Type
       - Number required
       - Notes
-    * - SPI Slave Inputs
+    * - SPI Slave inputs
       - 1 bit port 
-      - 2
-      - SCLK and MOSI
+      - 3
+      - SCLK, MOSI, and SS
     * - SPI Slave outputs
       - 1 bit port
       - 1
       - MISO
+    * - SPI IO timing
+      - clock block
+      - 1
+      - 

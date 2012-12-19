@@ -21,7 +21,7 @@ To setup up the system:
 #. Connect XTAG-2 to the XA-SK-XTAG2.
 #. Connect XA-SK-XTAG2 to the XP-SKC-L2 using the port marked ``CROSS``.
 #. Set the ``XMOS LINK`` to ``OFF`` on the XA-SK-XTAG2.
-#. Connect the XTAG-2 to host PC. Note that the USB cable is not provided with the Slicekit starter kit.
+#. Connect the XTAG-2 to host PC.
 #. Switch on the power supply to the Slicekit Core board.
 
 .. figure:: images/hardware_setup.jpg
