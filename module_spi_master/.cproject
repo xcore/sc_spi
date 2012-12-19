@@ -162,14 +162,12 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <inputType id = "com.xmos.cdt.xc.compiler.input.89832303" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input" />
                                 <option id = "gnu.c.compiler.option.include.paths.53931788" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
@@ -177,13 +175,11 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.xc.compiler.base.73034130" name="com.xmos.cdt.xc.compiler.base" superClass="com.xmos.cdt.xc.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.60365261" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.13418061" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
@@ -191,13 +187,11 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.c.compiler.base.48371690" name="com.xmos.cdt.c.compiler.base" superClass="com.xmos.cdt.c.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.43629841" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.2961290" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
@@ -205,13 +199,11 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.cpp.compiler.base.87419642" name="com.xmos.cdt.cpp.compiler.base" superClass="com.xmos.cdt.cpp.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.61700555" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.5549866" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
@@ -219,13 +211,11 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.core.assembler.base.6752903" name="com.xmos.cdt.core.assembler.base" superClass="com.xmos.cdt.core.assembler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.32474927" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.79053748" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>

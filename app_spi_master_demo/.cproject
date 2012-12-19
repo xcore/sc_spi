@@ -162,131 +162,111 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <inputType id = "com.xmos.cdt.xc.compiler.input.68475274" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input" />
                                 <option id = "gnu.c.compiler.option.include.paths.86925347" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                             </tool>
                             <tool id = "com.xmos.cdt.xc.compiler.base.59798121" name="com.xmos.cdt.xc.compiler.base" superClass="com.xmos.cdt.xc.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.96309208" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.23540672" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                             </tool>
                             <tool id = "com.xmos.cdt.c.compiler.base.18613122" name="com.xmos.cdt.c.compiler.base" superClass="com.xmos.cdt.c.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.17507342" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.81398898" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                             </tool>
                             <tool id = "com.xmos.cdt.cpp.compiler.base.10695935" name="com.xmos.cdt.cpp.compiler.base" superClass="com.xmos.cdt.cpp.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.29035041" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.81711672" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                             </tool>
                             <tool id = "com.xmos.cdt.core.assembler.base.74120719" name="com.xmos.cdt.core.assembler.base" superClass="com.xmos.cdt.core.assembler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.70393633" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.98453049" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_master_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
 
                                 </option>
                             </tool>

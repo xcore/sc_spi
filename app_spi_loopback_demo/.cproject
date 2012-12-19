@@ -162,26 +162,20 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${XMOS_DOC_PATH}/../target/include/c++/4.2.1/xcore-xmos-elf&quot;' />
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
                                 <inputType id = "com.xmos.cdt.xc.compiler.input.8234175" name="XC Sources" superClass="com.xmos.cdt.xc.compiler.input" />
                                 <option id = "gnu.c.compiler.option.include.paths.27388563" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
@@ -189,25 +183,19 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.xc.compiler.base.92156805" name="com.xmos.cdt.xc.compiler.base" superClass="com.xmos.cdt.xc.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.89619253" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.30939293" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
@@ -215,25 +203,19 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.c.compiler.base.43174533" name="com.xmos.cdt.c.compiler.base" superClass="com.xmos.cdt.c.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.98219845" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.7671943" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
@@ -241,25 +223,19 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.cpp.compiler.base.33540286" name="com.xmos.cdt.cpp.compiler.base" superClass="com.xmos.cdt.cpp.compiler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.72184296" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.40522581" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
@@ -267,25 +243,19 @@ targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                             <tool id = "com.xmos.cdt.core.assembler.base.68842419" name="com.xmos.cdt.core.assembler.base" superClass="com.xmos.cdt.core.assembler.base">
                                 <option id = "gnu.c.compiler.option.include.paths.21178850" valueType="includePath" superClass="gnu.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
                                 <option id = "com.xmos.c.compiler.option.include.paths.20523882" valueType="includePath" superClass="com.xmos.c.compiler.option.include.paths">
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_spi_loopback_demo/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_spi_slave}&quot;' />
 
                                 </option>
