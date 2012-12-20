@@ -46,7 +46,17 @@ Now that the application has been compiled, the next step is to run it on the xC
 #. Enable signal tracing on the loopback pins, using these `instructions <https://www.xmos.com/node/14798#trace-a-signal>`__ to trace the ports on Tile[0].
 #. Click ``Run`` to start the simulation.
 
-The output to the console should show the SPI mode and frequency, the number of tests the demo will perform, and then the result of each test.
+The output to the console should show the SPI mode and frequency, the number of tests the demo will perform, and then the result of each test as follows::
+
+  Running in SPI mode 3
+  with SPI frequency 25MHz
+  for 3 demo runs
+  Demo run 1
+  All data returned from slave received correctly
+  Demo run 2
+  All data returned from slave received correctly
+  Demo run 3
+  All data returned from slave received correctly
 
 To view the trace of the SPI signals, open ``app_spi_loopback_demo.vcd`` and select the signal for each of the ports setup in the loopback. Displaying these signals should result in the waves being in the Waves view. The ports map to the SPI signals as follows, as can be seen in ``spi_master_interface`` and ``spi_slave_interface`` structs declared in ``spi_loopback_demo.xc``:
 

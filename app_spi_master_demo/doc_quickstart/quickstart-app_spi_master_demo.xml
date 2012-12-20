@@ -30,8 +30,17 @@ Note: Running this program will overwrite any existing data in the flash.</blurb
 	</import_and_build>
 	<run_application>
 		<!--<pre_run_step></pre_run_step>-->
-		<results_text>The output to the console should show the SPI mode and frequency, 
-		the onboard flash JEDEC data, and the results of write and read speed tests.</results_text>
+		<results_text>The output to the console should show the SPI mode and frequency, the onboard flash JEDEC data, and the results of write and read speed tests as follows::
+
+  Running in SPI mode 3
+  with SPI frequency 25MHz
+  expected flash ID: 202015
+  returned flash ID: 202015
+  Flash ID data returned from slave received correctly
+  Write speed test... Time taken: 109480ns, for 256 bytes: 2.22MB/s
+  Read speed test... Time taken: 21505940ns, for 51200 bytes: 2.26MB/s
+
+</results_text>
 	</run_application>
 	<next_steps>
 		<option>Examine the application code. In xTIMEcomposer navigate to the ``src`` directory under app_spi_master_demo and double click on the ``spi_master_demo.xc`` file within it. The file will open in the central editor window.</option>

@@ -54,8 +54,17 @@ Now that the application has been compiled, the next step is to run it on the Sl
 #. Click on the ``Run`` icon (the white arrow in the green circle).
 #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
 
-The output to the console should show the SPI mode and frequency, 
-		the onboard flash JEDEC data, and the results of write and read speed tests.
+The output to the console should show the SPI mode and frequency, the onboard flash JEDEC data, and the results of write and read speed tests as follows::
+
+  Running in SPI mode 3
+  with SPI frequency 25MHz
+  expected flash ID: 202015
+  returned flash ID: 202015
+  Flash ID data returned from slave received correctly
+  Write speed test... Time taken: 109480ns, for 256 bytes: 2.22MB/s
+  Read speed test... Time taken: 21505940ns, for 51200 bytes: 2.26MB/s
+
+
 
 Next Steps
 ----------
