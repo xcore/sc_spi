@@ -1,16 +1,16 @@
-SPI Programming Guide
+SPI programming guide
 =====================
 
-Key Files
+Key files
 ---------
 
-The ``spi_master.h`` header file contains prototypes of all functions required to use use the SPI Master library. No other header files need to be included in the application. The API is described in 
+The ``spi_master.h`` header file contains prototypes of all functions required to use use the SPI master library. No other header files need to be included in the application. The API is described in 
 :ref:`sec_api`.
 
-Initialising the Interface
+Initialising the interface
 --------------------------
 
-The structure that holds the port declarations for the interface should initialised as follows::
+The structure that holds the port declarations for the interface should initialized as follows::
 
   spi_master_interface spi_if =
   {
@@ -21,17 +21,17 @@ The structure that holds the port declarations for the interface should initiali
       PORT_SPI_MISO
   };
 
-The two clockblocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L2 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal::
+The two clock blocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L2 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal::
 
   out port spi_ss = PORT_SPI_SS; // Single select line, not part of SPI master API
 
-Then the interface should be initialised as follows::
+Then the interface should be initialized as follows::
 
   spi_master_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
 
 Following the above, the SPI master access functions detailed in the API can be called.
 
-Demo Applications
+Demo applications
 =================
 
 app_spi_master_demo
@@ -48,7 +48,7 @@ Makefile
 The Makefile is found in the top level directory of the
 application. 
 
-The application is for either the XK-1A development board or the Slicekit Core Board so the TARGET variable needs to be set in the Makefile as either::
+The application is for either the XK-1A development board or the sliceKIT Core Board so the TARGET variable needs to be set in the Makefile as either::
 
   TARGET = XK-1
 
@@ -75,15 +75,15 @@ to 2 (giving a SPI clock frequency of 25MHz).
 The flash chip on the XK-1 board supports SPI modes 0 and 3, and clock frequencies up to 104MHz. 
 The demo can be recompiled and run in either SPI mode, and larger clock dividers.
 
-Target Specific Flash Struct
+Target specific flash struct
 ++++++++++++++++++++++++++++
 
 Depending on which board is being used, a ``fl_DeviceSpec`` struct must be declared for the specific flash device on the board as follows:
 
-XK-1A::
+XK-1A:
   fl_DeviceSpec flash = FL_DEVICE_WINBOND_W25X10;
 
-Slicekit L2::
+sliceKIT L2:
   fl_DeviceSpec flash = FL_DEVICE_NUMONYX_M25P16;
 
 

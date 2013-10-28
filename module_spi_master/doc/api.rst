@@ -1,14 +1,12 @@
 .. _sec_api:
 
-SPI Master API
+SPI master API
 ==============
 
 .. _sec_conf_defines:
 
-Configuration Defines
+Configuration defines
 ---------------------
-
-
 
 The file spi_conf.h can be provided in the application source code, without it 
 the default values specified in spi_master.h and spi_slave.h will be used.
@@ -17,7 +15,7 @@ This file can set the following defines:
 **DEFAULT_SPI_CLOCK_DIV**
 
     This define sets the default clock divider, which the application can use 
-    when initialising the SPI master. See **spi_clock_div** parameter of 
+    when initializing the SPI master. See **spi_clock_div** parameter of 
     ``spi_master_init()`` in :ref:`sec_conf_functions` for clock divider format.
     Leave this set at 2 for the maximum SPI clock frequency of 25 MHz.
 

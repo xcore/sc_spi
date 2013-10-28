@@ -1,4 +1,4 @@
-Resource Requirements
+Resource requirements
 =====================
 
 Resources
@@ -8,18 +8,18 @@ Resources
     :header-rows: 1
 
     * - Operation
-      - Resource Type
+      - Resource type
       - Number required
       - Notes
-    * - SPI Master Outputs
+    * - SPI master outputs
       - 1 bit port (output)
       - 2
       - SCLK and MOSI
-    * - SPI Master Inputs
+    * - SPI master inputs
       - 1 bit port
       - 1
       - MISO
-    * - SPI IO timing
+    * - SPI I/O timing
       - clock block
       - 2
       - 

@@ -1,10 +1,10 @@
-XMOS xSOFTip SPI Master Component
+XMOS xSOFTip SPI master component
 =================================
 
 .. toctree::
 
    Overview <overview>
-   Resource Requirements <resources>
-   Hardware Platforms <hw>
+   Resource requirements <resources>
+   Hardware platforms <hw>
    API <api>
-   Programming Guide <programming>
+   Programming guide <programming>

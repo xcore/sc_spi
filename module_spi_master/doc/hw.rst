@@ -1,18 +1,18 @@
 
-Evaluation Platforms
+Evaluation platforms
 ====================
 
 .. _sec_hardware_platforms:
 
-Recommended Hardware
+Recommended hardware
 --------------------
 
-Slicekit
+sliceKIT
 ++++++++
 
-This module may be evaluated using the Slicekit Modular Development Platform. Required board SKUs are:
+This module may be evaluated using the sliceKIT Modular Development Platform. Required board SKUs are:
 
-   * XP-SKC-L2 (Slicekit L2 Core Board) plus XA-SK-XTAG2 (Slicekit XTAG adaptor) 
+   * XP-SKC-L2 (sliceKIT L2 Core Board) plus XA-SK-XTAG2 (sliceKIT xTAG adaptor) 
 
 No slices will be required since the example application uses the flash memory on the core board.
 
@@ -23,13 +23,13 @@ XK-1A
 
 The same application can also run on the XK-1A development board.
 
-Demonstration Applications
+Demonstration applications
 --------------------------
 
 app_spi_master_demo
 +++++++++++++++++++
 
-Example usage of this module can be found within the XSoftIP suite as follows:
+Example usage of this module can be found within the xSOFTip suite as follows:
 
    * Package: sc_spi
    * Application: app_spi_master_demo
