@@ -1,11 +1,11 @@
-SPI Master Example Application: Quick Start Guide
+SPI master example application: quick start guide
 =================================================
 
 This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 sliceKIT L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
 
 Note: Running this program will overwrite any existing data in the flash.
 
-Hardware Setup
+Hardware setup
 --------------
 
 The following hardware components are required:
@@ -37,7 +37,9 @@ To setup up the system:
     
        Hardware Setup for SPI Master Example Application
 
-Import and Build the Application
+|newpage|
+
+Import and build the application
 --------------------------------
 
 #. Open xTIMEcomposer Studio.
@@ -52,7 +54,7 @@ For help in using xTIMEcomposer, try the xTIMEcomposer tutorial, which you can f
 
 Note that the Developer Column in the xTIMEcomposer on the right hand side of your screen provides information on the xSOFTip components you are using. Select a module in the Project Explorer, and you will see its description together with API documentation. Having done this, click the `back` icon until you return to this quickstart guide within the Developer Column.
 
-Run the Application
+Run the application
 -------------------
 
 Now that the application has been compiled, the next step is to run it on the sliceKIT Core Board using the tools to load the application over JTAG (via the xTAG-2 and xTAG Adaptor card) into the xCORE multicore microcontroller.
@@ -71,15 +73,13 @@ The output to the console should show the SPI mode and frequency, the onboard fl
   Write speed test... Time taken: 109480ns, for 256 bytes: 2.22MB/s
   Read speed test... Time taken: 21505940ns, for 51200 bytes: 2.26MB/s
 
-
-
-Next Steps
+Next steps
 ----------
 
 #. Examine the application code. In xTIMEcomposer Studio navigate to the ``src`` directory under app_spi_master_demo and double click on the ``spi_master_demo.xc`` file within it. The file will open in the central editor window.
 #. Trying changing the ``DEFAULT_SPI_CLOCK_DIV`` define on line 6 of ``spi_conf.h`` to run a different SPI frequency, a value of ``50`` will result in a 1MHz SPI clock.
 
-Try Related Applications
+Try related applications
 ------------------------
 
 #. app_spi_loopback_demo

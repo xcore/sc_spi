@@ -1,10 +1,10 @@
 <CATALOG>
 	<common>
 		<type>module</type>
-		<title>SPI Master Component</title>
+		<title>SPI master component</title>
 		<folder>sc_spi</folder>
 	</common>
-	<example_name>SPI Master Example Application</example_name>
+	<example_name>SPI master example application</example_name>
 	<app_name>app_spi_master_demo</app_name>
 	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 sliceKIT L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
 
