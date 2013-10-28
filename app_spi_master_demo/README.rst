@@ -6,5 +6,5 @@ SPI Master Example Application
 :keywords: SPI, Flash
 :boards: XK-1A, XK-SKC-L2
 
-This example application uses the SPI Master library to initialise the external flash on the development board, read the manufacturer ID and then read and write the memory. The application prints out the read bandwidth achieved.
+This example application uses the SPI Master library to initialize the external flash on the development board, read the manufacturer ID and then read and write the memory. The application prints out the read bandwidth achieved.
 
