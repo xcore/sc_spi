@@ -1,7 +1,7 @@
 Overview
 ========
 
-All four Spi Modes (0 through 3 are supported) as shown below
+All four SPI modes (0 through 3 are supported) as shown below
 
 SPI modes
 ---------
@@ -32,7 +32,7 @@ The achievable clock speed and effective bandwidth varies according to which of 
 +------+---------------------------+
 |   2  | 893kHz                    |
 +------+---------------------------+
-|   3  | 25Mhz                     |
+|   3  | 25MHz                     |
 +------+---------------------------+
 
 .. [#first] Maximum frequency with which tests could be completed correctly

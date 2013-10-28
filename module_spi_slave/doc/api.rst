@@ -1,18 +1,18 @@
 .. _sec_api:
 
-SPI Slave API
+SPI slave API
 ==============
 
 .. _sec_conf_defines:
 
-Configuration Defines
+Configuration defines
 ---------------------
 
 The file spi_conf.h can be provided in the application source code, without it 
 the default values specified in spi_master.h and spi_slave.h will be used.
 This file can set the following defines:
 
-**SPI_MASTER_MODE**
+**SPI_SLAVE_MODE**
 
     The SPI mode the slave operates in.
     
@@ -31,23 +31,23 @@ This file can set the following defines:
 SPI slave API
 -------------
 
-Data Structures
+Data structures
 +++++++++++++++
 .. doxygenstruct:: spi_slave_interface
 
-Configuration Functions
+Configuration functions
 +++++++++++++++++++++++
 .. doxygenfunction:: spi_slave_init
 .. doxygenfunction:: spi_slave_shutdown
 
-Receive Functions
+Receive functions
 +++++++++++++++++
 .. doxygenfunction:: spi_slave_in_byte
 .. doxygenfunction:: spi_slave_in_short
 .. doxygenfunction:: spi_slave_in_word
 .. doxygenfunction:: spi_slave_in_buffer
 
-Transmit Functions
+Transmit functions
 ++++++++++++++++++
 .. doxygenfunction:: spi_slave_out_byte
 .. doxygenfunction:: spi_slave_out_short

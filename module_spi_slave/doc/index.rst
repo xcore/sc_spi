@@ -1,10 +1,10 @@
-XMOS xSOFTip SPI Slave Component
+XMOS xSOFTip SPI slave component
 =================================
 
 .. toctree::
 
    Overview <overview>
-   Resource Requirements <resources>
-   Hardware Platforms <hw>
+   Resource requirements <resources>
+   Hardware platforms <hw>
    API <api>
-   Programming Guide <programming>
+   Programming guide <programming>

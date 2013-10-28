@@ -1,6 +1,2 @@
-SPHINX_PROJECT_NAME=xSOFTip SPI Slave Library
-VERSION=1.0
-DOXYGEN_DIRS=../../../sc_spi/module_spi_slave
-SOURCE_INCLUDE_DIRS=../../../sc_spi
-XDOC_DIR ?= ../../../xdoc
-include $(XDOC_DIR)/Makefile.inc
+DOXYGEN_DIRS=../src
+SOURCE_INCLUDE_DIRS=../../
