@@ -6,15 +6,15 @@
 	</common>
 	<example_name>SPI Master Example Application</example_name>
 	<app_name>app_spi_master_demo</app_name>
-	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 Slicekit L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
+	<blurb>This simple demonstration of xTIMEcomposer Studio functionality uses the XP-SKC-L2 sliceKIT L2 Core Board together with the xSOFTip ``module_spi_master`` to demonstrate how the module is used to communicate with an SPI slave device, the SPI flash device on the board (M25P16 flash).
 
 Note: Running this program will overwrite any existing data in the flash.</blurb>
 	<hardware_setup>
-		<board name="XP-SKC-L2" long_name="Slicekit L2 Core Board"/>
-		<board name="XA-SK-XTAG2" long_name="Slicekit XTAG Adaptor"/>
-		<board name="XTAG-2" long_name="XTAG Connector Board"/>
+		<board name="XP-SKC-L2" long_name="sliceKIT L2 Core Board"/>
+		<board name="XA-SK-XTAG2" long_name="sliceKIT xTAG Adaptor"/>
+		<board name="xTAG-2" long_name="xTAG Connector Board"/>
 		<connection>
-			<from>XTAG-2</from>
+			<from>xTAG-2</from>
 			<to>XA-SK-XTAG2</to>	
 		</connection>
 		<connection>
@@ -23,7 +23,7 @@ Note: Running this program will overwrite any existing data in the flash.</blurb
 			<port>CROSS</port>	
 		</connection>
 		<after_plug>Set the ``XMOS LINK`` to ``OFF`` on the XA-SK-XTAG2.</after_plug>
-		<hw_setup_file_name>hardware_setup.jpg</hw_setup_file_name>
+		<hw_setup_file_name>hardware_setup.*</hw_setup_file_name>
 	</hardware_setup>
 	<import_and_build>
 		<imported_module>module_spi_master</imported_module>
