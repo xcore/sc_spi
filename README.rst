@@ -29,7 +29,7 @@ Known Issues
    * module_spi_slave: Slave select line usage documentation still to be added. Slave active when SS line low, as is standard for SPI. However SS port is inverted, so apps must watch for SS port going high.
    * module_spi_slave: MISO port continues to drive final bit after output is complete, rather than being left in a high-impedance state.
 
-This will be addressed in the next release.
+These issues will be addressed in the next release.
 
 Support
 =======
