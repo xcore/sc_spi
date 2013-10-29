@@ -4,33 +4,34 @@
         <component description = "Usage Example for xSOFTip SPI Master Module looped back to xSOFTip Slave Module" type = "demoCode" scope = "Example" path = "app_spi_loopback_demo" local = "false" id = "app_spi_loopback_demo" name = "SPI Master/Slave Loopback Example Application">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
-            <componentDependency>module_spi_master</componentDependency>
-            <componentDependency>module_spi_slave</componentDependency>
+            <componentDependency version = "1.3.0">module_spi_master</componentDependency>
+            <componentDependency version = "1.3.0">module_spi_slave</componentDependency>
             <keyword>SPI</keyword>
             <keyword>demo</keyword>
         </component>
         <component description = "Usage Example for xSOFTip SPI Master Module with External Flash" type = "demoCode" scope = "Example" path = "app_spi_master_demo" local = "false" id = "app_spi_master_demo" name = "SPI Master Example Application">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
-            <componentDependency>module_spi_master</componentDependency>
-            <componentDependency>module_slicekit_support</componentDependency>
+            <componentDependency version = "1.3.0">module_spi_master</componentDependency>
+            <componentDependency repo = "origin" version = "1.0.3">module_slicekit_support</componentDependency>
             <keyword>SPI</keyword>
             <keyword>Flash</keyword>
         </component>
-        <component name = "SPI Master Function Library" type = "component" buildresults_path = "module_spi_master/.module_spi_master.buildinfo" scope = "General Use" path = "module_spi_master" metainfo_path = "module_spi_master/module_spi_master.metainfo" local = "false" id = "module_spi_master" description = "SPI Master Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
+        <component name = "SPI Master Function Library" type = "component" buildresults_path = "module_spi_master/.module_spi_master.buildinfo" scope = "General Use" path = "module_spi_master" metainfo_path = "module_spi_master/module_spi_master.metainfo" local = "false" id = "module_spi_master" description = "SPI Master Function Library tested for operation up to 25MHz SCLK frequency and all four SPI modes">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
             <keyword>SPI</keyword>
             <keyword>Flash</keyword>
         </component>
-        <component name = "SPI Slave Function Library" type = "component" buildresults_path = "module_spi_slave/.module_spi_slave.buildinfo" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" local = "false" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz Sclk frequency and all four SPI modes">
+        <component name = "SPI Slave Function Library" type = "component" buildresults_path = "module_spi_slave/.module_spi_slave.buildinfo" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" local = "false" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz SCLK frequency and all four SPI modes">
             <board>XK-1A</board>
             <keyword>SPI</keyword>
         </component>
     </components>
-    <dependency repo = "sc_util">
-        <githash>3f82b846395c07e8dd32ad9951afc209b6ed7efc</githash>
-        <uri>git://github.com/xcore/sc_util.git</uri>
+    <dependency repo = "sc_slicekit_support">
+        <githash>7920fc4235a96585274d73d25d275ea63b4cd285</githash>
+        <uri>https://github.com/xcore/sc_slicekit_support.git</uri>
+        <version>1.0.3rc0</version>
     </dependency>
     <description>SPI protocol components</description>
     <docdir>module_spi_master/doc</docdir>
@@ -55,10 +56,10 @@
     <release parenthash = "965b3fe6f725566827593779551f81dc8a3a9b38" version = "1.3.0alpha5" githash = "147531ff603c200730faea4d78fd2c6c25e7949f"></release>
     <release parenthash = "e6939105660698792b634477e3cc64dca14eba29" version = "1.3.0alpha6" githash = "5bcfcb20cc697f70694fac4a1d2c15322652fe61"></release>
     <release parenthash = "28c906e397af493c792fa60e93897ba7cbb873d1" version = "1.3.0rc0" githash = "a9f880726d9efcdc825ac1211941ff3622530d73"></release>
-    <release parenthash = "a9f880726d9efcdc825ac1211941ff3622530d73" version = "1.3.0rc1"></release>
+    <release parenthash = "a9f880726d9efcdc825ac1211941ff3622530d73" version = "1.3.0rc1" githash = "16898e9423ff46c1516a436a865730df85457b6b"></release>
     <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
+    <version_defines></version_defines>
     <xcore_repo>sc_spi</xcore_repo>
     <xpd_version>1.0</xpd_version>
-    <scope>General\ Use</scope>
 </xpd>
