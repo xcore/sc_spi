@@ -1,6 +1,11 @@
 SPI Components Change Log
 =========================
 
+1.3.1
+-----
+  * Updated dependences to reflect module_slicekit_support move
+  * Updated documents
+
 1.3.0
 -----
   * Updated documents for xSOFTip requirements
