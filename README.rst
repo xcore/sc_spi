@@ -26,12 +26,15 @@ Full documentation can be found at: http://xcore.github.com/sc_spi/
 Known Issues
 ============
 
-None
+   * module_spi_slave: Slave select line usage documentation still to be added. Slave active when SS line low, as is standard for SPI. However SS port is inverted, so apps must watch for SS port going high.
+   * module_spi_slave: MISO port continues to drive final bit after output is complete, rather than being left in a high-impedance state.
+
+This will be addressed in the next release.
 
 Support
 =======
 
-Issues may be submitted via the Issues tab in this github repo. Response to any issues submitted as at the discretion of the manitainer for this line.
+Issues may be submitted via the Issues tab in this github repo. Response to any issues submitted as at the discretion of the maintainer for this line.
 
 Required software (dependencies)
 ================================
