@@ -36,12 +36,12 @@ void spi_slave_init(spi_slave_interface &spi_if)
     #error "Unrecognised SPI mode."
 #endif
     // configure ports and clock blocks
-    // note: SS port is inverted, assertion is port value 1
+    // note: SS port is inverted, assertion is port value 1 (pin value 0 - slave active low)
     configure_clock_src(spi_if.blk, spi_if.sclk);
     configure_in_port(spi_if.mosi, spi_if.blk);
     configure_out_port(spi_if.miso, spi_if.blk, 0);
     set_clock_ready_src(spi_if.blk, spi_if.ss);
-    set_port_inv(spi_if.ss);
+    set_port_inv(spi_if.ss); // spi_if.blk ready-in signalled when SS pin is 0
     set_port_strobed(spi_if.mosi);
     set_port_strobed(spi_if.miso);
     set_port_slave(spi_if.mosi);

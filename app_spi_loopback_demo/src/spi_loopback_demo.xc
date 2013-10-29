@@ -165,7 +165,7 @@ void slave_demo(spi_slave_interface &spi_sif)
     select
     {
         // Wait for slave to be enabled
-        case spi_sif.ss when pinseq(0) :> void :
+        case spi_sif.ss when pinseq(1) :> void : // SS port inversion enabled, slave expected to be active low
             
             // Read from master
             b = spi_slave_in_byte(spi_sif);
