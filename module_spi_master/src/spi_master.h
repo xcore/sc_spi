@@ -54,7 +54,7 @@ typedef struct spi_master_interface
  *
  * Must be called before any SPI data input or output functions are used.
  *
- * \param spi_if         Resources for the SPI interface being initialised
+ * \param spi_if         Resources for the SPI interface being initialized
  * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div), 
  *                       where freq defaults to 100MHz
  *

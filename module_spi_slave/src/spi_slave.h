@@ -47,7 +47,7 @@ typedef struct spi_slave_interface
  *
  * Must be called before any SPI data input or output functions are used.
  *
- * \param spi_if  Resources for the SPI interface being initialised
+ * \param spi_if  Resources for the SPI interface being initialized
  *
  */
 void spi_slave_init(spi_slave_interface &spi_if);
