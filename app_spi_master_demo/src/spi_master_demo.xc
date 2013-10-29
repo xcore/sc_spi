@@ -260,20 +260,20 @@ int main(void)
 {
     printstr("Running in SPI mode ");
     printintln(SPI_MASTER_MODE);
-    
+
     printstr("with SPI frequency ");
     printint((100/(2*DEFAULT_SPI_CLOCK_DIV)));
     printstrln("MHz");
-    
+
     spi_master_init(spi_if, DEFAULT_SPI_CLOCK_DIV);
     slave_deselect(); // Ensure slave select is in correct start state
-    
+
     read_device_id(spi_if);
     slave_inter_select_delay();
     write_speed_test(spi_if);
-    read_speed_test(spi_if);   
+    read_speed_test(spi_if);
 
-    spi_master_shutdown(spi_if);    
-    
+    spi_master_shutdown(spi_if);
+
     return 0;
 }

@@ -23,10 +23,10 @@
 
 /** Structure containing the resources required for the SPI master interface.
  *
- * It consists of two clock blocks, two 8bit buffered output ports for MOSI and SCLK, 
+ * It consists of two clock blocks, two 8bit buffered output ports for MOSI and SCLK,
  * and one 8bit input port for MISO.
  *
- * Select lines are intentionally not part of API, they are simple port outputs, 
+ * Select lines are intentionally not part of API, they are simple port outputs,
  * which depend on how many slaves there are and how they're connected.
  *
  */
@@ -56,12 +56,12 @@ typedef struct spi_master_interface
  * Must be called before any SPI data input or output functions are used.
  *
  * \param spi_if         Resources for the SPI interface being initialized
- * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div), 
+ * \param spi_clock_div  SPI clock frequency is fref/(2*spi_clock_div),
  *                       where freq defaults to 100MHz
  *
- * \note  Example: To achieve an sclk frequency of 25MHz, a divider of 
+ * \note  Example: To achieve an sclk frequency of 25MHz, a divider of
  *        2 must be specified, as 100(MHz)/(2*2) = 25(MHz).
- * \note  Example: To achieve an sclk frequency of 625kHz, a divider of 
+ * \note  Example: To achieve an sclk frequency of 625kHz, a divider of
  *        80 must be specified, as 100(MHz)/(2*80) = 0.625(MHz).
  *
  */
@@ -116,7 +116,7 @@ unsigned int spi_master_in_word(spi_master_interface &spi_if);
  *
  * \param spi_if     Resources for the SPI interface
  * \param buffer     The array the received data will be written to
- * \param num_bytes  The number of bytes to read from the SPI interface, 
+ * \param num_bytes  The number of bytes to read from the SPI interface,
  *                   this must not be greater than the size of buffer
  *
  */
@@ -162,7 +162,7 @@ void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
  *
  * \param spi_if     Resources for the SPI interface
  * \param buffer     The array of data to transmit
- * \param num_bytes  The number of bytes to write to the SPI interface, 
+ * \param num_bytes  The number of bytes to write to the SPI interface,
  *                   this must not be greater than the size of buffer
  *
  */

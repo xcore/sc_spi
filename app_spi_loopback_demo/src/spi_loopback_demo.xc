@@ -50,7 +50,7 @@ void slave_deselect()
 int check_buffer(unsigned char buffer[], int num_bytes)
 {
     unsigned char tmp_buff[BUFFER_LENGTH] = BUFFER_VALUE;
-    
+
     for (int i = 0; i < num_bytes; i++)
     {
         if (buffer[i] != tmp_buff[i])
@@ -58,14 +58,14 @@ int check_buffer(unsigned char buffer[], int num_bytes)
             return 1;
         }
     }
-    
+
     return 0;
 }
 
 void check_data(unsigned char b, unsigned short s, unsigned int i, unsigned char buffer[], int num_bytes)
 {
     int errorCount = 0;
-    
+
     if (b != BYTE_VALUE)
     {
         errorCount++;
@@ -74,7 +74,7 @@ void check_data(unsigned char b, unsigned short s, unsigned int i, unsigned char
         printstr("master received byte:\t");
         printhexln(b);
     }
-    
+
     if (s != SHORT_VALUE)
     {
         errorCount++;
@@ -83,7 +83,7 @@ void check_data(unsigned char b, unsigned short s, unsigned int i, unsigned char
         printstr("master received short:\t");
         printhexln(s);
     }
-    
+
     if (i != INT_VALUE)
     {
         errorCount++;
@@ -92,7 +92,7 @@ void check_data(unsigned char b, unsigned short s, unsigned int i, unsigned char
         printstr("master received word:\t");
         printhexln(i);
     }
-    
+
     if (check_buffer(buffer, num_bytes))
     {
         unsigned char tmp_buff[BUFFER_LENGTH] = BUFFER_VALUE;
@@ -114,7 +114,7 @@ void check_data(unsigned char b, unsigned short s, unsigned int i, unsigned char
         printhex(buffer[BUFFER_LENGTH-1]);
         printstrln("}");
     }
-    
+
     if (errorCount)
     {
         printint(errorCount);
@@ -132,25 +132,25 @@ void master_demo(spi_master_interface &spi_mif)
     unsigned short s = SHORT_VALUE;
     unsigned int i = INT_VALUE;
     unsigned char buff[BUFFER_LENGTH] = BUFFER_VALUE;
-    
+
     // Enable slave
     slave_select();
-    
+
     // Write to slave
     spi_master_out_byte(spi_mif, b);
     spi_master_out_short(spi_mif, s);
     spi_master_out_word(spi_mif, i);
     spi_master_out_buffer(spi_mif, buff, BUFFER_LENGTH);
-    
+
     // Read from slave
     b = spi_master_in_byte(spi_mif);
     s = spi_master_in_short(spi_mif);
     i = spi_master_in_word(spi_mif);
     spi_master_in_buffer(spi_mif, buff, BUFFER_LENGTH);
-    
+
     // Disable slave
     slave_deselect();
-    
+
     // Check the data received is correct
     check_data(b, s, i, buff, BUFFER_LENGTH);
 }
@@ -161,24 +161,24 @@ void slave_demo(spi_slave_interface &spi_sif)
     unsigned short s;
     unsigned int i;
     unsigned char buff[BUFFER_LENGTH];
-    
+
     select
     {
         // Wait for slave to be enabled
         case spi_sif.ss when pinseq(1) :> void : // SS port inversion enabled, slave expected to be active low
-            
+
             // Read from master
             b = spi_slave_in_byte(spi_sif);
             s = spi_slave_in_short(spi_sif);
             i = spi_slave_in_word(spi_sif);
             spi_slave_in_buffer(spi_sif, buff, BUFFER_LENGTH);
-            
+
             // Write to master
             spi_slave_out_byte(spi_sif, b);
             spi_slave_out_short(spi_sif, s);
             spi_slave_out_word(spi_sif, i);
             spi_slave_out_buffer(spi_sif, buff, BUFFER_LENGTH);
-            
+
             break;
     }
 }
@@ -187,27 +187,27 @@ void run_master(spi_master_interface &spi_mif)
 {
     spi_master_init(spi_mif, SPI_CLOCK_DIV);
     slave_deselect(); // Ensure slave select is in correct start state
-    
+
     for (int i = 0; i < DEMO_RUNS; i++)
     {
         printstr("Demo run ");
         printintln(i+1);
-        
+
         master_demo(spi_mif);
     }
-    
+
     spi_master_shutdown(spi_mif);
 }
 
 void run_slave(spi_slave_interface &spi_sif)
 {
     spi_slave_init(spi_sif);
-    
+
     for (int i = 0; i < DEMO_RUNS; i++)
     {
         slave_demo(spi_sif);
     }
-    
+
     spi_slave_shutdown(spi_sif);
 }
 
@@ -215,22 +215,22 @@ int main(void)
 {
     printstr("Running in SPI mode ");
     printintln(SPI_MODE);
-    
+
     printstr("with SPI frequency ");
     printint((100/(2*SPI_CLOCK_DIV)));
     printstrln("MHz");
-    
+
     printstr("for ");
     printint(DEMO_RUNS);
     printstrln(" demo runs");
-    
+
     // Run SPI master and slave on seperate logical cores
     par
     {
         run_master(spi_mif);
         run_slave(spi_sif);
     }
-    
+
     return 0;
 }
 

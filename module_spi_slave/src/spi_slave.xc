@@ -49,14 +49,14 @@ void spi_slave_init(spi_slave_interface &spi_if)
     start_clock(spi_if.blk);
     spi_if.ss when pinseq(0) :> void;
     spi_if.sclk when pinseq(clk_start) :> void;
-    clearbuf(spi_if.miso);  
+    clearbuf(spi_if.miso);
     clearbuf(spi_if.mosi);
 }
 
 void spi_slave_shutdown(spi_slave_interface &spi_if)
 {
     stop_clock(spi_if.blk);
-    
+
     set_clock_off(spi_if.blk);
     set_port_use_off(spi_if.ss);
     set_port_use_off(spi_if.mosi);
@@ -111,7 +111,7 @@ static inline void spi_slave_out_byte_internal(spi_slave_interface &spi_if, unsi
 {
     // MSb-first bit order
     unsigned int data_rev = bitrev(data) >> 24;
-    
+
 #if (SPI_SLAVE_MODE == 0 || SPI_SLAVE_MODE == 2) // modes where CPHA == 0
     // handle first bit
     asm("setc res[%0], 8" :: "r"(spi_if.miso)); // reset port
@@ -123,7 +123,7 @@ static inline void spi_slave_out_byte_internal(spi_slave_interface &spi_if, unsi
     configure_clock_src(spi_if.blk, spi_if.sclk);
     configure_out_port(spi_if.miso, spi_if.blk, data_rev);
     start_clock(spi_if.blk);
-    
+
     // output remaining data
     spi_if.miso <: (data_rev >> 1);
 #else

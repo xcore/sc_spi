@@ -22,7 +22,7 @@
 
 /** Structure containing the resources required for the SPI slave interface.
  *
- * It consists of one clock block, two 1bit input ports for slave select and SCLK, 
+ * It consists of one clock block, two 1bit input ports for slave select and SCLK,
  * one 8bit buffered input port for MOSI, and one 8bit buffered output port for MISO.
  *
  */
@@ -101,7 +101,7 @@ unsigned int spi_slave_in_word(spi_slave_interface &spi_if);
  *
  * \param spi_if     Resources for the SPI interface
  * \param buffer     The array the received data will be written to
- * \param num_bytes  The number of bytes to read from the SPI interface, 
+ * \param num_bytes  The number of bytes to read from the SPI interface,
  *                   this must not be greater than the size of buffer
  *
  */
@@ -147,7 +147,7 @@ void spi_slave_out_word(spi_slave_interface &spi_if, unsigned int data);
  *
  * \param spi_if     Resources for the SPI interface
  * \param buffer     The array of data to transmit
- * \param num_bytes  The number of bytes to write to the SPI interface, 
+ * \param num_bytes  The number of bytes to write to the SPI interface,
  *                   this must not be greater than the size of buffer
  *
  */

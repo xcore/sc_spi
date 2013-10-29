@@ -102,7 +102,7 @@ static inline void spi_master_out_byte_internal(spi_master_interface &spi_if, un
 {
     // MSb-first bit order - SPI standard
     unsigned x = bitrev(data) >> 24;
-    
+
 #if (SPI_MASTER_MODE == 0 || SPI_MASTER_MODE == 2) // modes where CPHA == 0
     // handle first bit
     asm("setc res[%0], 8" :: "r"(spi_if.mosi)); // reset port
@@ -114,7 +114,7 @@ static inline void spi_master_out_byte_internal(spi_master_interface &spi_if, un
     configure_clock_src(spi_if.blk2, spi_if.sclk);
     configure_out_port(spi_if.mosi, spi_if.blk2, x);
     start_clock(spi_if.blk2);
-    
+
     // output remaining data
     spi_if.mosi <: (x >> 1);
 #else
