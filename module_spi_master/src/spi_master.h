@@ -23,7 +23,8 @@
 
 /** Structure containing the resources required for the SPI master interface.
  *
- * It consists of two 8bit buffered output ports, and one 8bit input port.
+ * It consists of two clock blocks, two 8bit buffered output ports for MOSI and SCLK, 
+ * and one 8bit input port for MISO.
  *
  * Select lines are intentionally not part of API, they are simple port outputs, 
  * which depend on how many slaves there are and how they're connected.

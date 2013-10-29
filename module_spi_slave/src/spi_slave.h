@@ -22,8 +22,8 @@
 
 /** Structure containing the resources required for the SPI slave interface.
  *
- * It consists of two 1bit input ports, one 8bit buffered input port, 
- * and one 8bit buffered output port.
+ * It consists of one clock block, two 1bit input ports for slave select and SCLK, 
+ * one 8bit buffered input port for MOSI, and one 8bit buffered output port for MISO.
  *
  */
 typedef struct spi_slave_interface

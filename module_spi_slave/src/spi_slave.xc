@@ -16,7 +16,7 @@ void spi_slave_init(spi_slave_interface &spi_if)
 {
     int clk_start;
     set_clock_on(spi_if.blk);
-        set_port_use_on(spi_if.ss);
+    set_port_use_on(spi_if.ss);
     set_port_use_on(spi_if.mosi);
     set_port_use_on(spi_if.miso);
     set_port_use_on(spi_if.sclk);
