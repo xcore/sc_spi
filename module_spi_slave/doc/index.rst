@@ -1,5 +1,5 @@
-XMOS xSOFTip SPI slave component
-=================================
+SPI slave component
+===================
 
 .. toctree::
 

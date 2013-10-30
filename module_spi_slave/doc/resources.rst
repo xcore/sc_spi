@@ -12,11 +12,11 @@ Resources
       - Number required
       - Notes
     * - SPI slave inputs
-      - 1 bit port 
+      - 1-bit port 
       - 3
       - SCLK, MOSI, and SS
     * - SPI slave outputs
-      - 1 bit port
+      - 1-bit port
       - 1
       - MISO
     * - SPI I/O timing

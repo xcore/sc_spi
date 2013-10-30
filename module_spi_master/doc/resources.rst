@@ -12,11 +12,11 @@ Resources
       - Number required
       - Notes
     * - SPI master outputs
-      - 1 bit port (output)
+      - 1-bit port (output)
       - 2
       - SCLK and MOSI
     * - SPI master inputs
-      - 1 bit port
+      - 1-bit port
       - 1
       - MISO
     * - SPI I/O timing

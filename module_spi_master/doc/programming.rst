@@ -7,7 +7,7 @@ Key files
 The ``spi_master.h`` header file contains prototypes of all functions required to use the SPI master library. No other header files need to be included in the application. The API is described in 
 :ref:`sec_api`.
 
-Initialising the interface
+Initializing the interface
 --------------------------
 
 The structure that holds the port declarations for the interface should initialized as follows::
@@ -21,7 +21,7 @@ The structure that holds the port declarations for the interface should initiali
       PORT_SPI_MISO
   };
 
-The two clock blocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L2 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal::
+The two clock blocks may be any free clock blocks. The ports associated with PORT_SPI_MOSI/MISO/CLK are defined in the XN file for the XK-1A or XK-SKC-L16 board. In addition to the above, a port for controlling the flash chip select must be declared since the SPI master library does not control this signal::
 
   out port spi_ss = PORT_SPI_SS; // Single select line, not part of SPI master API
 

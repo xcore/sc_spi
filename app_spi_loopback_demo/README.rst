@@ -1,5 +1,5 @@
-SPI Master/Slave Loopback Example Application
-=============================================
+SPI Master/Slave Loopback Demo
+==============================
 
 :scope: Example
 :description: Usage Example for xSOFTip SPI Master Module looped back to xSOFTip Slave Module
