@@ -40,6 +40,11 @@ typedef struct spi_slave_interface
 #endif
 
 #ifndef SPI_SLAVE_MODE
+/** This constant defines the SPI mode that the slave operates in.
+ *
+ * See :ref:`sec_spi_modes` for the modes supported by this slave, and 
+ * the clock polarity and phase used for each.
+ */
 #define SPI_SLAVE_MODE 3
 #endif
 

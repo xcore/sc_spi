@@ -3,6 +3,8 @@ Overview
 
 All four SPI modes (0 through 3 are supported) as shown below
 
+.. _sec_spi_modes:
+
 SPI modes
 ---------
 

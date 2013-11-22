@@ -9,24 +9,10 @@ Configuration defines
 ---------------------
 
 The file spi_conf.h can be provided in the application source code, without it 
-the default values specified in spi_master.h and spi_slave.h will be used.
+the default values specified in spi_slave.h will be used.
 This file can set the following defines:
 
-**SPI_SLAVE_MODE**
-
-    The SPI mode the slave operates in.
-    
-    +------+------+------+
-    | Value| CPOL | CPHA |
-    +======+======+======+
-    |   0  |   0  |   0  |
-    +------+------+------+
-    |   1  |   0  |   1  |
-    +------+------+------+
-    |   2  |   1  |   0  |
-    +------+------+------+
-    |   3  |   1  |   1  |
-    +------+------+------+
+.. doxygendefine:: SPI_SLAVE_MODE
 
 SPI slave API
 -------------
