@@ -44,10 +44,23 @@ typedef struct spi_master_interface
 #endif
 
 #ifndef DEFAULT_SPI_CLOCK_DIV
+/** This constant defines the default clock divider, which the application can
+ * use when initializing the SPI master.
+ *
+ * See **spi_clock_div** parameter of spi_master_init() in 
+ * :ref:`sec_conf_functions` for the clock divider format.
+ *
+ * Leave this set at 2 for the maximum SPI clock frequency of 25 MHz.
+ */
 #define DEFAULT_SPI_CLOCK_DIV 8
 #endif
 
 #ifndef SPI_MASTER_MODE
+/** This constant defines the SPI mode that the master operates in.
+ *
+ * See :ref:`sec_spi_modes` for the modes supported by this master, and 
+ * the clock polarity and phase used for each.
+ */
 #define SPI_MASTER_MODE 3
 #endif
 

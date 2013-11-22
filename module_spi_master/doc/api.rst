@@ -9,31 +9,14 @@ Configuration defines
 ---------------------
 
 The file spi_conf.h can be provided in the application source code, without it 
-the default values specified in spi_master.h and spi_slave.h will be used.
+the default values specified in spi_master.h will be used.
 This file can set the following defines:
 
-**DEFAULT_SPI_CLOCK_DIV**
+.. doxygendefine:: DEFAULT_SPI_CLOCK_DIV
 
-    This define sets the default clock divider, which the application can use 
-    when initializing the SPI master. See **spi_clock_div** parameter of 
-    ``spi_master_init()`` in :ref:`sec_conf_functions` for clock divider format.
-    Leave this set at 2 for the maximum SPI clock frequency of 25 MHz.
+.. doxygendefine:: SPI_MASTER_MODE
 
-**SPI_MASTER_MODE**
-
-    The SPI mode the master operates in.
-    
-    +------+------+------+
-    | Value| CPOL | CPHA |
-    +======+======+======+
-    |   0  |   0  |   0  |
-    +------+------+------+
-    |   1  |   0  |   1  |
-    +------+------+------+
-    |   2  |   1  |   0  |
-    +------+------+------+
-    |   3  |   1  |   1  |
-    +------+------+------+
+.. doxygendefine:: SPI_MASTER_SD_CARD_COMPAT
 
 SPI master API
 --------------
