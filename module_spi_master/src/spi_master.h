@@ -51,6 +51,15 @@ typedef struct spi_master_interface
 #define SPI_MASTER_MODE 3
 #endif
 
+#ifndef SPI_MASTER_SD_CARD_COMPAT
+/** This constant defines the behaviour of the SPI master while receiving data.
+ *
+ * When defined as '1' the SPI master will drive the MOSI line high before
+ * clocking data in from the slave on the MISO line, as required by SD cards.
+ */
+#define SPI_MASTER_SD_CARD_COMPAT 0
+#endif
+
 /** Configure ports and clocks, clearing port buffers.
  *
  * Must be called before any SPI data input or output functions are used.
