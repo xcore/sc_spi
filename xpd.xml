@@ -29,9 +29,9 @@
         </component>
     </components>
     <dependency repo = "sc_slicekit_support">
-        <githash>7920fc4235a96585274d73d25d275ea63b4cd285</githash>
+        <githash>be8353686c6d9e22a6125ccdf979a31c379091d0</githash>
         <uri>https://github.com/xcore/sc_slicekit_support.git</uri>
-        <version>1.0.3rc0</version>
+        <version>1.0.4rc0</version>
     </dependency>
     <description>SPI protocol components</description>
     <docdir>module_spi_master/doc</docdir>
@@ -58,7 +58,7 @@
     <release parenthash = "28c906e397af493c792fa60e93897ba7cbb873d1" version = "1.3.0rc0" githash = "a9f880726d9efcdc825ac1211941ff3622530d73"></release>
     <release parenthash = "a9f880726d9efcdc825ac1211941ff3622530d73" version = "1.3.0rc1" githash = "16898e9423ff46c1516a436a865730df85457b6b"></release>
     <release parenthash = "42fad4fd32b941408d8841aabd108db9ff512545" version = "1.3.1rc0" githash = "f0cea5dfef6238ed6c013bd734a4182c573ba47f"></release>
-    <release parenthash = "b553a710a05d6c358f1f3e7bf09578f5f63a9e02" version = "1.3.1rc1"></release>
+    <release parenthash = "b553a710a05d6c358f1f3e7bf09578f5f63a9e02" version = "1.3.1rc1" githash = "813a44aef98a5312a478ab05263a5d0ab7c751eb"></release>
     <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>
