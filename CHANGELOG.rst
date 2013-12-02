@@ -1,6 +1,11 @@
 SPI Components Change Log
 =========================
 
+1.4.0
+-----
+  * Added build option to allow SD card driver compatibility
+  * Updated documents
+
 1.3.1
 -----
   * Updated dependences to reflect module_slicekit_support move
