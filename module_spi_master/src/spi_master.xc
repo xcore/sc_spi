@@ -56,7 +56,7 @@ static inline unsigned char spi_master_in_byte_internal(spi_master_interface &sp
 {
     // MSb-first bit order - SPI standard
     unsigned x;
-    
+
     if (SPI_MASTER_SD_CARD_COMPAT)
     {
         spi_if.mosi <: 0xFF; // Pull MOSI high

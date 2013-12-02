@@ -1,7 +1,7 @@
 XCORE.com SPI SOFTWARE COMPONENT
 .................................
 
-:Latest release: 1.3.1rc1
+:Latest release: 1.4.0rc0
 :Maintainer: djpwilk
 :Description: SPI protocol components
 
