@@ -47,6 +47,9 @@ void spi_master_shutdown(spi_master_interface &spi_if)
 {
     set_clock_off(spi_if.blk2);
     set_clock_off(spi_if.blk1);
+    set_port_use_off(spi_if.mosi);
+    set_port_use_off(spi_if.miso);
+    set_port_use_off(spi_if.sclk);
 }
 
 static inline unsigned char spi_master_in_byte_internal(spi_master_interface &spi_if)
