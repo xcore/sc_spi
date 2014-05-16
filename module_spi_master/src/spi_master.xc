@@ -45,11 +45,8 @@ void spi_master_init(spi_master_interface &spi_if, int spi_clock_div)
 
 void spi_master_shutdown(spi_master_interface &spi_if)
 {
-    // need clock ticks in order to stop clock blocks
-    spi_if.sclk <: sclk_val;
-    spi_if.sclk <: sclk_val;
-    stop_clock(spi_if.blk2);
-    stop_clock(spi_if.blk1);
+    set_clock_off(spi_if.blk2);
+    set_clock_off(spi_if.blk1);
 }
 
 static inline unsigned char spi_master_in_byte_internal(spi_master_interface &spi_if)
