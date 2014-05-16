@@ -55,8 +55,6 @@ void spi_slave_init(spi_slave_interface &spi_if)
 
 void spi_slave_shutdown(spi_slave_interface &spi_if)
 {
-    stop_clock(spi_if.blk);
-
     set_clock_off(spi_if.blk);
     set_port_use_off(spi_if.ss);
     set_port_use_off(spi_if.mosi);
