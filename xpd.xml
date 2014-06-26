@@ -1,19 +1,23 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
+        <component name = "SPI Slave Function Library" type = "component" buildresults_path = "module_spi_slave/.module_spi_slave.buildinfo" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" local = "false" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz SCLK frequency and all four SPI modes">
+            <board>XK-1A</board>
+            <keyword>SPI</keyword>
+        </component>
         <component description = "Usage Example for xSOFTip SPI Master Module looped back to xSOFTip Slave Module" type = "demoCode" scope = "Example" path = "app_spi_loopback_demo" local = "false" id = "app_spi_loopback_demo" name = "SPI Master/Slave Loopback Demo">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
-            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.3.1">module_spi_slave</componentDependency>
-            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.3.1">module_spi_master</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.4.0">module_spi_master</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.4.0">module_spi_slave</componentDependency>
             <keyword>SPI</keyword>
             <keyword>demo</keyword>
         </component>
         <component description = "Usage Example for xSOFTip SPI Master Module with External Flash" type = "demoCode" scope = "Example" path = "app_spi_master_demo" local = "false" id = "app_spi_master_demo" name = "SPI Master Example Application">
             <board>XK-1A</board>
             <board>XK-SKC-L2</board>
+            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.4.0">module_spi_master</componentDependency>
             <componentDependency repo = "git://github.com/xcore/sc_slicekit_support.git" version = "1.0.4">module_slicekit_support</componentDependency>
-            <componentDependency repo = "git://github.com/xcore/sc_spi" version = "1.3.1">module_spi_master</componentDependency>
             <keyword>SPI</keyword>
             <keyword>Flash</keyword>
         </component>
@@ -23,12 +27,9 @@
             <keyword>SPI</keyword>
             <keyword>Flash</keyword>
         </component>
-        <component name = "SPI Slave Function Library" type = "component" buildresults_path = "module_spi_slave/.module_spi_slave.buildinfo" scope = "Early Development" path = "module_spi_slave" metainfo_path = "module_spi_slave/module_spi_slave.metainfo" local = "false" id = "module_spi_slave" description = "SPI Slave Function Library tested for operation up to 25MHz SCLK frequency and all four SPI modes">
-            <board>XK-1A</board>
-            <keyword>SPI</keyword>
-        </component>
     </components>
     <dependency repo = "sc_slicekit_support">
+        <gitbranch>(no branch)</gitbranch>
         <githash>be8353686c6d9e22a6125ccdf979a31c379091d0</githash>
         <uri>https://github.com/xcore/sc_slicekit_support.git</uri>
         <version>1.0.4rc0</version>
@@ -59,7 +60,8 @@
     <release parenthash = "a9f880726d9efcdc825ac1211941ff3622530d73" version = "1.3.0rc1" githash = "16898e9423ff46c1516a436a865730df85457b6b"></release>
     <release parenthash = "42fad4fd32b941408d8841aabd108db9ff512545" version = "1.3.1rc0" githash = "f0cea5dfef6238ed6c013bd734a4182c573ba47f"></release>
     <release parenthash = "b553a710a05d6c358f1f3e7bf09578f5f63a9e02" version = "1.3.1rc1" githash = "813a44aef98a5312a478ab05263a5d0ab7c751eb"></release>
-    <release parenthash = "f72f082e510ba5673997db25cd76665b8609327c" version = "1.4.0rc0"></release>
+    <release parenthash = "f72f082e510ba5673997db25cd76665b8609327c" version = "1.4.0rc0" githash = "0e7f075d405ba768620f0476a3c27715d0f81649"></release>
+    <release parenthash = "28cc34f5a0f0d5c509e149f3f15e049c2fc6573a" version = "1.4.0rc1"></release>
     <subpartnumber>XM-000040-SW</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>
