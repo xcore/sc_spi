@@ -190,4 +190,6 @@ void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
  */
 void spi_master_out_buffer(spi_master_interface &spi_if, const unsigned char buffer[], int num_bytes);
 
+char spi_master_out_in_byte(spi_master_interface &spi_if, unsigned char data);
+
 #endif

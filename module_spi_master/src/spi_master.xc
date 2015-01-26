@@ -131,6 +131,36 @@ static inline void spi_master_out_byte_internal(spi_master_interface &spi_if, un
     spi_if.miso :> void;
 }
 
+unsigned char spi_master_out_in_byte(spi_master_interface &spi_if, unsigned char data)
+{
+    // MSb-first bit order - SPI standard
+    unsigned x = bitrev(data) >> 24;
+
+#if (SPI_MASTER_MODE == 0 || SPI_MASTER_MODE == 2) // modes where CPHA == 0
+    // handle first bit
+    asm("setc res[%0], 8" :: "r"(spi_if.mosi)); // reset port
+    spi_if.mosi <: x; // output first bit
+    asm("setc res[%0], 8" :: "r"(spi_if.mosi)); // reset port
+    asm("setc res[%0], 0x200f" :: "r"(spi_if.mosi)); // set to buffering
+    asm("settw res[%0], %1" :: "r"(spi_if.mosi), "r"(32)); // set transfer width to 32
+    stop_clock(spi_if.blk2);
+    configure_clock_src(spi_if.blk2, spi_if.sclk);
+    configure_out_port(spi_if.mosi, spi_if.blk2, x);
+    start_clock(spi_if.blk2);
+
+    // output remaining data
+    spi_if.mosi <: (x >> 1);
+#else
+    spi_if.mosi <: x;
+#endif
+    spi_if.sclk <: sclk_val;
+    spi_if.sclk <: sclk_val;
+    sync(spi_if.sclk);
+    unsigned char data_out;
+    spi_if.miso :> data_out;
+    return data_out;
+}
+
 void spi_master_out_byte(spi_master_interface &spi_if, unsigned char data)
 {
     spi_master_out_byte_internal(spi_if, data);
