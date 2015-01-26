@@ -3,19 +3,6 @@
 // University of Illinois/NCSA Open Source License posted in
 // LICENSE.txt and at <http://github.xcore.com/>
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// SPI master
-//
-// SPI modes:
-// +------+------+------+-----------+
-// | Mode | CPOL | CPHA | Supported |
-// +------+------+------+-----------+
-// |   0  |   0  |   0  |    Yes    |
-// |   1  |   0  |   1  |    Yes    |
-// |   2  |   1  |   0  |    Yes    |
-// |   3  |   1  |   1  |    Yes    |
-// +------+------+------+-----------+
 
 #ifndef _spi_master_h_
 #define _spi_master_h_
@@ -30,13 +17,39 @@
  * which depend on how many slaves there are and how they're connected.
  *
  */
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// SPI master
+//
+// SPI modes:
+// +------+------+------+-----------+
+// | Mode | CPOL | CPHA | Supported |
+// +------+------+------+-----------+
+// |   0  |   0  |   0  |    Yes    |
+// |   1  |   0  |   1  |    Yes    |
+// |   2  |   1  |   0  |    Yes    |
+// |   3  |   1  |   1  |    Yes    |
+// +------+------+------+-----------+
+typedef enum
+{
+    SPI_MASTER_MODE_0,
+    SPI_MASTER_MODE_1,
+    SPI_MASTER_MODE_2,
+    SPI_MASTER_MODE_3
+}spi_master_mode_t;
+
 typedef struct spi_master_interface
 {
     clock blk1;
     clock blk2;
     out buffered port:8 mosi;
     out buffered port:8 sclk;
-    in buffered port:8 miso;
+    in buffered port:8 ?miso; //nullable resource (if you are "just" sending you can supply NULL here)
+    spi_master_mode_t master_mode;
+    unsigned mosi_high; //SD-CARD compatible setting, pulls MOSI high if true
+
+    unsigned sclk_val; //Internal usage will be set by init
 } spi_master_interface;
 
 #ifdef __spi_conf_h_exists__
@@ -53,24 +66,6 @@ typedef struct spi_master_interface
  * Leave this set at 2 for the maximum SPI clock frequency of 25 MHz.
  */
 #define DEFAULT_SPI_CLOCK_DIV 8
-#endif
-
-#ifndef SPI_MASTER_MODE
-/** This constant defines the SPI mode that the master operates in.
- *
- * See :ref:`sec_spi_modes` for the modes supported by this master, and
- * the clock polarity and phase used for each.
- */
-#define SPI_MASTER_MODE 3
-#endif
-
-#ifndef SPI_MASTER_SD_CARD_COMPAT
-/** This constant defines the behaviour of the SPI master while receiving data.
- *
- * When defined as '1' the SPI master will drive the MOSI line high before
- * clocking data in from the slave on the MISO line, as required by SD cards.
- */
-#define SPI_MASTER_SD_CARD_COMPAT 0
 #endif
 
 /** Configure ports and clocks, clearing port buffers.
@@ -189,5 +184,7 @@ void spi_master_out_word(spi_master_interface &spi_if, unsigned int data);
  *
  */
 void spi_master_out_buffer(spi_master_interface &spi_if, const unsigned char buffer[], int num_bytes);
+
+char spi_master_out_in_byte(spi_master_interface &spi_if, unsigned char data);
 
 #endif
