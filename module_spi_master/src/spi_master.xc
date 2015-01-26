@@ -181,8 +181,8 @@ unsigned char spi_master_out_in_byte(spi_master_interface &spi_if, unsigned char
     {
 	spi_if.mosi <: x;
     }
-    spi_if.sclk <: sclk_val;
-    spi_if.sclk <: sclk_val;
+    spi_if.sclk <: spi_if.sclk_val;
+    spi_if.sclk <: spi_if.sclk_val;
     sync(spi_if.sclk);
     unsigned char data_out;
     spi_if.miso :> data_out;
